@@ -1,0 +1,182 @@
+{
+    "subjects": [
+        {
+            "title" : "これはタイトル1です。",
+            "color" : {
+                                     "red": 255,
+                                     "green": 228,
+                                     "blue": 180,
+                                     "opacity": 255
+                                 },
+            "pages" :   [
+                            {
+                                "pageNum" : 1,
+                                "duration" : 5000,
+                                "textElems" : [
+
+                                    {
+                                        "font" : "GenEiKoburiMin6-R",
+                                        "content" : "コンテンツ 1-1 です。漢字のテストです。",
+                                        "size" : 50,
+                                        "position" : {
+                                                        "x" : 0.02,
+                                                        "y" : 0.2
+                                                     },
+                                        "color" : {
+                                                        "red": 255,
+                                                        "green" : 0,
+                                                        "blue" : 0,
+                                                        "opacity": 255
+                                                  },
+                                        "bgColor" : {
+                                            "red": 255,
+                                            "green" : 0,
+                                            "blue" : 0,
+                                            "opacity": 80
+                                                    },
+                                        "timeIn" : 0,
+                                        "timeOut" : 1000
+                                    },
+
+                                    {
+                                        "font" : "GenEiKoburiMin6-R",
+                                        "content" : "コンテンツ 1-2 です。漢字のテストです。",
+                                        "size" : 50,
+                                        "position" : {
+                                                        "x" : 0.02,
+                                                        "y" : 0.5
+                                                     },
+                                        "color" : {
+                                                        "red": 0,
+                                                        "green" : 0,
+                                                        "blue" : 0,
+                                                        "opacity": 255
+                                                  },
+                                        "bgColor" : {
+                                            "red": 255,
+                                            "green" : 0,
+                                            "blue" : 0,
+                                            "opacity": 80
+                                                    },
+                                        "timeIn" : 0,
+                                        "timeOut" : 1000
+                                    },
+
+
+                                ],
+                                "graphicElems" : [
+
+                                    {
+                                         
+                                         "url" : "URL OF GRAPHIC 1",
+                                         "position" : {
+                                                         "x" : 0.5,
+                                                         "y" : 0.8
+                                                      },
+                                        "timeIn" : 0,
+                                        "timeOut" : 1000
+                                    }
+                                ]
+                            },
+                            {
+                                "pageNum" : 2,
+                                "duration" : 5000,
+                                "textElems" : [
+
+                                    {
+                                        "font" : "GenEiKoburiMin6-R",
+                                        "content" : "コンテンツ 2-1 です。漢字のテストです。",
+                                        "size" : 50,
+                                        "position" : {
+                                                        "x" : 0.02,
+                                                        "y" : 0.2
+                                                     },
+                                        "color" : {
+                                                        "red": 0,
+                                                        "green" : 0,
+                                                        "blue" : 0,
+                                                        "opacity": 255
+                                                  },
+                                        "bgColor" : {
+                                            "red": 255,
+                                            "green" : 0,
+                                            "blue" : 0,
+                                            "opacity": 80
+                                                    },
+                                        "timeIn" : 0,
+                                        "timeOut" : 1000
+                                    },
+
+                                    {
+                                        "font" : "GenEiKoburiMin6-R",
+                                        "content" : "コンテンツ 2-2 です。漢字のテストです。",
+                                        "size" : 50,
+                                        "position" : {
+                                                        "x" : 0.02,
+                                                        "y" : 0.5
+                                                     },
+                                        "color" : {
+                                                        "red": 0,
+                                                        "green" : 0,
+                                                        "blue" : 0,
+                                                        "opacity": 255
+                                                  },
+                                        "bgColor" : {
+                                            "red": 255,
+                                            "green" : 0,
+                                            "blue" : 0,
+                                            "opacity": 80
+                                                    },
+                                        "timeIn" : 0,
+                                        "timeOut" : 1000
+                                    },
+
+                                    {
+                                        "font" : "AsciiMath",
+                                        "content" : "ASSSSSSSSS",
+                                        "size" : 50,
+                                        "position" : {
+                                                        "x" : 0.02,
+                                                        "y" : 0.5
+                                                     },
+                                        "color" : {
+                                                        "red": 0,
+                                                        "green" : 0,
+                                                        "blue" : 0,
+                                                        "opacity": 255
+                                                  },
+                                        "bgColor" : {
+                                            "red": 255,
+                                            "green" : 0,
+                                            "blue" : 0,
+                                            "opacity": 80
+                                                    },
+                                        "timeIn" : 0,
+                                        "timeOut" : 1000
+                                    },
+                                    
+                                ],
+                                "graphicElems" : [
+
+                                    {
+                                         
+                                         "url" : "URL OF GRAPHIC 2",
+                                         "position" : {
+                                                         "x" : 0.5,
+                                                         "y" : 0.8
+                                                      },
+                                        "timeIn" : 0,
+                                        "timeOut" : 1000
+                                    }
+                                ]
+                            }
+
+
+                        ]
+         }
+
+
+    ]
+
+
+}

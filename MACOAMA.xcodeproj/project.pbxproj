@@ -11,6 +11,24 @@
 		5803DAF529F164680033EEC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803DAF429F164680033EEC2 /* ContentView.swift */; };
 		5803DAF729F1646A0033EEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5803DAF629F1646A0033EEC2 /* Assets.xcassets */; };
 		5803DAFA29F1646A0033EEC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5803DAF929F1646A0033EEC2 /* Preview Assets.xcassets */; };
+		581FAB8F29F6B98000A303A6 /* AsciiMath-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */; };
+		581FAB9229F6D63900A303A6 /* DATA.json in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB9129F6D20200A303A6 /* DATA.json */; };
+		5877EB0D29F8321000EC71EE /* MACOAMA_NativeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */; };
+		5877EB0F29F8321000EC71EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877EB0E29F8321000EC71EE /* ContentView.swift */; };
+		5877EB1129F8321000EC71EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5877EB1029F8321000EC71EE /* Assets.xcassets */; };
+		5877EB1429F8321000EC71EE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5877EB1329F8321000EC71EE /* Preview Assets.xcassets */; };
+		5877EB1629F8321000EC71EE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877EB1529F8321000EC71EE /* Persistence.swift */; };
+		5877EB1929F8321000EC71EE /* MACOAMA_Native.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5877EB1729F8321000EC71EE /* MACOAMA_Native.xcdatamodeld */; };
+		58A9C3B929F2CB0000238A35 /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3B829F2CB0000238A35 /* ApplicationData.swift */; };
+		58A9C3BB29F2CB5600238A35 /* AddFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3BA29F2CB5600238A35 /* AddFileView.swift */; };
+		58A9C3BD29F2CB6D00238A35 /* EditFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3BC29F2CB6D00238A35 /* EditFileView.swift */; };
+		58A9C3BF29F2CBA700238A35 /* TextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3BE29F2CBA700238A35 /* TextDocument.swift */; };
+		58A9C3C529F3DA6800238A35 /* MathSubjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3C429F3DA6800238A35 /* MathSubjectModel.swift */; };
+		58A9C3CD29F4192A00238A35 /* MathSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3CC29F4192A00238A35 /* MathSubjectView.swift */; };
+		58A9C3D129F5857900238A35 /* GenEiKoburiMin6-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58A9C3D029F5857900238A35 /* GenEiKoburiMin6-R.ttf */; };
+		58D4B60729F8372A00274444 /* TextDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D4B60629F8372A00274444 /* TextDataView.swift */; };
+		58D4B60C29F8404B00274444 /* MathSubjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D4B60B29F8404B00274444 /* MathSubjectModel.swift */; };
+		58D4B60E29F8404D00274444 /* MathSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D4B60D29F8404D00274444 /* MathSubjectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,10 +37,38 @@
 		5803DAF429F164680033EEC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5803DAF629F1646A0033EEC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5803DAF929F1646A0033EEC2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AsciiMath-Regular.ttf"; sourceTree = "<group>"; };
+		581FAB9129F6D20200A303A6 /* DATA.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DATA.json; sourceTree = "<group>"; };
+		5877EB0A29F8320F00EC71EE /* MACOAMA_Native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MACOAMA_Native.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MACOAMA_NativeApp.swift; sourceTree = "<group>"; };
+		5877EB0E29F8321000EC71EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5877EB1029F8321000EC71EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5877EB1329F8321000EC71EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5877EB1529F8321000EC71EE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		5877EB1829F8321000EC71EE /* MACOAMA_Native.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MACOAMA_Native.xcdatamodel; sourceTree = "<group>"; };
+		5877EB1A29F8321000EC71EE /* MACOAMA_Native.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MACOAMA_Native.entitlements; sourceTree = "<group>"; };
+		58A9C3B829F2CB0000238A35 /* ApplicationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationData.swift; sourceTree = "<group>"; };
+		58A9C3BA29F2CB5600238A35 /* AddFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFileView.swift; sourceTree = "<group>"; };
+		58A9C3BC29F2CB6D00238A35 /* EditFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFileView.swift; sourceTree = "<group>"; };
+		58A9C3BE29F2CBA700238A35 /* TextDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDocument.swift; sourceTree = "<group>"; };
+		58A9C3C429F3DA6800238A35 /* MathSubjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectModel.swift; sourceTree = "<group>"; };
+		58A9C3CC29F4192A00238A35 /* MathSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectView.swift; sourceTree = "<group>"; };
+		58A9C3D029F5857900238A35 /* GenEiKoburiMin6-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GenEiKoburiMin6-R.ttf"; sourceTree = "<group>"; };
+		58D4B60629F8372A00274444 /* TextDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDataView.swift; sourceTree = "<group>"; };
+		58D4B60829F83CCB00274444 /* DATA.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DATA.json; sourceTree = "<group>"; };
+		58D4B60B29F8404B00274444 /* MathSubjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectModel.swift; sourceTree = "<group>"; };
+		58D4B60D29F8404D00274444 /* MathSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5803DAEC29F164680033EEC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5877EB0729F8320F00EC71EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				5803DAF129F164680033EEC2 /* MACOAMA */,
+				5877EB0B29F8321000EC71EE /* MACOAMA_Native */,
 				5803DAF029F164680033EEC2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				5803DAEF29F164680033EEC2 /* MACOAMA.app */,
+				5877EB0A29F8320F00EC71EE /* MACOAMA_Native.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,10 +99,19 @@
 		5803DAF129F164680033EEC2 /* MACOAMA */ = {
 			isa = PBXGroup;
 			children = (
+				581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */,
+				58A9C3D029F5857900238A35 /* GenEiKoburiMin6-R.ttf */,
 				5803DAF229F164680033EEC2 /* MACOAMAApp.swift */,
 				5803DAF429F164680033EEC2 /* ContentView.swift */,
+				58A9C3BE29F2CBA700238A35 /* TextDocument.swift */,
+				58A9C3B829F2CB0000238A35 /* ApplicationData.swift */,
+				58A9C3BA29F2CB5600238A35 /* AddFileView.swift */,
+				58A9C3BC29F2CB6D00238A35 /* EditFileView.swift */,
 				5803DAF629F1646A0033EEC2 /* Assets.xcassets */,
 				5803DAF829F1646A0033EEC2 /* Preview Content */,
+				58A9C3C429F3DA6800238A35 /* MathSubjectModel.swift */,
+				58A9C3CC29F4192A00238A35 /* MathSubjectView.swift */,
+				581FAB9129F6D20200A303A6 /* DATA.json */,
 			);
 			path = MACOAMA;
 			sourceTree = "<group>";
@@ -63,6 +120,32 @@
 			isa = PBXGroup;
 			children = (
 				5803DAF929F1646A0033EEC2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5877EB0B29F8321000EC71EE /* MACOAMA_Native */ = {
+			isa = PBXGroup;
+			children = (
+				5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */,
+				5877EB0E29F8321000EC71EE /* ContentView.swift */,
+				5877EB1029F8321000EC71EE /* Assets.xcassets */,
+				5877EB1529F8321000EC71EE /* Persistence.swift */,
+				5877EB1A29F8321000EC71EE /* MACOAMA_Native.entitlements */,
+				5877EB1729F8321000EC71EE /* MACOAMA_Native.xcdatamodeld */,
+				5877EB1229F8321000EC71EE /* Preview Content */,
+				58D4B60629F8372A00274444 /* TextDataView.swift */,
+				58D4B60B29F8404B00274444 /* MathSubjectModel.swift */,
+				58D4B60D29F8404D00274444 /* MathSubjectView.swift */,
+				58D4B60829F83CCB00274444 /* DATA.json */,
+			);
+			path = MACOAMA_Native;
+			sourceTree = "<group>";
+		};
+		5877EB1229F8321000EC71EE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5877EB1329F8321000EC71EE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -87,6 +170,23 @@
 			productReference = 5803DAEF29F164680033EEC2 /* MACOAMA.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5877EB0929F8320F00EC71EE /* MACOAMA_Native */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5877EB1B29F8321000EC71EE /* Build configuration list for PBXNativeTarget "MACOAMA_Native" */;
+			buildPhases = (
+				5877EB0629F8320F00EC71EE /* Sources */,
+				5877EB0729F8320F00EC71EE /* Frameworks */,
+				5877EB0829F8320F00EC71EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MACOAMA_Native;
+			productName = MACOAMA_Native;
+			productReference = 5877EB0A29F8320F00EC71EE /* MACOAMA_Native.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -98,6 +198,9 @@
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					5803DAEE29F164680033EEC2 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					5877EB0929F8320F00EC71EE = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
@@ -116,6 +219,7 @@
 			projectRoot = "";
 			targets = (
 				5803DAEE29F164680033EEC2 /* MACOAMA */,
+				5877EB0929F8320F00EC71EE /* MACOAMA_Native */,
 			);
 		};
 /* End PBXProject section */
@@ -125,8 +229,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A9C3D129F5857900238A35 /* GenEiKoburiMin6-R.ttf in Resources */,
+				581FAB9229F6D63900A303A6 /* DATA.json in Resources */,
 				5803DAFA29F1646A0033EEC2 /* Preview Assets.xcassets in Resources */,
 				5803DAF729F1646A0033EEC2 /* Assets.xcassets in Resources */,
+				581FAB8F29F6B98000A303A6 /* AsciiMath-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5877EB0829F8320F00EC71EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5877EB1429F8321000EC71EE /* Preview Assets.xcassets in Resources */,
+				5877EB1129F8321000EC71EE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +253,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A9C3BD29F2CB6D00238A35 /* EditFileView.swift in Sources */,
+				58A9C3BF29F2CBA700238A35 /* TextDocument.swift in Sources */,
+				58A9C3BB29F2CB5600238A35 /* AddFileView.swift in Sources */,
+				58A9C3C529F3DA6800238A35 /* MathSubjectModel.swift in Sources */,
+				58A9C3CD29F4192A00238A35 /* MathSubjectView.swift in Sources */,
+				58A9C3B929F2CB0000238A35 /* ApplicationData.swift in Sources */,
 				5803DAF529F164680033EEC2 /* ContentView.swift in Sources */,
 				5803DAF329F164680033EEC2 /* MACOAMAApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5877EB0629F8320F00EC71EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58D4B60C29F8404B00274444 /* MathSubjectModel.swift in Sources */,
+				58D4B60E29F8404D00274444 /* MathSubjectView.swift in Sources */,
+				5877EB1929F8321000EC71EE /* MACOAMA_Native.xcdatamodeld in Sources */,
+				5877EB1629F8321000EC71EE /* Persistence.swift in Sources */,
+				58D4B60729F8372A00274444 /* TextDataView.swift in Sources */,
+				5877EB0F29F8321000EC71EE /* ContentView.swift in Sources */,
+				5877EB0D29F8321000EC71EE /* MACOAMA_NativeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,12 +400,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MACOAMA/MACOAMA.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MACOAMA/Preview Content\"";
 				DEVELOPMENT_TEAM = TU6ZYUS3Y7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MACOAMA/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to save this image";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -280,8 +420,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gounbeee.MACOAMA;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gounbeee.MACOAMA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -293,12 +434,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MACOAMA/MACOAMA.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MACOAMA/Preview Content\"";
 				DEVELOPMENT_TEAM = TU6ZYUS3Y7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MACOAMA/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to save this image";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -309,11 +454,70 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = gounbeee.MACOAMA;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gounbeee.MACOAMA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5877EB1C29F8321000EC71EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MACOAMA_Native/MACOAMA_Native.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MACOAMA_Native/Preview Content\"";
+				DEVELOPMENT_TEAM = TU6ZYUS3Y7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gounbeee.MACOAMA-Native";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5877EB1D29F8321000EC71EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MACOAMA_Native/MACOAMA_Native.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MACOAMA_Native/Preview Content\"";
+				DEVELOPMENT_TEAM = TU6ZYUS3Y7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gounbeee.MACOAMA-Native";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -338,7 +542,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5877EB1B29F8321000EC71EE /* Build configuration list for PBXNativeTarget "MACOAMA_Native" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5877EB1C29F8321000EC71EE /* Debug */,
+				5877EB1D29F8321000EC71EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5877EB1729F8321000EC71EE /* MACOAMA_Native.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5877EB1829F8321000EC71EE /* MACOAMA_Native.xcdatamodel */,
+			);
+			currentVersion = 5877EB1829F8321000EC71EE /* MACOAMA_Native.xcdatamodel */;
+			path = MACOAMA_Native.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5803DAE729F164680033EEC2 /* Project object */;
 }
