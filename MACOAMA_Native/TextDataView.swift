@@ -103,9 +103,12 @@ struct TextDataView: View {
                         //renderingView = true
                         
                         
-                        MathSubjectView(jsonText: content).openNewWindow( title: "教材",
-                                                                          width: Int($newWindowWidth.wrappedValue)!,
-                                                                          height: Int($newWindowHeight.wrappedValue)!)
+                        MathSubjectView(jsonText: content,
+                                        newWindowWidth: $newWindowWidth,
+                                        newWindowHeight: $newWindowHeight)
+                            .openNewWindow( title: "教材 Window",
+                                            width: Int($newWindowWidth.wrappedValue)!,
+                                            height: Int($newWindowHeight.wrappedValue)!)
                         
                         
                         
