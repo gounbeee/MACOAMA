@@ -43,6 +43,11 @@ struct MathSubjectView: View {
     
     var parsedJson : MathSubjectResponse? = nil
     
+    
+    @State var exportImgWidth : String = "540"
+    @State var exportImgHeight : String = "960"
+    
+    
     var parsedView : some View {
         
         return createViews(parsedJson: self.parsedJson!, sbjNum: self.mathSubjectNo, pgNum: self.mathPageNo)
@@ -56,6 +61,20 @@ struct MathSubjectView: View {
         
         
         if self.parsedJson != nil {
+            VStack {
+                HStack {
+                    TextField("Image Width", text: self.$exportImgWidth)
+                    TextField("Image Height", text: self.$exportImgHeight)
+                }
+                
+                Button("RESIZE WINDOW") {
+                    
+                    
+                    
+                }
+                
+            }
+            
             
             Button("EXPORT TO PNG") {
                 
@@ -67,7 +86,15 @@ struct MathSubjectView: View {
                 
                 
                 
+                
+                
+                
+                
             }
+            
+            
+            
+            
             
             // ┌───────────────────────────┐
             // │                           │
@@ -80,7 +107,7 @@ struct MathSubjectView: View {
             Slider(value: IntDoubleBinding($mathSubjectNo).doubleValue,
                    in: 0.0...Double(self.subjectNumAll-1),
                    step: 1.0) { _ in
-                print("CURRENT SUBJECT NO IS ::  \(mathSubjectNo)")
+                //print("CURRENT SUBJECT NO IS ::  \(mathSubjectNo)")
                 
                 self.mathSubjectNo = mathSubjectNo
                 
@@ -90,7 +117,7 @@ struct MathSubjectView: View {
             Slider(value: IntDoubleBinding($mathPageNo).doubleValue,
                    in: 0.0...Double(self.pageNumInSubject-1),
                    step: 1.0) { _ in
-                print("CURRENT PAGE NO IS ::  \(mathPageNo)")
+                //print("CURRENT PAGE NO IS ::  \(mathPageNo)")
                 
                 self.mathPageNo = mathPageNo
                 
@@ -106,11 +133,7 @@ struct MathSubjectView: View {
         }
         
         
-        
-        
-        
-        
-        
+
     }
     
     
@@ -120,6 +143,7 @@ struct MathSubjectView: View {
         self.parsedJson = self.parseJson(jsonText: jsonText)
         //print( self.parsedJson!.subjects )
         
+        // 教材の個数をカウント
         self.subjectNumAll = countSubjects(jsonObject : self.parsedJson!)
         self.pageNumAll = countAllPages(jsonObject : self.parsedJson!)
         self.pageNumInSubject = countPagesInSubject(subjectNo: self.mathSubjectNo, jsonObject: self.parsedJson!)

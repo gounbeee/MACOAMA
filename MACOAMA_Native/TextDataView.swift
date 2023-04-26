@@ -18,9 +18,9 @@ import SwiftUI
 // https://stackoverflow.com/questions/67344263/swiftui-on-macos-opening-a-new-window
 //
 extension View {
-    private func newWindowInternal(with title: String) -> NSWindow {
+    private func newWindowInternal(title: String, width: Int , height: Int ) -> NSWindow {
         let window = NSWindow(
-            contentRect: NSRect(x: 20, y: 20, width: 540, height: 960),
+            contentRect: NSRect(x: 20, y: 20, width: width, height: height),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered,
             defer: false)
@@ -34,12 +34,22 @@ extension View {
         
     }
     
-    func openNewWindow(with title: String = "new Window") {
-        self.newWindowInternal(with: title).contentView = NSHostingView(rootView: self)
+    func openNewWindow(title: String = "new Window", width: Int, height: Int) {
+        self.newWindowInternal(title: title, width: width, height: height ).contentView = NSHostingView(rootView: self)
     }
 }
 
-
+class NewWindow : ObservableObject {
+    
+    @Published var newWindowWidth : Int
+    @Published var newWindowHeight : Int
+    
+    init(newWindowWidth: Int, newWindowHeight: Int) {
+        self.newWindowWidth = newWindowWidth
+        self.newWindowHeight = newWindowHeight
+    }
+    
+}
 
 // JSONのテキストを確認するview
 struct TextDataView: View {
@@ -53,10 +63,14 @@ struct TextDataView: View {
     @State private var shouldShowDeleteButton: Bool = false
     @State private var shouldPresentConfirm: Bool = false
     
+    @State private var newWindowWidth: String = "540"
+    @State private var newWindowHeight: String = "960"
+    
+    
     // TEXT をもとに、VIEWをレンダリングするか否かのフラグ
     //@State private var renderingView = false
     
-    
+
     var body: some View {
         
         // 表示しようとするテキストのデータが存在するならば、
@@ -73,6 +87,12 @@ struct TextDataView: View {
                 VStack {
                     
                     
+                    HStack {
+                        TextField("Image Width", text: $newWindowWidth)
+                        TextField("Image Height", text: $newWindowHeight)
+                    }
+                        
+                    
                     // 
                     Button("RENDER TO IMAGE") {
                     
@@ -83,7 +103,10 @@ struct TextDataView: View {
                         //renderingView = true
                         
                         
-                        MathSubjectView(jsonText: content).openNewWindow()
+                        MathSubjectView(jsonText: content).openNewWindow( title: "教材",
+                                                                          width: Int($newWindowWidth.wrappedValue)!,
+                                                                          height: Int($newWindowHeight.wrappedValue)!)
+                        
                         
                         
                     }
