@@ -8,13 +8,16 @@
 import SwiftUI
 import CoreData
 
+
+
+
 struct ContentView: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \TextData.createdAt, ascending: true)],
         animation: .default)
-    
     
     private var allTextData: FetchedResults<TextData>
     
@@ -27,18 +30,14 @@ struct ContentView: View {
             
             List {
                 
-                
                 ForEach(allTextData) { textData in
-                    
-                    
+                                        
                     TextDataView(textData: textData)
-                    
                     
                 }
                 
             }
             .toolbar {
-                
                 
                 ToolbarItem {
                     Button(action: PersistenceController.shared.addTextData) {

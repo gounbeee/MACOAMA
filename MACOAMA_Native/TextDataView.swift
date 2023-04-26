@@ -7,26 +7,60 @@
 
 import SwiftUI
 
-struct TextDataView: View {
+
+// ┌─────────────────────┐
+// │                     │
+// │ CREATING NEW WINDOW │
+// │                     │
+// └─────────────────────┘
+//
+// 新規ウィンドウを生成する
+// https://stackoverflow.com/questions/67344263/swiftui-on-macos-opening-a-new-window
+//
+extension View {
+    private func newWindowInternal(with title: String) -> NSWindow {
+        let window = NSWindow(
+            contentRect: NSRect(x: 20, y: 20, width: 540, height: 960),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            backing: .buffered,
+            defer: false)
+        
+        window.center()
+        window.isReleasedWhenClosed = false
+        window.title = title
+        window.makeKeyAndOrderFront(nil)
+        
+        return window
+        
+    }
     
+    func openNewWindow(with title: String = "new Window") {
+        self.newWindowInternal(with: title).contentView = NSHostingView(rootView: self)
+    }
+}
+
+
+
+// JSONのテキストを確認するview
+struct TextDataView: View {
+    @Environment(\.openWindow) var openWindow
     
     @ObservedObject var textData: TextData
     
-    
     @State private var titleInput: String = ""
     @State private var contentInput: String = ""
-    
     
     @State private var shouldShowDeleteButton: Bool = false
     @State private var shouldPresentConfirm: Bool = false
     
     // TEXT をもとに、VIEWをレンダリングするか否かのフラグ
-    @State private var renderingView = false
+    //@State private var renderingView = false
     
     
     var body: some View {
         
-        
+        // 表示しようとするテキストのデータが存在するならば、
+        // viewを表示する
         if let title = textData.title,
             let updatedAt = textData.updatedAt,
             let content = textData.content {
@@ -35,57 +69,66 @@ struct TextDataView: View {
             //
             NavigationLink {
                 
+                // 垂直で並べる
                 VStack {
                     
+                    
+                    // 
                     Button("RENDER TO IMAGE") {
                     
                         let _ = print("RENDERING TO IMAGE !!!")
-                        let _ = print(content)
+                        //let _ = print(content)
                         
-                        renderingView = true
+                        // JSON文字列をParsing、viewへのレンダリングをするためのフラグ
+                        //renderingView = true
+                        
+                        
+                        MathSubjectView(jsonText: content).openNewWindow()
+                        
                         
                     }
                     
                     
-                    
+                    // 記事のタイトル
                     TextField("Title", text: $titleInput)
                         .onAppear() {
+                            // onAppear() MODIFIER
+                            // このviewを描画する直前のイベント時に行う
                             self.titleInput = title
                         }
                         .onChange(of: titleInput) { newTitle in
-                            
+                            // onChange() MODIFIER
+                            // State として指定している titleInput に変化があった場合、
+                            // このメソッドを実行する。
+                            // このメソッドは、メインスレッド実行されるため、
+                            // あまり重い処理をさせないのが理想。
                             PersistenceController.shared.updateTextData(
                                 textData: textData,
                                 title: newTitle,
                                 content: contentInput)
+                            
                         }
                     
                     
                     
                     TextEditor(text: $contentInput)
+                    
                         .onAppear() {
+                            
                             self.contentInput = content
+                            
                         }
                         .onChange(of: contentInput) { newContent in
+                            
                             PersistenceController.shared.updateTextData(
                                 textData: textData,
                                 title: titleInput,
                                 content: newContent)
                             
                         }
-                        .sheet(isPresented: $renderingView) {
-                            //let _ = print("SHEET SHOULD BE DISPLAYED")
-                            
-                            MathSubjectView(jsonText: content)
-                            
-                        }
-                    
-                    
-                    
+
                 }
-                
-                
-                
+
             } label: {
                 
                 HStack {

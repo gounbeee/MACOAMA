@@ -62,13 +62,14 @@ struct MathPageTextElm : Decodable, Hashable {
     
 }
 
+
 struct MathPageGrpElm : Decodable, Hashable {
     
-   
     var url : String
     var position : MathPosition
     var timeIn : Int
     var timeOut : Int
+    
 }
 
 

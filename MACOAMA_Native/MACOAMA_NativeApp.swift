@@ -19,5 +19,7 @@ struct MACOAMA_NativeApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+        
+        
     }
 }
