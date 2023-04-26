@@ -43,9 +43,13 @@ struct MathSubjectView: View {
     
     var parsedJson : MathSubjectResponse? = nil
     
-    
+    // Binding<String> タイプを直接使用する。
+    // https://stackoverflow.com/questions/69071781/struct-initialization-in-swiftui-self-used-before-all-stored-properties-are-i
     var newWindowWidth : Binding<String>
     var newWindowHeight : Binding<String>
+    
+    @State var currentWindowWidth : Int
+    @State var currentWindowHeight : Int
     
     
     var parsedView : some View {
@@ -63,15 +67,33 @@ struct MathSubjectView: View {
         if self.parsedJson != nil {
             VStack {
                 HStack {
+                    
+                    // Binding<String> タイプを直接使用する。
+                    // https://stackoverflow.com/questions/69071781/struct-initialization-in-swiftui-self-used-before-all-stored-properties-are-i
                     TextField("Image Width", text: self.newWindowWidth.projectedValue)
                     TextField("Image Height", text: self.newWindowHeight.projectedValue)
                 }
                 
-                Button("RESIZE WINDOW") {
+
+                Slider(value: IntDoubleBinding($currentWindowWidth).doubleValue,
+                       in: 100.0...1920,
+                       step: 10.0) { _ in
+                    //print("CURRENT SUBJECT NO IS ::  \(mathSubjectNo)")
                     
-                    
+                    self.newWindowWidth.wrappedValue = String(currentWindowWidth)
                     
                 }
+                
+                
+                Slider(value: IntDoubleBinding($currentWindowHeight).doubleValue,
+                       in: 100.0...1920,
+                       step: 10.0) { _ in
+                    //print("CURRENT SUBJECT NO IS ::  \(mathSubjectNo)")
+                    
+                    self.newWindowHeight.wrappedValue = String(currentWindowHeight)
+                    
+                }
+
                 
             }
             
@@ -126,21 +148,32 @@ struct MathSubjectView: View {
             
             
             self.parsedView
+                .frame(width: CGFloat(Double(self.newWindowWidth.wrappedValue)!),
+                       height: CGFloat(Double(self.newWindowHeight.wrappedValue)!))
+//                .frame(minWidth: 100, idealWidth: CGFloat(Double(self.newWindowWidth.wrappedValue)!), maxWidth: 1920,
+//                       minHeight: 100, idealHeight: CGFloat(Double(self.newWindowHeight.wrappedValue)!), maxHeight: 1920,
+//                       alignment: .center)
             
-            
-            
+
             
         }
         
         
         
     }
+
     
     
     
     init(jsonText: String, newWindowWidth: Binding<String>, newWindowHeight: Binding<String> ) {
         
         // ここの二行が、一番下にあってはならない！！！！！！
+        //
+        self.currentWindowWidth = Int(newWindowWidth.wrappedValue)!
+        self.currentWindowHeight = Int(newWindowHeight.wrappedValue)!
+        
+        // ここの二行が、一番下にあってはならない！！！！！！
+        //
         self.newWindowWidth = newWindowWidth
         self.newWindowHeight = newWindowHeight
         
