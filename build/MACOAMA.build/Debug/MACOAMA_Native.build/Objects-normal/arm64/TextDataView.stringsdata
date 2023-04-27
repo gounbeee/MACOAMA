@@ -1,0 +1,32 @@
+{
+  "source": "/Volumes/ROOT/GDRIVE_MIRROR/syProjects/IOS_STUDIES/MACOAMA/MACOAMA/MACOAMA_Native/TextDataView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "RENDER TO IMAGE"
+      },
+      {
+        "comment": "",
+        "key": "Title"
+      },
+      {
+        "comment": "",
+        "key": "Image Width"
+      },
+      {
+        "comment": "",
+        "key": "Image Height"
+      },
+      {
+        "comment": "",
+        "key": "delete_question"
+      },
+      {
+        "comment": "",
+        "key": "delete_confirm"
+      }
+    ]
+  },
+  "version": 1
+}

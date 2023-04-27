@@ -1,0 +1,2 @@
+Target dependency graph (1 target)
+MACOAMA_Native in MACOAMA, no dependencies

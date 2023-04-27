@@ -51,6 +51,8 @@ struct MathSubjectView: View {
     @State var currentWindowWidth : Int
     @State var currentWindowHeight : Int
     
+    //var allViewsToExport : [AnyView] = []
+    //var allImagesToExport : [NSImage] = []
     
     
     
@@ -100,7 +102,7 @@ struct MathSubjectView: View {
             }
             
             
-            Button("EXPORT TO PNG") {
+            Button("EXPORT THIS TO PNG") {
                 
                 //let _ = print( self.parsedView )
                 
@@ -131,10 +133,101 @@ struct MathSubjectView: View {
                     
                     savePNGDirect(image: nsImage, path: url)
                     
+                    //let _ = print(url)
                 }
                 
                 
             }
+            
+            
+            
+            Button("EXPORT ALL SLIDES TO PNG") {
+                
+                
+                var allViewsToExport : [AnyView] = []
+                //var allImagesToExport : [NSImage] = []
+                
+                
+                //let _ = print(self.parsedJson!)
+                
+                for sbjNo in 0...self.subjectNumAll-1 {
+                    
+                    let subject = self.parsedJson!.subjects[sbjNo]
+                    
+                    for pgNum in 0...subject.pages.count-1 {
+                        
+                        //subject.pages[pgNum]
+
+                        let viewToAdded = createViews(parsedJson: self.parsedJson!, sbjNum: sbjNo, pgNum: pgNum)
+                        allViewsToExport.append( AnyView(viewToAdded) )
+
+                    }
+                }
+                
+
+                
+                // var pathStr: String = "../EXPORTED"
+                // let fileURL: URL = URL(fileURLWithPath: pathStr)
+                // file:///Users/siyoungchoi/Desktop/Untitled.png
+
+//
+//                let savePanel = NSSavePanel()
+//                savePanel.allowedContentTypes = [.png]
+//                savePanel.canCreateDirectories = true
+//                savePanel.isExtensionHidden = false
+//                savePanel.title = "Save your image"
+//                savePanel.message = "Choose a folder and a name to store the image."
+//                savePanel.nameFieldLabel = "Image file name:"
+//
+//                let response = savePanel.runModal()
+//                return response == .OK ? savePanel.url : nil
+//
+                
+                let openPanel = NSOpenPanel()
+                openPanel.canCreateDirectories = true
+                openPanel.canChooseDirectories = true
+                                
+                let res = openPanel.runModal()
+                
+                
+                if res == .OK {
+                    
+                    //let _ = print(openPanel.url)
+                    
+                    for vwNum in 0...allViewsToExport.count-1 {
+
+                        let nsImage = allViewsToExport[vwNum].rasterize(at: CGSize(width: self.currentWindowWidth, height: self.currentWindowHeight))
+
+                        //let newExtendedUrl = url.appendingPathExtension("_" + String(vwNum) + ".png")
+                        savePNGDirect(image: nsImage, path: openPanel.url!.appendingPathComponent("file" + String(vwNum) + ".png"))
+
+                    }
+                    
+                }
+                
+                
+                
+                
+//                if let url = showSavePanel() {
+//
+//
+//                    for vwNum in 0...allViewsToExport.count-1 {
+//
+//                        let nsImage = allViewsToExport[vwNum].rasterize(at: CGSize(width: self.currentWindowWidth, height: self.currentWindowHeight))
+//
+//                        //let newExtendedUrl = url.appendingPathExtension("_" + String(vwNum) + ".png")
+//                        savePNGDirect(image: nsImage, path: url
+//                            .appendingPathExtension( "file" + String(vwNum) + ".png"))
+//
+//                    }
+//
+//                }
+                
+
+                
+            }
+            
+            
             
 
             // ┌───────────────────────────┐
