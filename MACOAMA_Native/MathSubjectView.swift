@@ -52,6 +52,8 @@ struct MathSubjectView: View {
     @State var currentWindowHeight : Int
     
     
+    
+    
     var parsedView : some View {
         
         return createViews(parsedJson: self.parsedJson!, sbjNum: self.mathSubjectNo, pgNum: self.mathPageNo)
@@ -74,9 +76,9 @@ struct MathSubjectView: View {
                     TextField("Image Height", text: self.newWindowHeight.projectedValue)
                 }
                 
-
+                
                 Slider(value: IntDoubleBinding($currentWindowWidth).doubleValue,
-                       in: 100.0...1920,
+                       in: 200.0...1920,
                        step: 10.0) { _ in
                     //print("CURRENT SUBJECT NO IS ::  \(mathSubjectNo)")
                     
@@ -86,14 +88,14 @@ struct MathSubjectView: View {
                 
                 
                 Slider(value: IntDoubleBinding($currentWindowHeight).doubleValue,
-                       in: 100.0...1920,
+                       in: 200.0...1920,
                        step: 10.0) { _ in
                     //print("CURRENT SUBJECT NO IS ::  \(mathSubjectNo)")
                     
                     self.newWindowHeight.wrappedValue = String(currentWindowHeight)
                     
                 }
-
+                
                 
             }
             
@@ -103,21 +105,38 @@ struct MathSubjectView: View {
                 //let _ = print( self.parsedView )
                 
                 // Viewを画像ファイルとして保存する
-                // https://www.youtube.com/watch?v=iNCXmq99mjw&t=276s
-                // https://www.youtube.com/watch?v=nQNnHOeGmU4
+                // https://github.com/alexito4/Raster
+                // https://www.hackingwithswift.com/forums/swift/correct-way-to-load-a-raw-image-into-an-image-view/13658
+                // https://developer.apple.com/documentation/appkit/nsbitmapimagerep
+                
+                //let _ = print(self.parsedView)
+                
+                let nsImage = self.parsedView.rasterize(at: CGSize(width: self.currentWindowWidth, height: self.currentWindowHeight))
                 
                 
+                Image(nsImage: nsImage)
+                    .openNewWindow( title: "教材 Window RASTERIZED",
+                                    width: self.currentWindowWidth,
+                                    height: self.currentWindowHeight)
                 
-                
-                
+                // ┌──────────────────────────────────────┐
+                // │                                      │
+                // │     SAVING FILE USING DIALOG BOX     │
+                // │                                      │
+                // └──────────────────────────────────────┘
+                // ファイル保存DIALOGを呼び出しファイルを保存する
+                // https://swdevnotes.com/swift/2022/save-an-image-to-macos-file-system-with-swiftui/
+                //
+                if let url = showSavePanel() {
+                    
+                    savePNGDirect(image: nsImage, path: url)
+                    
+                }
                 
                 
             }
             
-            
-            
-            
-            
+
             // ┌───────────────────────────┐
             // │                           │
             // │          SLIDER           │
@@ -150,18 +169,18 @@ struct MathSubjectView: View {
             self.parsedView
                 .frame(width: CGFloat(Double(self.newWindowWidth.wrappedValue)!),
                        height: CGFloat(Double(self.newWindowHeight.wrappedValue)!))
-//                .frame(minWidth: 100, idealWidth: CGFloat(Double(self.newWindowWidth.wrappedValue)!), maxWidth: 1920,
-//                       minHeight: 100, idealHeight: CGFloat(Double(self.newWindowHeight.wrappedValue)!), maxHeight: 1920,
-//                       alignment: .center)
+            //                .frame(minWidth: 100, idealWidth: CGFloat(Double(self.newWindowWidth.wrappedValue)!), maxWidth: 1920,
+            //                       minHeight: 100, idealHeight: CGFloat(Double(self.newWindowHeight.wrappedValue)!), maxHeight: 1920,
+            //                       alignment: .center)
             
-
+            
             
         }
         
         
         
     }
-
+    
     
     
     
@@ -188,7 +207,7 @@ struct MathSubjectView: View {
         //print("\(self.slideNumAll)  IS self.slideNumAll")
         
         
-
+        
     }
     
     
@@ -228,118 +247,118 @@ struct MathSubjectView: View {
         //let _ = print(screenSize)
         //let _ = print(pageNum)
         
-        
-        
-        ZStack (alignment: .topLeading) {
+        Group {
             
-            VStack (alignment: .leading){
+            ZStack (alignment: .topLeading) {
                 
-                
-                ZStack (alignment: .topLeading) {
-                    
-                    //let _ = print( page )
-                    
-                    // BG
-                    Color
-                        .init(red: Double(subject.color.red)/255, green: Double(subject.color.green)/255, blue: Double(subject.color.blue)/255)
-                        .opacity(1.0)
-                        .edgesIgnoringSafeArea(.all)
+                VStack (alignment: .leading){
                     
                     
-                    // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-                    // ┃    USING CUSTOM FONT     ┃
-                    // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                    // https://developer.apple.com/documentation/swiftui/applying-custom-fonts-to-text
-                    //
-                    // カスタムフォントは、プロジェクト設定にまず、
-                    // Fonts provided by application -> Item 0 で新規追加
-                    // そのValueに、フォントのファイル名を記述
-                    //
-                    // その後、以下のように使用する。
-                    // .font(Font.custom("GenEiKoburiMin6-R", size: 42))
-                    //
-                    
-                    
-                    // ----------------------------------------------------------------
-                    // TITLE
-                    
-                    // CONTENTS
-                    
-                    
-                    // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-                    // ┃  ALIGNING TO RIGHT SIDE  ┃
-                    // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                    //
-                    // Viewを右揃えにする
-                    // https://stackoverflow.com/questions/56443535/swiftui-text-alignment
-                    //
-                    // View単体の「複数行での揃え方」をまず定義し、
-                    // その後、frame()でこのText View自体の、「全体での揃え方」を設定する。
-                    //
-                    Text(subject.title)
-                        .font(Font.custom("GenEiKoburiMin6-R", size: 42))
-                        .foregroundColor(Color.black)
-                        .textSelection(.enabled)
-                        .multilineTextAlignment(.trailing)
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: .infinity,
-                            alignment: .topTrailing)
-                    
-                    // ----------------------------------------------------------------
-                    // CONTENTS
-                    
-                    
-                    // ┏━━━━━━━━━━┓
-                    // ┃  offset  ┃
-                    // ┗━━━━━━━━━━┛
-                    //
-                    // OFFSETを使用し、親階層のViewより相対的な位置を設定する
-                    // https://developer.apple.com/documentation/swiftui/gaugestyleconfiguration/currentvaluelabel-swift.struct/offset(x:y:)
-                    
-                    
-                    // ---------------------------
-                    // テキストをコピーできるようにする
-                    // https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-select-text
-                    
-                    
-                    ForEach(page.textElems, id: \.self) { elem in
-                        Group {
-                            Text(elem.content)
-                                .background(Color(red: Double(elem.bgColor.red)/255,
-                                                  green: Double(elem.bgColor.green)/255,
-                                                  blue: Double(elem.bgColor.blue)/255,
-                                                  opacity: Double(elem.bgColor.opacity)/255))
-                                .offset(x: elem.position.x * 768,
-                                        y: elem.position.y * 1024)
-                                .font(Font.custom(elem.font, size: elem.size))
-                                .foregroundColor(Color(red: Double(elem.color.red)/255,
-                                                       green: Double(elem.color.green)/255,
-                                                       blue: Double(elem.color.blue)/255,
-                                                       opacity: Double(elem.color.opacity)/255))
-                            
-                            
+                    ZStack (alignment: .topLeading) {
+                        
+                        //let _ = print( page )
+                        
+                        // BG
+                        Color
+                            .init(red: Double(subject.color.red)/255, green: Double(subject.color.green)/255, blue: Double(subject.color.blue)/255)
+                            .opacity(1.0)
+                            .edgesIgnoringSafeArea(.all)
+                        
+                        
+                        // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+                        // ┃    USING CUSTOM FONT     ┃
+                        // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+                        // https://developer.apple.com/documentation/swiftui/applying-custom-fonts-to-text
+                        //
+                        // カスタムフォントは、プロジェクト設定にまず、
+                        // Fonts provided by application -> Item 0 で新規追加
+                        // そのValueに、フォントのファイル名を記述
+                        //
+                        // その後、以下のように使用する。
+                        // .font(Font.custom("GenEiKoburiMin6-R", size: 42))
+                        //
+                        
+                        
+                        // ----------------------------------------------------------------
+                        // TITLE
+                        
+                        // CONTENTS
+                        
+                        
+                        // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+                        // ┃  ALIGNING TO RIGHT SIDE  ┃
+                        // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+                        //
+                        // Viewを右揃えにする
+                        // https://stackoverflow.com/questions/56443535/swiftui-text-alignment
+                        //
+                        // View単体の「複数行での揃え方」をまず定義し、
+                        // その後、frame()でこのText View自体の、「全体での揃え方」を設定する。
+                        //
+                        Text(subject.title)
+                            .font(Font.custom("GenEiKoburiMin6-R", size: 42))
+                            .foregroundColor(Color.black)
+                            .textSelection(.enabled)
+                            .multilineTextAlignment(.trailing)
+                            .frame(
+                                maxWidth: .infinity,
+                                maxHeight: .infinity,
+                                alignment: .topTrailing)
+                        
+                        // ----------------------------------------------------------------
+                        // CONTENTS
+                        
+                        
+                        // ┏━━━━━━━━━━┓
+                        // ┃  offset  ┃
+                        // ┗━━━━━━━━━━┛
+                        //
+                        // OFFSETを使用し、親階層のViewより相対的な位置を設定する
+                        // https://developer.apple.com/documentation/swiftui/gaugestyleconfiguration/currentvaluelabel-swift.struct/offset(x:y:)
+                        
+                        
+                        // ---------------------------
+                        // テキストをコピーできるようにする
+                        // https://www.hackingwithswift.com/quick-start/swiftui/how-to-let-users-select-text
+                        
+                        
+                        ForEach(page.textElems, id: \.self) { elem in
+                            Group {
+                                Text(elem.content)
+                                    .background(Color(red: Double(elem.bgColor.red)/255,
+                                                      green: Double(elem.bgColor.green)/255,
+                                                      blue: Double(elem.bgColor.blue)/255,
+                                                      opacity: Double(elem.bgColor.opacity)/255))
+                                    .offset(x: elem.position.x * 768,
+                                            y: elem.position.y * 1024)
+                                    .font(Font.custom(elem.font, size: elem.size))
+                                    .foregroundColor(Color(red: Double(elem.color.red)/255,
+                                                           green: Double(elem.color.green)/255,
+                                                           blue: Double(elem.color.blue)/255,
+                                                           opacity: Double(elem.color.opacity)/255))
+                                
+                                
+                            }
                         }
+                        
+                        
+                        
+                        
+                        // let _ = print(page.textElems[0].position.x * screenSize.width)
+                        // let _ = print(page.textElems[0].position.y * screenSize.height)
+                        
+                        
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .textSelection(.enabled)
                     
                     
-                    
-                    
-                    // let _ = print(page.textElems[0].position.x * screenSize.width)
-                    // let _ = print(page.textElems[0].position.y * screenSize.height)
                     
                     
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .textSelection(.enabled)
-                
-                
-                
                 
             }
-            
         }
-        
         
     }
     
@@ -356,6 +375,43 @@ struct MathSubjectView: View {
     }
     
     
+    
+    func showSavePanel() -> URL? {
+        let savePanel = NSSavePanel()
+        savePanel.allowedContentTypes = [.png]
+        savePanel.canCreateDirectories = true
+        savePanel.isExtensionHidden = false
+        savePanel.title = "Save your image"
+        savePanel.message = "Choose a folder and a name to store the image."
+        savePanel.nameFieldLabel = "Image file name:"
+        
+        let response = savePanel.runModal()
+        return response == .OK ? savePanel.url : nil
+    }
+    
+    
+    func savePNG(imageName: String, path: URL) {
+        let image = NSImage(named: imageName)!
+        let imageRepresentation = NSBitmapImageRep(data: image.tiffRepresentation!)
+        let pngData = imageRepresentation?.representation(using: .png, properties: [:])
+        do {
+            try pngData!.write(to: path)
+        } catch {
+            print(error)
+        }
+    }
+    
+    
+    func savePNGDirect(image: NSImage, path: URL) {
+        let image = image
+        let imageRepresentation = NSBitmapImageRep(data: image.tiffRepresentation!)
+        let pngData = imageRepresentation?.representation(using: .png, properties: [:])
+        do {
+            try pngData!.write(to: path)
+        } catch {
+            print(error)
+        }
+    }
     
     
     
