@@ -6,6 +6,17 @@
 //
 
 import SwiftUI
+import CodeEditor
+
+
+
+// ┌─────────────────┐
+// │                 │
+// │   CODE EDITOR   │
+// │                 │
+// └─────────────────┘
+// https://github.com/ZeeZide/CodeEditor
+
 
 
 // ┌─────────────────────┐
@@ -53,7 +64,14 @@ class NewWindow : ObservableObject {
 
 // JSONのテキストを確認するview
 struct TextDataView: View {
+    //@AppStorage("fontsize") var fontSize = Int(NSFont.systemFontSize)
+    
+    @AppStorage("fontsize") var fontSize = 22
+    
     @Environment(\.openWindow) var openWindow
+    
+    @State private var language = CodeEditor.Language.swift
+    @State private var theme    = CodeEditor.ThemeName.pojoaque
     
     @ObservedObject var textData: TextData
     
@@ -143,8 +161,10 @@ struct TextDataView: View {
                     
                     
                     Text("コンテンツ")
-                    TextEditor(text: $contentInput)
-                        .font(.system(size: 18))
+                    
+                    CodeEditor(source: $contentInput, language: language, theme: theme,
+                               fontSize: .init(get: { CGFloat(fontSize)  },
+                                               set: { fontSize = Int($0) }))
                         .onAppear() {
                             
                             self.contentInput = content
@@ -158,6 +178,23 @@ struct TextDataView: View {
                                 content: newContent)
                             
                         }
+                    
+                    
+//                    TextEditor(text: $contentInput)
+//                        .font(.system(size: 18))
+//                        .onAppear() {
+//
+//                            self.contentInput = content
+//
+//                        }
+//                        .onChange(of: contentInput) { newContent in
+//
+//                            PersistenceController.shared.updateTextData(
+//                                textData: textData,
+//                                title: titleInput,
+//                                content: newContent)
+//
+//                        }
 
                 }
                 
