@@ -147,6 +147,26 @@ struct PersistenceController {
     
     
     
+    func addTextDataWithString(input: String) {
+        
+        let newTextData = TextData(context: container.viewContext)
+        
+        newTextData.createdAt = Date()
+        
+        newTextData.updatedAt = Date()
+        
+        newTextData.title = "Untitled"
+        
+        newTextData.content = input
+        
+        
+        save()
+        
+        
+    }
+    
+    
+    
     func updateTextData(textData: TextData, title:String, content: String) {
         
         

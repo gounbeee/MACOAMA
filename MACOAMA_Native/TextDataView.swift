@@ -138,7 +138,7 @@ struct TextDataView: View {
                     
                     
                     TextEditor(text: $contentInput)
-                    
+                        .font(.system(size: 18))
                         .onAppear() {
                             
                             self.contentInput = content
