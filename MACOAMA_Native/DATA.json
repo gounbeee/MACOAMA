@@ -1348,8 +1348,6 @@
 
 
 
-
-
 {
   "subjects" : [
     {
@@ -1373,8 +1371,8 @@
               "timeIn" : 0,
               "content" : "コンテンツ 1-1 です。漢字のテストです。",
               "position" : {
-                "x" : 0.031465567129629626,
-                "y" : 0.067822265625000003
+                "x" : 0.070940393518518441,
+                "y" : 0.16928710937499999
               },
               "id" : "txt1-1-1",
               "color" : {
@@ -1397,8 +1395,8 @@
               "timeIn" : 0,
               "content" : "コンテンツ 1-2 です。漢字のテストです。",
               "position" : {
-                "x" : 0.033302951388888911,
-                "y" : 0.18276367187500001
+                "x" : 0.06577546296296298,
+                "y" : 0.30897216796874999
               },
               "id" : "txt1-1-2",
               "color" : {
@@ -1438,8 +1436,8 @@
               "timeIn" : 0,
               "content" : "コンテンツ 2-1 です。漢字のテストです。",
               "position" : {
-                "x" : 0.02,
-                "y" : 0.20000000000000001
+                "x" : 0.37493344907407411,
+                "y" : 0.21685791015625
               },
               "id" : "txt1-2-1",
               "color" : {
@@ -1462,8 +1460,8 @@
               "timeIn" : 0,
               "content" : "コンテンツ 2-2 です。漢字のテストです。",
               "position" : {
-                "x" : 0.02,
-                "y" : 0.5
+                "x" : 0.30062065972222224,
+                "y" : 0.36717936197916667
               },
               "id" : "txt1-2-2",
               "color" : {
@@ -1486,8 +1484,8 @@
               "timeIn" : 0,
               "content" : "ASSSSSSSSS",
               "position" : {
-                "x" : 0.02,
-                "y" : 0.5
+                "x" : 0.39169415509259259,
+                "y" : 0.33320312499999999
               },
               "id" : "txt1-2-3",
               "color" : {
@@ -2564,6 +2562,1159 @@
               "timeIn" : 0
             }
           ],
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 5-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt3-5-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 5-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt3-5-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt3-5-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 5
+        }
+      ],
+      "color" : {
+        "opacity" : 255,
+        "red" : 255,
+        "blue" : 180,
+        "green" : 228
+      }
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "subjects" : [
+    {
+      "title" : "これはタイトル1です。",
+      "pages" : [
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 1-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.070940393518518441,
+                "y" : 0.16928710937499999
+              },
+              "id" : "txt1-1-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 1-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.06577546296296298,
+                "y" : 0.30897216796874999
+              },
+              "id" : "txt1-1-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            }
+          ],
+          "pageNum" : 1
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 2-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.37493344907407411,
+                "y" : 0.21685791015625
+              },
+              "id" : "txt1-2-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 2-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.30062065972222224,
+                "y" : 0.36717936197916667
+              },
+              "id" : "txt1-2-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.39169415509259259,
+                "y" : 0.33320312499999999
+              },
+              "id" : "txt1-2-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 2
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 3-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.19217881944444443,
+                "y" : 0.062792968749999997
+              },
+              "id" : "txt1-3-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 3-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.18878616898148148,
+                "y" : 0.23866780598958334
+              },
+              "id" : "txt1-3-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.19386429398148147,
+                "y" : 0.17338053385416666
+              },
+              "id" : "txt1-3-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 3
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 4-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt1-4-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 4-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt1-4-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt1-4-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 4
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 5-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt1-5-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 5-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt1-5-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt1-5-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 5
+        }
+      ],
+      "color" : {
+        "opacity" : 255,
+        "red" : 255,
+        "blue" : 180,
+        "green" : 228
+      }
+    },
+    {
+      "title" : "これはタイトル2です。",
+      "pages" : [
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 1-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt2-1-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 1-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt2-1-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            }
+          ],
+          "pageNum" : 1
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 2-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt2-2-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 2-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt2-2-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt2-2-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 2
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 3-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt2-3-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 3-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt2-3-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt2-3-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 3
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 4-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt2-4-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 4-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt2-4-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt2-4-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 4
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 5-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt2-5-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 5-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt2-5-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt2-5-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 5
+        }
+      ],
+      "color" : {
+        "opacity" : 255,
+        "red" : 255,
+        "blue" : 180,
+        "green" : 228
+      }
+    },
+    {
+      "title" : "これはタイトル3です。",
+      "pages" : [
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 1-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt3-1-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 1-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt3-1-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            }
+          ],
+          "pageNum" : 1
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 2-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt3-2-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 2-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt3-2-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt3-2-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 2
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 3-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt3-3-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 3-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt3-3-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt3-3-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 3
+        },
+        {
+          "duration" : 5000,
+          "textElems" : [
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 4-1 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.20000000000000001
+              },
+              "id" : "txt3-4-1",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "コンテンツ 4-2 です。漢字のテストです。",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt3-4-2",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "GenEiKoburiMin6-R"
+            },
+            {
+              "timeIn" : 0,
+              "content" : "ASSSSSSSSS",
+              "position" : {
+                "x" : 0.02,
+                "y" : 0.5
+              },
+              "id" : "txt3-4-3",
+              "color" : {
+                "opacity" : 255,
+                "red" : 0,
+                "blue" : 0,
+                "green" : 0
+              },
+              "size" : 50,
+              "timeOut" : 1000,
+              "bgColor" : {
+                "opacity" : 80,
+                "red" : 255,
+                "blue" : 0,
+                "green" : 0
+              },
+              "font" : "AsciiMath"
+            }
+          ],
+          "pageNum" : 4
+        },
+        {
+          "duration" : 5000,
           "textElems" : [
             {
               "timeIn" : 0,

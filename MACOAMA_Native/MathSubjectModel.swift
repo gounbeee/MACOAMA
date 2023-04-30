@@ -12,7 +12,7 @@ import Foundation
 enum MathPageType : String, Codable {
     
     case text = "text"
-    case graphic = "graphic"
+    //case graphic = "graphic"
     
 }
 
@@ -70,14 +70,14 @@ struct MathPageTextElm : Codable, Hashable {
 }
 
 
-struct MathPageGrpElm : Codable, Hashable {
-    
-    var url : String
-    var position : MathPosition
-    var timeIn : Int
-    var timeOut : Int
-    
-}
+//struct MathPageGrpElm : Codable, Hashable {
+//
+//    var url : String
+//    var position : MathPosition
+//    var timeIn : Int
+//    var timeOut : Int
+//
+//}
 
 
 // Pages 構造体
@@ -87,7 +87,7 @@ struct MathPage : Codable, Hashable {
     var pageNum : Int
     var duration : Int
     var textElems : [MathPageTextElm]
-    var graphicElems : [MathPageGrpElm]
+    //var graphicElems : [MathPageGrpElm]
     
     
 }
