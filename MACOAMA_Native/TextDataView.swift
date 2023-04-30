@@ -84,17 +84,17 @@ struct TextDataView: View {
             NavigationLink {
                 
                 // 垂直で並べる
-                VStack {
+                VStack (alignment: .leading) {
                     
-                    
+                    Text("イメージの大きさ")
                     HStack {
-                        TextField("Image Width", text: $newWindowWidth)
-                        TextField("Image Height", text: $newWindowHeight)
+                        TextField("Image幅", text: $newWindowWidth)
+                        TextField("Image高さ", text: $newWindowHeight)
                     }
                         
                     
                     // 
-                    Button("RENDER TO IMAGE") {
+                    Button("VIEWをレンダリング") {
                     
                         let _ = print("RENDERING TO IMAGE !!!")
                         //let _ = print(content)
@@ -113,9 +113,15 @@ struct TextDataView: View {
                         
                         
                     }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
                     
+                    
+                    Divider()
                     
                     // 記事のタイトル
+                    Text("タイトル")
+                        
                     TextField("Title", text: $titleInput)
                         .onAppear() {
                             // onAppear() MODIFIER
@@ -136,7 +142,7 @@ struct TextDataView: View {
                         }
                     
                     
-                    
+                    Text("コンテンツ")
                     TextEditor(text: $contentInput)
                         .font(.system(size: 18))
                         .onAppear() {
@@ -154,6 +160,7 @@ struct TextDataView: View {
                         }
 
                 }
+                
 
             } label: {
                 

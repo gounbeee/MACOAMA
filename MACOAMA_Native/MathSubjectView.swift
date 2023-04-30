@@ -158,7 +158,7 @@ struct MathSubjectView: View {
                 
                 
                 
-                Button("EXPORT THIS TO PNG") {
+                Button("現在のViewをPNGで出力") {
                     
                     //let _ = print( self.parsedView )
                     
@@ -195,10 +195,11 @@ struct MathSubjectView: View {
                     
                     
                 }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
                 
                 
-                
-                Button("EXPORT ALL SLIDES TO PNG") {
+                Button("すべてのPageをPNGとして出力") {
                     
                     var allViewsToExport : [AnyView] = []
                     
@@ -252,7 +253,8 @@ struct MathSubjectView: View {
                     }
                     
                 }
-                
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
                 
                 
                 
@@ -263,7 +265,7 @@ struct MathSubjectView: View {
                 // └───────────────────────────┘
                 // https://stackoverflow.com/questions/65736518/how-do-i-create-a-slider-in-swiftui-for-an-int-type-property
                 //
-                
+                Text("Subject番号")
                 Slider(value: IntDoubleBinding($mathSubjectNo).doubleValue,
                        in: 0.0...Double(self.subjectNumAll-1),
                        step: 1.0) { _ in
@@ -275,7 +277,7 @@ struct MathSubjectView: View {
                 
                 
                 
-                
+                Text("Page番号")
                 Slider(value: IntDoubleBinding($mathPageNo).doubleValue,
                        in: 0.0...Double(self.pageNumInSubject-1),
                        step: 1.0) { _ in
@@ -317,7 +319,8 @@ struct MathSubjectView: View {
                     
                     
                 }
-                
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
                 
                 
                 
