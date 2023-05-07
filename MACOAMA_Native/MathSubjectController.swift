@@ -17,6 +17,7 @@ class MathSubjectController : ObservableObject {
     @Published var subjectNumAll: Int = 0
     @Published var pageNumInSubject: Int = 0
     @Published var pageNumAll: Int = 0
+    @Published var elementNumAll: Int = 0
     
     @Published var jsonText : String = "Default Json Text"
     @Published var jsonObj : MathSubjectResponse? = nil
@@ -26,6 +27,9 @@ class MathSubjectController : ObservableObject {
     
     @Published var subjectNo: Int = 0
     @Published var pageNo: Int = 0
+    
+    
+    var elmCtr : MathSubjectElementController? = nil
     
     // ページがレンダリングされると、保存のためこちらに入れておく
     public var parsedView : MathSubjectCreatePageView? = nil
@@ -42,7 +46,7 @@ class MathSubjectController : ObservableObject {
         self.subjectNumAll = self.jsonObj!.subjects.count
         self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
         self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
-        
+        self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
         
         
         

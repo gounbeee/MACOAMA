@@ -9,204 +9,346 @@ import SwiftUI
 
 
 
+// Idenfiableにすることで、ForEach文をView構造体内で使用する!
+// とても有用！ INDEXも簡単に追加することもできる！
+// https://sarunw.com/posts/swiftui-foreach/
+struct MathPageTextElemIdFied : Hashable, Identifiable {
+    
+    var id : UUID = UUID()
+    
+    var index : Int = 0
+    
+    var element : MathPageTextElm
+    
+    
+    
+    
+    
+}
+
 
 
 struct MathSubjectEditView: View {
     
-    @State private var subjectAllCount : Int = 0
-    @State private var pageAllCount : Int = 0
-    @State private var currentElemId : String = "initial"
-    @State private var currentElemPosX : String = "0.0"
-    @State private var currentElemPosY : String = "0.0"
+    // STATE プロパティーの配列を初期化
+    // https://stackoverflow.com/questions/71997148/different-state-variables-for-new-textfields-in-swiftui
     
-    @State private var currentElemColorR : String = "0.0"
-    @State private var currentElemColorG : String = "0.0"
-    @State private var currentElemColorB : String = "0.0"
-    @State private var currentElemColorO : String = "0.0"
+    // 初期化時、複数の要素を個数指定で行う
+    // https://stackoverflow.com/questions/74682072/swift-multiple-textfields-updating-instead-of-one
+    @State private var newElemId : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemPosX : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemPosY : [String] = [String](repeating: String(""), count: 50)
     
-    @State private var currentElemBgColorR : String = "0.0"
-    @State private var currentElemBgColorG : String = "0.0"
-    @State private var currentElemBgColorB : String = "0.0"
-    @State private var currentElemBgColorO : String = "0.0"
+    @State private var newElemColorR : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemColorG : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemColorB : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemColorO : [String] = [String](repeating: String(""), count: 50)
     
-    @State private var currentElemFontSize : String = "50.0"
-    @State private var currentElemFontName : String = "initial"
-    @State private var currentElemContent : String = "initial"
-    @State private var currentElemTimeIn : String = "0.0"
-    @State private var currentElemTimeOut : String = "0.0"
+    @State private var newElemBgColorR : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemBgColorG : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemBgColorB : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemBgColorO : [String] = [String](repeating: String(""), count: 50)
+    
+    @State private var newElemFontSize : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemFontName : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemContent : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemTimeIn : [String] = [String](repeating: String(""), count: 50)
+    @State private var newElemTimeOut : [String] = [String](repeating: String(""), count: 50)
     
     
-    @State var parsedJson : MathSubjectResponse? = nil
+    var elemCount : Int = 0
     
-    @State private var mathSubjectNo = 0
-    @State private var mathPageNo = 0
+    // Identifiable型に拡張された要素を格納
+    var elementList : [MathPageTextElemIdFied] = []
     
-    @State private var mathPage : MathPage? = nil
+    // 外部からの文脈マネージャ
+    @ObservedObject var ctr : MathSubjectController
+    
     
     
     init(controller: MathSubjectController) {
         
-        // 初期化時の下線の意味
-        // https://stackoverflow.com/questions/65209314/what-does-the-underscore-mean-before-a-variable-in-swiftui-in-an-init
-        self.parsedJson = controller.jsonObj
+        self.ctr = controller
+        self.elemCount = controller.elementNumAll
         
-        self.mathSubjectNo = controller.subjectNo
-        self.mathPageNo = controller.pageNo
+        let elmList = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems
         
-        self.mathPage = controller.jsonObj!.subjects[self.mathSubjectNo].pages[self.mathPageNo]
+        for index in 0..<elmList.count {
             
-        
-        if self.mathPage != nil {
-            
-            self.currentElemId = self.mathPage!.textElems.first!.id
-            self.currentElemPosX = String(self.mathPage!.textElems.first!.position.x)
-            self.currentElemPosY = String(self.mathPage!.textElems.first!.position.y)
-            
-            self.currentElemColorR = String(self.mathPage!.textElems.first!.color.red)
-            self.currentElemColorG = String(self.mathPage!.textElems.first!.color.green)
-            self.currentElemColorB = String(self.mathPage!.textElems.first!.color.blue)
-            self.currentElemColorO = String(self.mathPage!.textElems.first!.color.opacity)
-            
-            self.currentElemBgColorR = String(self.mathPage!.textElems.first!.bgColor.red)
-            self.currentElemBgColorG = String(self.mathPage!.textElems.first!.bgColor.green)
-            self.currentElemBgColorB = String(self.mathPage!.textElems.first!.bgColor.blue)
-            self.currentElemBgColorO = String(self.mathPage!.textElems.first!.bgColor.opacity)
-            
-            self.currentElemFontSize = self.mathPage!.textElems.first!.size.formatted()
-            self.currentElemFontName = self.mathPage!.textElems.first!.font
-            
-            self.currentElemContent = self.mathPage!.textElems.first!.content
-            
-            self.currentElemTimeIn = self.mathPage!.textElems.first!.timeIn.formatted()
-            self.currentElemTimeOut = self.mathPage!.textElems.first!.timeOut.formatted()
-            
+            // 要素のリストを用意
+            var newElm = MathPageTextElemIdFied(element: elmList[index])
+            newElm.index = index
+            self.elementList.append(newElm)
             
         }
         
         
-            
-            
-            
         
-        
-        
-        //print( self.parsedJson. )
         
     }
     
     
     
+    
     var body: some View {
         
-        VStack {
-            HStack {
-                
-                Spacer()
-                
+        
+            
+            VStack {
                 HStack {
                     
-                    Text("全体Subject数")
-                    Text(String(self.subjectAllCount))
+                    Spacer()
+                    
+                    HStack {
+                        
+                        Text("現在のSubject番号")
+                        Text(self.ctr.subjectNo.formatted())
+                        
+                    }
+                    
+                    Divider()
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Text("現在のPage番号")
+                        Text(self.ctr.pageNo.formatted())
+                    }
                     
                 }
-
+                .frame(height: 30)
                 
                 Divider()
                 
-                Spacer()
                 
                 
                 HStack {
-                    Text("全体Page数")
-                    Text(String(self.pageAllCount))
-                }
+                    
+                    // 2等分の幅、を知るためにここにGeometry Readerを設定した。
+                    // https://swiftspeedy.com/horizontally-divide-the-screen-into-two-equal-parts-in-swiftui/
+                    GeometryReader { geo in
+                        
+                        
+                        ScrollView {
+                            
+                            VStack (alignment: .leading) {
+                                Text("全体の要素数  :  \(self.elemCount.formatted())")
+                                    .font(.caption)
+                                    .padding()
+                                
+                                Divider()
+                                
+                                
+                                ForEach(self.elementList, id: \.self) { el in
+                                    
+                                    
+                                    VStack (alignment: .leading) {
+                                        Text("要素 No. :  \(el.index.formatted())")
+                                            .font(.title2)
+                                            
+                                        
+                                        HStack {
+                                            Text(el.element.id).frame(width: geo.size.width/2)
+                                            
+                                            // TextField の初期値を設定
+                                            // https://www.motokis-brain.com/article/26
+                                            TextField("Id", text: self.$newElemId[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                                self.newElemId[el.index] = el.element.id
+                                            }
+                                        }
+                                        
+                                        Text("Font")
+                                        HStack {
+                                            Text(el.element.font).frame(width: geo.size.width/2)
+                                            TextField("Font", text: self.$newElemFontName[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                                self.newElemFontName[el.index] = el.element.font
+                                            }
+                                        }
+                                        
+                                        Text("Font Size")
+                                        HStack {
+                                            Text(el.element.size.formatted()).frame(width: geo.size.width/2)
+                                            TextField("FontSize", text: self.$newElemFontSize[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                                self.newElemFontSize[el.index] = el.element.size.formatted()
+                                            }
+                                        }
+                                    }
+                                    
+                                    VStack (alignment: .leading) {
+                                        
+                                        Text("Content")
+                                        HStack {
+                                            Text(el.element.content).frame(width: geo.size.width/2)
+                                            TextField("Content", text: self.$newElemContent[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                                self.newElemContent[el.index] = el.element.content
+                                            }
+                                        }
+                                        
+                                        
+                                        Text("Position")
+                                        HStack {
+                                            Text(el.element.position.x.formatted()).frame(width: geo.size.width/4)
+                                            TextField("PosX", text: self.$newElemPosX[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemPosX[el.index] = el.element.position.x.formatted()
+                                            }
+                                            Text(el.element.position.y.formatted()).frame(width: geo.size.width/4)
+                                            TextField("PosY", text: self.$newElemPosY[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemPosY[el.index] = el.element.position.y.formatted()
+                                            }
+                                        }
+                                    }
+                                    
 
-                
-            }
-            .frame(height: 30)
-            
-            Divider()
-            
+                                    VStack (alignment: .leading) {
+                                        Text("Color")
+                                        HStack {
+                                            Text(el.element.color.red.formatted()).frame(width: geo.size.width/4)
+                                            Text(el.element.color.green.formatted()).frame(width: geo.size.width/4)
+                                            Text(el.element.color.blue.formatted()).frame(width: geo.size.width/4)
+                                            Text(el.element.color.opacity.formatted()).frame(width: geo.size.width/4)
+                                        }
+                                        HStack {
+                                            TextField("Red", text: self.$newElemColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemColorR[el.index] = el.element.color.red.formatted()
+                                            }
+                                            TextField("Green", text: self.$newElemColorG[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemColorG[el.index] = el.element.color.green.formatted()
+                                            }
+                                            TextField("Blue", text: self.$newElemColorB[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemColorB[el.index] = el.element.color.blue.formatted()
+                                            }
+                                            TextField("Opacity", text: self.$newElemColorO[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemColorO[el.index] = el.element.color.opacity.formatted()
+                                            }
+                                        }
+                                    }
 
-            
-            HStack {
-                Form {
-                    TextField(text: $currentElemId, prompt: Text("enter elem id")) {
-                        Text("ID")
-                    }
-                    TextField(text: $currentElemFontName, prompt: Text("enter font name") ) {
-                        Text("Font")
-                    }
-                    TextField(text: $currentElemFontSize, prompt: Text("enter font size") ) {
-                        Text("FontSz")
-                    }
-                    TextField(text: $currentElemContent, prompt: Text("enter elem content") ) {
-                        Text("Content")
-                    }
-                }
-            }
-            
-            Divider()
-            
-            
-            HStack {
-                Form {
-             
-                    TextField(text: $currentElemPosX, prompt: Text("enter position X") ) {
-                        Text("PosX")
-                    }
-                    TextField(text: $currentElemPosY, prompt: Text("enter position Y") ) {
-                        Text("PosY")
+
+                                    VStack (alignment: .leading) {
+
+                                        Text("BgColor")
+                                        HStack {
+                                            Text(el.element.bgColor.red.formatted()).frame(width: geo.size.width/4)
+                                            Text(el.element.bgColor.green.formatted()).frame(width: geo.size.width/4)
+                                            Text(el.element.bgColor.blue.formatted()).frame(width: geo.size.width/4)
+                                            Text(el.element.bgColor.opacity.formatted()).frame(width: geo.size.width/4)
+                                        }
+                                        HStack {
+                                            TextField("Red", text: self.$newElemBgColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemBgColorR[el.index] = el.element.bgColor.red.formatted()
+                                            }
+                                            TextField("Green", text: self.$newElemBgColorG[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemBgColorG[el.index] = el.element.bgColor.green.formatted()
+                                            }
+                                            TextField("Blue", text: self.$newElemBgColorB[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemBgColorB[el.index] = el.element.bgColor.blue.formatted()
+                                            }
+                                            TextField("Opacity", text: self.$newElemBgColorO[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                self.newElemBgColorO[el.index] = el.element.bgColor.opacity.formatted()
+                                            }
+                                        }
+                                    }
+
+
+                                    VStack (alignment: .leading) {
+                                        Text("TimeIn")
+                                        HStack {
+                                            Text(String("\(el.element.timeIn)")).frame(width: geo.size.width/2)
+                                            TextField("TimeIn", text: self.$newElemTimeIn[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                                self.newElemTimeIn[el.index] = String("\(el.element.timeIn)")
+                                            }
+                                        }
+                                        Text("TimeOut")
+                                        HStack {
+                                            Text(String("\(el.element.timeOut)")).frame(width: geo.size.width/2)
+                                            TextField("TimeOut", text: self.$newElemTimeOut[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                                self.newElemTimeOut[el.index] = String("\(el.element.timeOut)")
+                                            }
+                                        }
+
+                                    }
+//
+                                    Divider()
+                                    
+                                    Button("UPDATE") {
+                                        
+                                        //print(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position )
+                                        //print(Double(self.newPosX[el.index])!)
+                                        
+                                        
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].id = self.newElemId[el.index]
+                                        
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].content = self.newElemContent[el.index]
+                                        
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].size = Double(self.newElemFontSize[el.index])!
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].font = self.newElemFontName[el.index]
+                                        
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position.x = Double(self.newElemPosX[el.index])!
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position.y = Double(self.newElemPosY[el.index])!
+                                        
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.red = Int(self.newElemColorR[el.index])!
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.green = Int(self.newElemColorG[el.index])!
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.blue = Int(self.newElemColorB[el.index])!
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.opacity = Int(self.newElemColorO[el.index])!
+
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.red = Int(self.newElemBgColorR[el.index])!
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.green = Int(self.newElemBgColorG[el.index])!
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.blue = Int(self.newElemBgColorB[el.index])!
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.opacity = Int(self.newElemBgColorO[el.index])!
+
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].timeIn = Int(self.newElemTimeIn[el.index])!
+                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].timeOut = Int(self.newElemTimeOut[el.index])!
+                                        
+                                        
+                                        
+                                        
+                                        // JSONとして書き出し
+                                        let encoder = JSONEncoder()
+                                        
+                                        // 綺麗なJSONフォーマットに出力
+                                        // https://www.hackingwithswift.com/example-code/language/how-to-format-json-using-codable-and-pretty-printing
+                                        encoder.outputFormatting = .prettyPrinted
+                                        
+                                        guard let jsonValue = try? encoder.encode(self.ctr.jsonObj!) else {
+                                            
+                                            fatalError("JSON構成でエラー発生")
+                                            
+                                        }
+                                        
+                                        // 現在のJSONテキストを更新
+                                        self.ctr.jsonText = String(bytes: jsonValue, encoding: .utf8)!
+                                        
+                                        self.ctr.parseJson()
+                                        
+                                        // JSONファイルを新規保存
+                                        //PersistenceController.shared.addTextDataWithString(input: self.ctr.jsonText)
+                                        
+                                        
+                                        
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    .controlSize(.large)
+                                    
+                                    
+                                    Divider()
+                                    
+                                }
+                                
+                                
+                            }
+                            .padding()
+                            
+                        }
+                        
                     }
                     
                 }
-            }
                 
-            Divider()
-            
-            HStack {
-                Form {
-                    
-                    TextField(text: $currentElemColorR, prompt: Text("enter Text Color R") ) {
-                        Text("ColR")
-                    }
-                    TextField(text: $currentElemColorG, prompt: Text("enter Text Color G") ) {
-                        Text("ColG")
-                    }
-                    TextField(text: $currentElemColorB, prompt: Text("enter Text Color B") ) {
-                        Text("ColB")
-                    }
-                    TextField(text: $currentElemColorO, prompt: Text("enter Text Color O") ) {
-                        Text("ColO")
-                    }
-                }
+                
             }
+            .frame(alignment: .topLeading)
+            .padding()
             
-            Divider()
-            
-            HStack {
-                Form {
-                    TextField(text: $currentElemBgColorR, prompt: Text("enter Text BgColor R") ) {
-                        Text("ColBgR")
-                    }
-                    TextField(text: $currentElemBgColorG, prompt: Text("enter Text BgColor G") ) {
-                        Text("ColBgG")
-                    }
-                    TextField(text: $currentElemBgColorB, prompt: Text("enter Text BgColor B") ) {
-                        Text("ColBgB")
-                    }
-                    TextField(text: $currentElemBgColorO, prompt: Text("enter Text BgColor O") ) {
-                        Text("ColBgO")
-                    }
-                }
-            }
-            
-            
-        }
-        .frame(alignment: .topLeading)
-        .padding()
-        
-        
         
         
         
@@ -220,9 +362,3 @@ struct MathSubjectEditView: View {
 
 
 
-
-//struct MathSubjectEditView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MathSubjectEditView()
-//    }
-//}

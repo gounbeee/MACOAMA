@@ -163,9 +163,6 @@ struct MathSubjectCommandView: View {
                     
                 }
                 
-                
-                
-                
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
@@ -189,6 +186,9 @@ struct MathSubjectCommandView: View {
                 self.pageNumInSubject = self.ctr.jsonObj!.subjects[ctr.subjectNo].pages.count
                 //print(self.pageNumInSubject)
                 
+                // エレメントの個数を数え直す
+                self.ctr.elementNumAll = self.ctr.jsonObj!.subjects[ctr.subjectNo].pages[0].textElems.count
+                
                 // 初期化
                 self.ctr.pageNo = 0
                 
@@ -202,12 +202,16 @@ struct MathSubjectCommandView: View {
                    step: 1.0) { _ in
                 print("CURRENT PAGE NO IS ::  \(self.ctr.pageNo)")
                 
-                
+                // エレメントの個数を数え直す
+                self.ctr.elementNumAll = self.ctr.jsonObj!.subjects[ctr.subjectNo].pages[self.ctr.pageNo].textElems.count
+
             }
                    .onAppear {
                        
                        self.pageNumInSubject = self.ctr.jsonObj!.subjects[ctr.subjectNo].pages.count
                        
+                       
+
                        
                    }
             

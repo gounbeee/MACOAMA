@@ -22,7 +22,9 @@ struct MathSubjectElementView: View {
     var pgNo : Int = 0
 
     
-    init(controller: MathSubjectController, elmController: MathSubjectElementController, element: MathPageTextElm) {
+    
+    
+    init(controller: MathSubjectController, elmController: MathSubjectElementController, elementInfo: MathPageTextElm) {
         self.ctr = controller
         //self.elemIndex = elemIndex
         self.sbjNo = controller.subjectNo
@@ -30,8 +32,9 @@ struct MathSubjectElementView: View {
         
         // エレメントのコントロールのエレメント本体は差し替え
         self.elmCtr = elmController
-        self.elmCtr.element = element
-
+        self.elmCtr.element = elementInfo
+        
+        controller.elmCtr = elmController
         
     }
     
@@ -114,8 +117,14 @@ struct MathSubjectElementView: View {
                                 // 新しい位置に更新
                                 self.ctr.jsonObj!.subjects[sbjNo].pages[pgNo].textElems[index].position.x = self.elmCtr.element.position.x
                                 self.ctr.jsonObj!.subjects[sbjNo].pages[pgNo].textElems[index].position.y = self.elmCtr.element.position.y
+                                self.elmCtr.isSelected = true
+                                
+                            } else {
+                                
+                                self.elmCtr.isSelected = false
                                 
                             }
+                            
                         }
                         
                         // 差分位置を初期化

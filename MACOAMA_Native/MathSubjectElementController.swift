@@ -23,6 +23,6 @@ class MathSubjectElementController : ObservableObject{
                                                      color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
                                                      bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
                                                      timeIn: 0, timeOut: 0)
-    
+
 }
 

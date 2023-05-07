@@ -13,10 +13,6 @@ struct MathSubjectCreatePageView: View {
     
     @ObservedObject var ctr : MathSubjectController
 
-    //@State var sbjNo : Int = 0
-    //@State var pgNo : Int = 0
-    
-    
     // メモリアドレスを調べる
     // https://forums.swift.org/t/memory-address-of-value-types-and-reference-types/6637
     // let _ = print("parsedJson address: \(Unmanaged.passUnretained(parsedJson.wrappedValue).toOpaque())")  init(parsedJson : ParsingJson) {
@@ -33,23 +29,7 @@ struct MathSubjectCreatePageView: View {
         //self.pgNo = self.ctr.pageNo
         
     }
-    
-    
-    
-//    init(controller: MathSubjectController, subjectNo: Int, pageNo: Int) {
-//        self.ctr = controller
-//        self.sbjNo = self.ctr.subjectNo
-//        self.pgNo = self.ctr.pageNo
-//
-//        self.ctr.parsedView = self
-//
-//        self.sbjNo = subjectNo
-//        self.pgNo = pageNo
-//
-//    }
-    
-    
-    
+
     
     var body: some View {
         
@@ -129,7 +109,7 @@ struct MathSubjectCreatePageView: View {
                 // Viewは、基本的に文脈維持のためControllerを食う
                 let elmCtr : MathSubjectElementController = MathSubjectElementController()
                 
-                MathSubjectElementView(controller: self.ctr, elmController: elmCtr, element: elemInfo )
+                MathSubjectElementView(controller: self.ctr, elmController: elmCtr, elementInfo: elemInfo )
                 
             }
 
@@ -153,9 +133,14 @@ struct MathSubjectCreatePageView: View {
         
         
         
+        MathSubjectEditView(controller: self.ctr)
+            .frame(width:500)
+            .padding()
+        
     }
     
     
+
     
     
 }

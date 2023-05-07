@@ -29,10 +29,7 @@ struct MathSubjectView: View {
             MathSubjectCreatePageView(controller: self.controller)
                 .frame(width: MathSubjectController.ElementWidth)
                 .padding()
-            
-            
-
-            
+   
             
         }
         
