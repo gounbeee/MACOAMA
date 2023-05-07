@@ -121,7 +121,7 @@ struct TextDataView: View {
                         //renderingView = true
                         
                         
-                        MathSubjectView(jsonText: content,
+                        MathSubjectRootView(jsonText: content,
                                         newWindowWidth: $newWindowWidth,
                                         newWindowHeight: $newWindowHeight)
                             .openNewWindow( title: "教材 Window",
@@ -162,26 +162,11 @@ struct TextDataView: View {
                     
                     Text("コンテンツ")
                     
-                    CodeEditor(source: $contentInput, language: language, theme: theme,
-                               fontSize: .init(get: { CGFloat(fontSize)  },
-                                               set: { fontSize = Int($0) }))
-                        .onAppear() {
-                            
-                            self.contentInput = content
-                            
-                        }
-                        .onChange(of: contentInput) { newContent in
-                            
-                            PersistenceController.shared.updateTextData(
-                                textData: textData,
-                                title: titleInput,
-                                content: newContent)
-                            
-                        }
                     
                     
-//                    TextEditor(text: $contentInput)
-//                        .font(.system(size: 18))
+//                    CodeEditor(source: $contentInput, language: language, theme: theme,
+//                               fontSize: .init(get: { CGFloat(fontSize)  },
+//                                               set: { fontSize = Int($0) }))
 //                        .onAppear() {
 //
 //                            self.contentInput = content
@@ -195,6 +180,23 @@ struct TextDataView: View {
 //                                content: newContent)
 //
 //                        }
+                    
+                    
+                    TextEditor(text: $contentInput)
+                        .font(.system(size: CGFloat(fontSize)))
+                        .onAppear() {
+
+                            self.contentInput = content
+
+                        }
+                        .onChange(of: contentInput) { newContent in
+
+                            PersistenceController.shared.updateTextData(
+                                textData: textData,
+                                title: titleInput,
+                                content: newContent)
+
+                        }
 
                 }
                 

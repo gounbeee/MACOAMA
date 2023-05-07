@@ -11,6 +11,16 @@
 		5803DAF529F164680033EEC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803DAF429F164680033EEC2 /* ContentView.swift */; };
 		5803DAF729F1646A0033EEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5803DAF629F1646A0033EEC2 /* Assets.xcassets */; };
 		5803DAFA29F1646A0033EEC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5803DAF929F1646A0033EEC2 /* Preview Assets.xcassets */; };
+		5809AB792A029CF10083882F /* MathSubjectEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB782A029CF10083882F /* MathSubjectEditView.swift */; };
+		5809AB7B2A02A6590083882F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB7A2A02A6590083882F /* Extensions.swift */; };
+		5809AB832A037F230083882F /* MathSubjectRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB822A037F230083882F /* MathSubjectRootView.swift */; };
+		5809AB872A0382740083882F /* MathSubjectCommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB7C2A033D9F0083882F /* MathSubjectCommandView.swift */; };
+		5809AB882A0382740083882F /* MathSubjectCreatePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB7E2A0371D30083882F /* MathSubjectCreatePageView.swift */; };
+		5809AB8B2A0383080083882F /* MathSubjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8A2A0383080083882F /* MathSubjectController.swift */; };
+		5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */; };
+		5810388029FC0AE7007A799D /* MathSubjectElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */; };
+		5810388729FEB848007A799D /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 5810388629FEB848007A799D /* CodeEditor */; };
+		5810388A29FEB866007A799D /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 5810388929FEB866007A799D /* CodeEditor */; };
 		581FAB8F29F6B98000A303A6 /* AsciiMath-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */; };
 		581FAB9229F6D63900A303A6 /* DATA.json in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB9129F6D20200A303A6 /* DATA.json */; };
 		585F206329FAC0220002A48E /* BitmapImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585F206229FAC0220002A48E /* BitmapImage.swift */; };
@@ -39,6 +49,14 @@
 		5803DAF429F164680033EEC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5803DAF629F1646A0033EEC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5803DAF929F1646A0033EEC2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5809AB782A029CF10083882F /* MathSubjectEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectEditView.swift; sourceTree = "<group>"; };
+		5809AB7A2A02A6590083882F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5809AB7C2A033D9F0083882F /* MathSubjectCommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectCommandView.swift; sourceTree = "<group>"; };
+		5809AB7E2A0371D30083882F /* MathSubjectCreatePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectCreatePageView.swift; sourceTree = "<group>"; };
+		5809AB822A037F230083882F /* MathSubjectRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectRootView.swift; sourceTree = "<group>"; };
+		5809AB8A2A0383080083882F /* MathSubjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectController.swift; sourceTree = "<group>"; };
+		5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectElementController.swift; sourceTree = "<group>"; };
+		5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectElementView.swift; sourceTree = "<group>"; };
 		581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AsciiMath-Regular.ttf"; sourceTree = "<group>"; };
 		581FAB9129F6D20200A303A6 /* DATA.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DATA.json; sourceTree = "<group>"; };
 		585F206229FAC0220002A48E /* BitmapImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitmapImage.swift; sourceTree = "<group>"; };
@@ -69,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5810388729FEB848007A799D /* CodeEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5810388A29FEB866007A799D /* CodeEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +108,7 @@
 				5803DAF129F164680033EEC2 /* MACOAMA */,
 				5877EB0B29F8321000EC71EE /* MACOAMA_Native */,
 				5803DAF029F164680033EEC2 /* Products */,
+				5810388829FEB866007A799D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,10 +149,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5810388829FEB866007A799D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5877EB0B29F8321000EC71EE /* MACOAMA_Native */ = {
 			isa = PBXGroup;
 			children = (
 				5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */,
+				5809AB7A2A02A6590083882F /* Extensions.swift */,
 				5877EB0E29F8321000EC71EE /* ContentView.swift */,
 				5877EB1029F8321000EC71EE /* Assets.xcassets */,
 				5877EB1529F8321000EC71EE /* Persistence.swift */,
@@ -140,7 +169,14 @@
 				5877EB1229F8321000EC71EE /* Preview Content */,
 				58D4B60629F8372A00274444 /* TextDataView.swift */,
 				58D4B60B29F8404B00274444 /* MathSubjectModel.swift */,
+				5809AB822A037F230083882F /* MathSubjectRootView.swift */,
+				5809AB8A2A0383080083882F /* MathSubjectController.swift */,
 				58D4B60D29F8404D00274444 /* MathSubjectView.swift */,
+				5809AB7E2A0371D30083882F /* MathSubjectCreatePageView.swift */,
+				5809AB7C2A033D9F0083882F /* MathSubjectCommandView.swift */,
+				5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */,
+				5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */,
+				5809AB782A029CF10083882F /* MathSubjectEditView.swift */,
 				58D4B60829F83CCB00274444 /* DATA.json */,
 				585F206229FAC0220002A48E /* BitmapImage.swift */,
 				585F206429FACA8D0002A48E /* Raster.swift */,
@@ -172,6 +208,9 @@
 			dependencies = (
 			);
 			name = MACOAMA;
+			packageProductDependencies = (
+				5810388629FEB848007A799D /* CodeEditor */,
+			);
 			productName = MACOAMA;
 			productReference = 5803DAEF29F164680033EEC2 /* MACOAMA.app */;
 			productType = "com.apple.product-type.application";
@@ -189,6 +228,9 @@
 			dependencies = (
 			);
 			name = MACOAMA_Native;
+			packageProductDependencies = (
+				5810388929FEB866007A799D /* CodeEditor */,
+			);
 			productName = MACOAMA_Native;
 			productReference = 5877EB0A29F8320F00EC71EE /* MACOAMA_Native.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +262,9 @@
 				Base,
 			);
 			mainGroup = 5803DAE629F164680033EEC2;
+			packageReferences = (
+				5810388529FEB848007A799D /* XCRemoteSwiftPackageReference "CodeEditor" */,
+			);
 			productRefGroup = 5803DAF029F164680033EEC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -275,14 +320,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				58D4B60C29F8404B00274444 /* MathSubjectModel.swift in Sources */,
+				5810388029FC0AE7007A799D /* MathSubjectElementView.swift in Sources */,
 				58D4B60E29F8404D00274444 /* MathSubjectView.swift in Sources */,
+				5809AB832A037F230083882F /* MathSubjectRootView.swift in Sources */,
+				5809AB8B2A0383080083882F /* MathSubjectController.swift in Sources */,
+				5809AB872A0382740083882F /* MathSubjectCommandView.swift in Sources */,
 				5877EB1929F8321000EC71EE /* MACOAMA_Native.xcdatamodeld in Sources */,
+				5809AB882A0382740083882F /* MathSubjectCreatePageView.swift in Sources */,
 				5877EB1629F8321000EC71EE /* Persistence.swift in Sources */,
 				585F206329FAC0220002A48E /* BitmapImage.swift in Sources */,
+				5809AB792A029CF10083882F /* MathSubjectEditView.swift in Sources */,
 				58D4B60729F8372A00274444 /* TextDataView.swift in Sources */,
+				5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */,
 				5877EB0F29F8321000EC71EE /* ContentView.swift in Sources */,
 				5877EB0D29F8321000EC71EE /* MACOAMA_NativeApp.swift in Sources */,
 				585F206529FACA8D0002A48E /* Raster.swift in Sources */,
+				5809AB7B2A02A6590083882F /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +538,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,6 +568,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -560,6 +615,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5810388529FEB848007A799D /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ZeeZide/CodeEditor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5810388629FEB848007A799D /* CodeEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5810388529FEB848007A799D /* XCRemoteSwiftPackageReference "CodeEditor" */;
+			productName = CodeEditor;
+		};
+		5810388929FEB866007A799D /* CodeEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5810388529FEB848007A799D /* XCRemoteSwiftPackageReference "CodeEditor" */;
+			productName = CodeEditor;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5877EB1729F8321000EC71EE /* MACOAMA_Native.xcdatamodeld */ = {
