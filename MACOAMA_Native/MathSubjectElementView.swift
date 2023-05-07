@@ -97,6 +97,8 @@ struct MathSubjectElementView: View {
                         self.elmCtr.differPos.x = state.location.x - state.startLocation.x
                         self.elmCtr.differPos.y = state.location.y - state.startLocation.y
                         
+
+
                     }
                     .onEnded { state in
                         
@@ -131,6 +133,10 @@ struct MathSubjectElementView: View {
                         // 差分の初期化は、JSONの更新に関わらず行うべき
                         self.elmCtr.differPos.x = 0
                         self.elmCtr.differPos.y = 0
+                        
+                        self.ctr.elmCtr!.isSelected = false
+                        // JSON 更新とView更新を誘発
+                        self.ctr.updateJsonAndReload()
   
                     }
                 

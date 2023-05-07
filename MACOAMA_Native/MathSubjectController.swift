@@ -29,10 +29,74 @@ class MathSubjectController : ObservableObject {
     @Published var pageNo: Int = 0
     
     
-    var elmCtr : MathSubjectElementController? = nil
+    public var elmCtr : MathSubjectElementController? = nil
     
     // ページがレンダリングされると、保存のためこちらに入れておく
     public var parsedView : MathSubjectCreatePageView? = nil
+    
+    
+    
+    func addNewElement() {
+        
+        
+        let element : MathPageTextElm = MathPageTextElm(id: "initial",
+                                                         font: "initial",
+                                                         content: "initial",
+                                                         size: 60.0,
+                                                         position: MathPosition(x: 0.0, y: 0.0),
+                                                         color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
+                                                         bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
+                                                         timeIn: 0, timeOut: 1000)
+        
+        
+        self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.append(element)
+        
+        
+        self.updateJsonAndReload()
+        
+       
+        
+    }
+    
+    
+    func deleteElementWithNumber( num: Int ) {
+        
+        
+        self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.remove(at: num)
+        
+        self.updateJsonAndReload()
+        
+    }
+    
+    
+    func updateJsonAndReload() {
+        
+        // Contorller が管理するJSONテキストまで更新をする
+        
+        // JSONとして書き出し
+        let encoder = JSONEncoder()
+        
+        // 綺麗なJSONフォーマットに出力
+        // https://www.hackingwithswift.com/example-code/language/how-to-format-json-using-codable-and-pretty-printing
+        encoder.outputFormatting = .prettyPrinted
+        
+        guard let jsonValue = try? encoder.encode(self.jsonObj!) else {
+            
+            fatalError("JSON構成でエラー発生")
+            
+        }
+        
+        // 現在のJSONテキストを更新
+        self.jsonText = String(bytes: jsonValue, encoding: .utf8)!
+        
+        
+        // その後、新しくなったテキストをもとに、JSONオブジェクトを更新
+        // この関数は、ObservableObjectであるコントローラーを更新するため、関連するView全体が更新される。
+        self.parseJson()
+        
+    }
+    
+    
     
     
     func parseJson() {

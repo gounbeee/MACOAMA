@@ -18,10 +18,11 @@
 		5809AB882A0382740083882F /* MathSubjectCreatePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB7E2A0371D30083882F /* MathSubjectCreatePageView.swift */; };
 		5809AB8B2A0383080083882F /* MathSubjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8A2A0383080083882F /* MathSubjectController.swift */; };
 		5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */; };
-		5809AB8F2A07B6C50083882F /* MathSubjectEditColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8E2A07B6C50083882F /* MathSubjectEditColorView.swift */; };
 		5810388029FC0AE7007A799D /* MathSubjectElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */; };
 		5810388729FEB848007A799D /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 5810388629FEB848007A799D /* CodeEditor */; };
 		5810388A29FEB866007A799D /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 5810388929FEB866007A799D /* CodeEditor */; };
+		581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */; };
+		581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */; };
 		581FAB8F29F6B98000A303A6 /* AsciiMath-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */; };
 		581FAB9229F6D63900A303A6 /* DATA.json in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB9129F6D20200A303A6 /* DATA.json */; };
 		585F206329FAC0220002A48E /* BitmapImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585F206229FAC0220002A48E /* BitmapImage.swift */; };
@@ -57,8 +58,9 @@
 		5809AB822A037F230083882F /* MathSubjectRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectRootView.swift; sourceTree = "<group>"; };
 		5809AB8A2A0383080083882F /* MathSubjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectController.swift; sourceTree = "<group>"; };
 		5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectElementController.swift; sourceTree = "<group>"; };
-		5809AB8E2A07B6C50083882F /* MathSubjectEditColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectEditColorView.swift; sourceTree = "<group>"; };
 		5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectElementView.swift; sourceTree = "<group>"; };
+		581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectEditDeleteView.swift; sourceTree = "<group>"; };
+		581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectEditCreateView.swift; sourceTree = "<group>"; };
 		581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AsciiMath-Regular.ttf"; sourceTree = "<group>"; };
 		581FAB9129F6D20200A303A6 /* DATA.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DATA.json; sourceTree = "<group>"; };
 		585F206229FAC0220002A48E /* BitmapImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitmapImage.swift; sourceTree = "<group>"; };
@@ -176,8 +178,9 @@
 				58D4B60D29F8404D00274444 /* MathSubjectView.swift */,
 				5809AB7E2A0371D30083882F /* MathSubjectCreatePageView.swift */,
 				5809AB7C2A033D9F0083882F /* MathSubjectCommandView.swift */,
-				5809AB8E2A07B6C50083882F /* MathSubjectEditColorView.swift */,
 				5809AB782A029CF10083882F /* MathSubjectEditView.swift */,
+				581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */,
+				581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */,
 				5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */,
 				5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */,
 				58D4B60829F83CCB00274444 /* DATA.json */,
@@ -329,14 +332,15 @@
 				5809AB8B2A0383080083882F /* MathSubjectController.swift in Sources */,
 				5809AB872A0382740083882F /* MathSubjectCommandView.swift in Sources */,
 				5877EB1929F8321000EC71EE /* MACOAMA_Native.xcdatamodeld in Sources */,
-				5809AB8F2A07B6C50083882F /* MathSubjectEditColorView.swift in Sources */,
 				5809AB882A0382740083882F /* MathSubjectCreatePageView.swift in Sources */,
 				5877EB1629F8321000EC71EE /* Persistence.swift in Sources */,
 				585F206329FAC0220002A48E /* BitmapImage.swift in Sources */,
+				581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */,
 				5809AB792A029CF10083882F /* MathSubjectEditView.swift in Sources */,
 				58D4B60729F8372A00274444 /* TextDataView.swift in Sources */,
 				5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */,
 				5877EB0F29F8321000EC71EE /* ContentView.swift in Sources */,
+				581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */,
 				5877EB0D29F8321000EC71EE /* MACOAMA_NativeApp.swift in Sources */,
 				585F206529FACA8D0002A48E /* Raster.swift in Sources */,
 				5809AB7B2A02A6590083882F /* Extensions.swift in Sources */,

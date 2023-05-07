@@ -65,6 +65,9 @@ struct MathSubjectEditView: View {
     @ObservedObject var ctr : MathSubjectController
     
     
+    @State var deleteElemNo : String = ""
+    
+    
     
     init(controller: MathSubjectController) {
         
@@ -114,9 +117,15 @@ struct MathSubjectEditView: View {
                         Text("現在のPage番号")
                         Text(self.ctr.pageNo.formatted())
                     }
-                    
                 }
                 .frame(height: 30)
+                
+
+                MathSubjectEditCreateView(ctr: self.ctr)
+                
+                MathSubjectEditDeleteView(deleteElemNo: self.$deleteElemNo, ctr: self.ctr)
+           
+                
                 
                 Divider()
                 
@@ -143,12 +152,14 @@ struct MathSubjectEditView: View {
                                     
                                     
                                     VStack (alignment: .leading) {
-                                        Text("要素 No. :  \(el.index.formatted())")
-                                            .font(.title2)
-                                            
+                                        let plusIndex = el.index + 1
+                                        Text("要素 No. :  \(plusIndex.formatted())")
+                                            .font(.title2).foregroundColor(.blue)
+                                        
+   
                                         
                                         HStack {
-                                            Text(el.element.id).frame(width: geo.size.width/2)
+                                            Text(el.element.id).frame(width: geo.size.width/2).foregroundColor(.gray)
                                             
                                             // TextField の初期値を設定
                                             // https://www.motokis-brain.com/article/26
@@ -157,17 +168,17 @@ struct MathSubjectEditView: View {
                                             }
                                         }
                                         
-                                        Text("Font")
+                                        Text("Font").foregroundColor(.blue)
                                         HStack {
-                                            Text(el.element.font).frame(width: geo.size.width/2)
+                                            Text(el.element.font).frame(width: geo.size.width/2).foregroundColor(.gray)
                                             TextField("Font", text: self.$newElemFontName[el.index]).frame(width: geo.size.width/2).onAppear() {
                                                 self.newElemFontName[el.index] = el.element.font
                                             }
                                         }
                                         
-                                        Text("Font Size")
+                                        Text("Font Size").foregroundColor(.blue)
                                         HStack {
-                                            Text(el.element.size.formatted()).frame(width: geo.size.width/2)
+                                            Text(el.element.size.formatted()).frame(width: geo.size.width/2).foregroundColor(.gray)
                                             TextField("FontSize", text: self.$newElemFontSize[el.index]).frame(width: geo.size.width/2).onAppear() {
                                                 self.newElemFontSize[el.index] = el.element.size.formatted()
                                             }
@@ -176,22 +187,22 @@ struct MathSubjectEditView: View {
                                     
                                     VStack (alignment: .leading) {
                                         
-                                        Text("Content")
+                                        Text("Content").foregroundColor(.blue)
                                         HStack {
-                                            Text(el.element.content).frame(width: geo.size.width/2)
+                                            Text(el.element.content).frame(width: geo.size.width/2).foregroundColor(.gray)
                                             TextField("Content", text: self.$newElemContent[el.index]).frame(width: geo.size.width/2).onAppear() {
                                                 self.newElemContent[el.index] = el.element.content
                                             }
                                         }
                                         
                                         
-                                        Text("Position")
+                                        Text("Position").foregroundColor(.blue)
                                         HStack {
-                                            Text(el.element.position.x.formatted()).frame(width: geo.size.width/4)
+                                            Text(el.element.position.x.formatted()).frame(width: geo.size.width/4).foregroundColor(.gray)
                                             TextField("PosX", text: self.$newElemPosX[el.index]).frame(width: geo.size.width/4).onAppear() {
                                                 self.newElemPosX[el.index] = el.element.position.x.formatted()
                                             }
-                                            Text(el.element.position.y.formatted()).frame(width: geo.size.width/4)
+                                            Text(el.element.position.y.formatted()).frame(width: geo.size.width/4).foregroundColor(.gray)
                                             TextField("PosY", text: self.$newElemPosY[el.index]).frame(width: geo.size.width/4).onAppear() {
                                                 self.newElemPosY[el.index] = el.element.position.y.formatted()
                                             }
@@ -200,13 +211,13 @@ struct MathSubjectEditView: View {
                                     
 
                                     VStack (alignment: .leading) {
-                                        Text("Color")
+                                        Text("Color").foregroundColor(.blue)
                                         HStack {
                                             Text(el.element.color.red.formatted()).frame(width: geo.size.width/4)
                                             Text(el.element.color.green.formatted()).frame(width: geo.size.width/4)
                                             Text(el.element.color.blue.formatted()).frame(width: geo.size.width/4)
                                             Text(el.element.color.opacity.formatted()).frame(width: geo.size.width/4)
-                                        }
+                                        }.foregroundColor(.gray)
                                         HStack {
                                             TextField("Red", text: self.$newElemColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
                                                 self.newElemColorR[el.index] = el.element.color.red.formatted()
@@ -226,13 +237,13 @@ struct MathSubjectEditView: View {
 
                                     VStack (alignment: .leading) {
 
-                                        Text("BgColor")
+                                        Text("BgColor").foregroundColor(.blue)
                                         HStack {
                                             Text(el.element.bgColor.red.formatted()).frame(width: geo.size.width/4)
                                             Text(el.element.bgColor.green.formatted()).frame(width: geo.size.width/4)
                                             Text(el.element.bgColor.blue.formatted()).frame(width: geo.size.width/4)
                                             Text(el.element.bgColor.opacity.formatted()).frame(width: geo.size.width/4)
-                                        }
+                                        }.foregroundColor(.gray)
                                         HStack {
                                             TextField("Red", text: self.$newElemBgColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
                                                 self.newElemBgColorR[el.index] = el.element.bgColor.red.formatted()
@@ -251,16 +262,16 @@ struct MathSubjectEditView: View {
 
 
                                     VStack (alignment: .leading) {
-                                        Text("TimeIn")
+                                        Text("TimeIn").foregroundColor(.blue)
                                         HStack {
-                                            Text(String("\(el.element.timeIn)")).frame(width: geo.size.width/2)
+                                            Text(String("\(el.element.timeIn)")).frame(width: geo.size.width/2).foregroundColor(.gray)
                                             TextField("TimeIn", text: self.$newElemTimeIn[el.index]).frame(width: geo.size.width/2).onAppear() {
                                                 self.newElemTimeIn[el.index] = String("\(el.element.timeIn)")
                                             }
                                         }
-                                        Text("TimeOut")
+                                        Text("TimeOut").foregroundColor(.blue)
                                         HStack {
-                                            Text(String("\(el.element.timeOut)")).frame(width: geo.size.width/2)
+                                            Text(String("\(el.element.timeOut)")).frame(width: geo.size.width/2).foregroundColor(.gray)
                                             TextField("TimeOut", text: self.$newElemTimeOut[el.index]).frame(width: geo.size.width/2).onAppear() {
                                                 self.newElemTimeOut[el.index] = String("\(el.element.timeOut)")
                                             }
@@ -301,27 +312,8 @@ struct MathSubjectEditView: View {
                                         
                                         
                                         
-                                        
-                                        // JSONとして書き出し
-                                        let encoder = JSONEncoder()
-                                        
-                                        // 綺麗なJSONフォーマットに出力
-                                        // https://www.hackingwithswift.com/example-code/language/how-to-format-json-using-codable-and-pretty-printing
-                                        encoder.outputFormatting = .prettyPrinted
-                                        
-                                        guard let jsonValue = try? encoder.encode(self.ctr.jsonObj!) else {
-                                            
-                                            fatalError("JSON構成でエラー発生")
-                                            
-                                        }
-                                        
-                                        // 現在のJSONテキストを更新
-                                        self.ctr.jsonText = String(bytes: jsonValue, encoding: .utf8)!
-                                        
-                                        self.ctr.parseJson()
-                                        
-                                        // JSONファイルを新規保存
-                                        //PersistenceController.shared.addTextDataWithString(input: self.ctr.jsonText)
+                                        // JSON 更新とView更新を誘発
+                                        self.ctr.updateJsonAndReload()
                                         
                                         
                                         
