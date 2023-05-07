@@ -31,6 +31,9 @@ struct MathSubjectEditDeleteView: View {
                 self.deleteElemNo = ""
                 
             }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+            
 
         }
 

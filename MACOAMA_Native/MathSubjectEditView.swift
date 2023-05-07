@@ -281,7 +281,7 @@ struct MathSubjectEditView: View {
 //
                                     Divider()
                                     
-                                    Button("UPDATE") {
+                                    Button("データを更新する") {
                                         
                                         //print(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position )
                                         //print(Double(self.newPosX[el.index])!)

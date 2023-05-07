@@ -15,7 +15,7 @@ class MathSubjectController : ObservableObject {
     static let ElementHeight : Double = 960.0
     
     @Published var subjectNumAll: Int = 0
-    @Published var pageNumInSubject: Int = 0
+
     @Published var pageNumAll: Int = 0
     @Published var elementNumAll: Int = 0
     
@@ -28,12 +28,56 @@ class MathSubjectController : ObservableObject {
     @Published var subjectNo: Int = 0
     @Published var pageNo: Int = 0
     
+
     
     public var elmCtr : MathSubjectElementController? = nil
     
     // ページがレンダリングされると、保存のためこちらに入れておく
     public var parsedView : MathSubjectCreatePageView? = nil
     
+    @Published var pageNumInSubject: Int = 0
+    
+    
+    func addNewSubject() {
+        
+        let newElemId = "txt" + String(self.subjectNo+1) + "-" + "1" + "-" + "1"
+        
+        let newSubject : MathSubject = MathSubject(title: "Sample Title",
+                                                   pages: [MathPage](repeating: MathPage(pageNum: 1,
+                                                                                         duration: 1000,
+                                                                                         textElems: [MathPageTextElm](repeating: MathPageTextElm(id: newElemId,
+                                                                                                                                                 font: "GenEiKoburiMin6-R",
+                                                                                                                                                 content: "サンプルコンテンツ"+"-1",
+                                                                                                                                                 size: CGFloat(60.0),
+                                                                                                                                                 position: MathPosition(x: 0.0, y: 0.0),
+                                                                                                                                                 color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
+                                                                                                                                                 bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
+                                                                                                                                                 timeIn: 0,
+                                                                                                                                                 timeOut: 1000),
+                                                                                                                      count: 1) ),
+                                                                     count: 1),
+                                                   color: MathColor(red: 80,
+                                                                    green: 130,
+                                                                    blue: 200,
+                                                                    opacity: 255))
+        
+        
+        self.jsonObj!.subjects.insert(newSubject, at: self.subjectNo)
+        
+        self.subjectNo += 1
+        
+
+        self.subjectNumAll = self.jsonObj!.subjects.count
+        self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
+        self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
+        self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
+        self.pageNo = 0
+        
+        self.updateJsonAndReload()
+        
+        print( self.pageNumInSubject )
+        
+    }
     
     
     func addNewElement() {

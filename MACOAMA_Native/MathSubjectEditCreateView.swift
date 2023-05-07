@@ -14,12 +14,22 @@ struct MathSubjectEditCreateView: View {
     
     var body: some View {
         
+        Button("新規Subject") {
+            
+            self.ctr.addNewSubject()
+            
+        }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
+        
+        
         Button("新規要素") {
             
             self.ctr.addNewElement()
             
         }
-        
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
         
     }
 }
