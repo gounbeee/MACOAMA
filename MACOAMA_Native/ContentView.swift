@@ -47,7 +47,7 @@ struct ContentView: View {
                 
                 
             }
-            Text("Select an item")
+            Text("JSONテキストを選択して下さい")
         }
     }
     

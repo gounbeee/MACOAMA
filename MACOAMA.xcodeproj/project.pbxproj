@@ -20,7 +20,6 @@
 		5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */; };
 		5810388029FC0AE7007A799D /* MathSubjectElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */; };
 		5810388729FEB848007A799D /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 5810388629FEB848007A799D /* CodeEditor */; };
-		5810388A29FEB866007A799D /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 5810388929FEB866007A799D /* CodeEditor */; };
 		581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */; };
 		581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */; };
 		581FAB8F29F6B98000A303A6 /* AsciiMath-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */; };
@@ -99,7 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5810388A29FEB866007A799D /* CodeEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +233,6 @@
 			);
 			name = MACOAMA_Native;
 			packageProductDependencies = (
-				5810388929FEB866007A799D /* CodeEditor */,
 			);
 			productName = MACOAMA_Native;
 			productReference = 5877EB0A29F8320F00EC71EE /* MACOAMA_Native.app */;
@@ -637,11 +634,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		5810388629FEB848007A799D /* CodeEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5810388529FEB848007A799D /* XCRemoteSwiftPackageReference "CodeEditor" */;
-			productName = CodeEditor;
-		};
-		5810388929FEB866007A799D /* CodeEditor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5810388529FEB848007A799D /* XCRemoteSwiftPackageReference "CodeEditor" */;
 			productName = CodeEditor;

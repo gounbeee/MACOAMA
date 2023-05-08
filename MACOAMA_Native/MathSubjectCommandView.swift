@@ -32,11 +32,11 @@ struct MathSubjectCommandView: View {
                     // Binding<String> タイプを直接使用する。
                     // https://stackoverflow.com/questions/69071781/struct-initialization-in-swiftui-self-used-before-all-stored-properties-are-i
                     TextField(text: $ctr.currentWindowWidthStr ) {
-                        Text("ImgWdh")
+                        Text("イメージ横")
                     }
                     
                     TextField(text: $ctr.currentWindowHeightStr ) {
-                        Text("ImgHgt")
+                        Text("イメージ縦")
                     }
                     
                 }
@@ -178,12 +178,12 @@ struct MathSubjectCommandView: View {
                 
                 HStack {
                     
-                    Text("Subject 番号").frame(width: geo.size.width/2)
+                    Text("サブジェクト番号").frame(width: geo.size.width/2)
                     
                     
-                    TextField("Subject No", text: self.$subjectNum)
+                    TextField("サブジェクト番号", text: self.$subjectNum)
                         .onSubmit {
-                            print("CURRENT SUBJECT NO IS ::  \(self.subjectNum)")
+                            //print("CURRENT SUBJECT NO IS ::  \(self.subjectNum)")
                             
                             self.pageNum = "1"
                             
@@ -324,7 +324,7 @@ struct MathSubjectCommandView: View {
                     
                     
                     
-                    TextField("Page No", text: self.$pageNum)
+                    TextField("ページ番号", text: self.$pageNum)
                         .onSubmit {
                             print("CURRENT SUBJECT NO IS ::  \(self.pageNum)")
                             

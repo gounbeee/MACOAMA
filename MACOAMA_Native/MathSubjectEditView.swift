@@ -55,6 +55,11 @@ struct MathSubjectEditView: View {
     @State private var newElemTimeIn : [String] = [String](repeating: String(""), count: 50)
     @State private var newElemTimeOut : [String] = [String](repeating: String(""), count: 50)
     
+    @State private var newCanvasBgColorR : String = "0"
+    @State private var newCanvasBgColorG : String = "0"
+    @State private var newCanvasBgColorB : String = "0"
+    @State private var newCanvasBgColorO : String = "255"
+    
     
     var elemCount : Int = 0
     
@@ -104,7 +109,7 @@ struct MathSubjectEditView: View {
                     
                     HStack {
                         
-                        Text("現在のSubject番号")
+                        Text("現在のサブジェクト番号")
                         Text(self.ctr.subjectNo.formatted())
                         
                     }
@@ -114,7 +119,7 @@ struct MathSubjectEditView: View {
                     Spacer()
                     
                     HStack {
-                        Text("現在のPage番号")
+                        Text("現在のページ番号")
                         Text(self.ctr.pageNo.formatted())
                     }
                 }
@@ -125,10 +130,71 @@ struct MathSubjectEditView: View {
                 
                 MathSubjectEditDeleteView(deleteElemNo: self.$deleteElemNo, ctr: self.ctr)
            
-                
-                
-                Divider()
-                
+                GeometryReader { geo in
+                    VStack (alignment: .leading) {
+                        Text("BgColor").foregroundColor(.blue)
+                        HStack {
+                            
+                            Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red.formatted()).frame(width: geo.size.width/4)
+                            Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green.formatted()).frame(width: geo.size.width/4)
+                            Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue.formatted()).frame(width: geo.size.width/4)
+                            Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity.formatted()).frame(width: geo.size.width/4)
+
+                        }.foregroundColor(.gray)
+                        HStack {
+                            
+                            TextField("Red", text: self.$newCanvasBgColorR).frame(width: geo.size.width/4).onAppear() {
+                                self.newCanvasBgColorR = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red.formatted()
+                                self.ctr.updateJsonAndReload()
+                            }
+                            .onSubmit {
+                                self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red = Int(self.newCanvasBgColorR)!
+                                self.ctr.updateJsonAndReload()
+                            }
+                            TextField("Green", text: self.$newCanvasBgColorG).frame(width: geo.size.width/4).onAppear() {
+                                self.newCanvasBgColorG = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green.formatted()
+                            }
+                            .onSubmit {
+                                self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green = Int(self.newCanvasBgColorG)!
+                                self.ctr.updateJsonAndReload()
+                            }
+                            TextField("Blue", text: self.$newCanvasBgColorB).frame(width: geo.size.width/4).onAppear() {
+                                self.newCanvasBgColorB = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue.formatted()
+                            }
+                            .onSubmit {
+                                self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue = Int(self.newCanvasBgColorB)!
+                                self.ctr.updateJsonAndReload()
+                            }
+                            TextField("Opacity", text: self.$newCanvasBgColorO).frame(width: geo.size.width/4).onAppear() {
+                                self.newCanvasBgColorO = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity.formatted()
+                            }
+                            .onSubmit {
+                                self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity = Int(self.newCanvasBgColorO)!
+                                self.ctr.updateJsonAndReload()
+                            }
+                        }
+                        
+                        Button("Canvas Color ランダム化") {
+                            //print("Random Color !")
+                            self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red = 150 + Int.random(in: 1..<100)
+                            self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green = 150 + Int.random(in: 1..<100)
+                            self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue = 150 + Int.random(in: 1..<100)
+                            self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity = 255
+                            
+                            self.newCanvasBgColorR = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red.formatted()
+                            self.newCanvasBgColorG = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green.formatted()
+                            self.newCanvasBgColorB = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue.formatted()
+                            self.newCanvasBgColorO = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity.formatted()
+                            
+                            self.ctr.updateJsonAndReload()
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        
+                    }
+                    
+                }
+                .frame(height: 170)
                 
                 
                 HStack {

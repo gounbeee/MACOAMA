@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CodeEditor
+//import CodeEditor
 
 
 
@@ -70,8 +70,8 @@ struct TextDataView: View {
     
     @Environment(\.openWindow) var openWindow
     
-    @State private var language = CodeEditor.Language.swift
-    @State private var theme    = CodeEditor.ThemeName.pojoaque
+    //@State private var language = CodeEditor.Language.swift
+    //@State private var theme    = CodeEditor.ThemeName.pojoaque
     
     @ObservedObject var textData: TextData
     
@@ -106,15 +106,15 @@ struct TextDataView: View {
                     
                     Text("イメージの大きさ")
                     HStack {
-                        TextField("Image幅", text: $newWindowWidth)
-                        TextField("Image高さ", text: $newWindowHeight)
+                        TextField("イメージ幅", text: $newWindowWidth)
+                        TextField("イメージ高さ", text: $newWindowHeight)
                     }
                         
                     
                     // 
                     Button("VIEWをレンダリング") {
                     
-                        let _ = print("RENDERING TO IMAGE !!!")
+                        //let _ = print("RENDERING TO IMAGE !!!")
                         //let _ = print(content)
                         
                         // JSON文字列をParsing、viewへのレンダリングをするためのフラグ
