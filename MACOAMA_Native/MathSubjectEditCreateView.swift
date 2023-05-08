@@ -13,23 +13,32 @@ struct MathSubjectEditCreateView: View {
     
     
     var body: some View {
-        
-        Button("新規Subject") {
+        HStack {
+            Button("新規サブジェクト") {
+                
+                self.ctr.addNewSubject()
+                
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
             
-            self.ctr.addNewSubject()
             
+            Button("新規ページ") {
+                
+                self.ctr.addNewPage()
+                
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+            
+            
+            Button("新規要素") {
+                
+                self.ctr.addNewElement()
+                
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
         }
-        .buttonStyle(.borderedProminent)
-        .controlSize(.large)
-        
-        
-        Button("新規要素") {
-            
-            self.ctr.addNewElement()
-            
-        }
-        .buttonStyle(.borderedProminent)
-        .controlSize(.large)
-        
     }
 }

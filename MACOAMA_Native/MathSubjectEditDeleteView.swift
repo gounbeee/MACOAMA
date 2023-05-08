@@ -19,6 +19,32 @@ struct MathSubjectEditDeleteView: View {
         
         
         HStack {
+            
+            
+            Button("サブジェクト削除") {
+                
+                self.ctr.deleteCurrentSubject()
+                
+                
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+            
+            
+            Button("ページ削除") {
+
+                self.ctr.deleteCurrentPage()
+                
+                
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+            
+
+        }
+        
+        
+        HStack {
 
             TextField("削除する要素の番号", text: self.$deleteElemNo)
 

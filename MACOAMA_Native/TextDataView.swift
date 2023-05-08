@@ -124,16 +124,18 @@ struct TextDataView: View {
                         MathSubjectRootView(jsonText: content,
                                         newWindowWidth: $newWindowWidth,
                                         newWindowHeight: $newWindowHeight)
-                            .openNewWindow( title: "教材 Window",
+                            .openNewWindow( title: "教材作成",
                                             width: Int($newWindowWidth.wrappedValue)!,
                                             height: Int($newWindowHeight.wrappedValue)!)
                         
                         
                         
                     }
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.plain)
                     .controlSize(.large)
-                    
+                    .frame(maxWidth: .infinity)
+                    .font(.title2)
+                    .foregroundColor(.red)
                     
                     Divider()
                     

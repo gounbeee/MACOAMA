@@ -44,7 +44,7 @@ class MathSubjectController : ObservableObject {
         
         let newSubject : MathSubject = MathSubject(title: "Sample Title",
                                                    pages: [MathPage](repeating: MathPage(pageNum: 1,
-                                                                                         duration: 1000,
+                                                                                         duration: 5000,
                                                                                          textElems: [MathPageTextElm](repeating: MathPageTextElm(id: newElemId,
                                                                                                                                                  font: "GenEiKoburiMin6-R",
                                                                                                                                                  content: "サンプルコンテンツ"+"-1",
@@ -80,6 +80,42 @@ class MathSubjectController : ObservableObject {
     }
     
     
+    func addNewPage() {
+        
+        let newElemId = "txt" + String(self.subjectNo + 1) + "-" + String(self.pageNo + 1 + 1) + "-" + "1"
+        
+        let newPage : MathPage = MathPage(pageNum: self.pageNo + 1,
+                                          duration: 5000,
+                                          textElems: [MathPageTextElm](repeating: MathPageTextElm(id: newElemId,
+                                                                                                  font: "GenEiKoburiMin6-R",
+                                                                                                  content: "サンプルコンテンツ"+"-1",
+                                                                                                  size: CGFloat(60.0),
+                                                                                                  position: MathPosition(x: 0.0, y: 0.0),
+                                                                                                  color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
+                                                                                                  bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
+                                                                                                  timeIn: 0,
+                                                                                                  timeOut: 1000),
+                                                                       count: 1))
+                                                                  
+                                                   
+        
+        
+        self.jsonObj!.subjects[self.subjectNo].pages.insert(newPage, at: self.pageNo + 1)
+        
+        self.pageNo += 1
+
+        self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
+        self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
+        self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
+
+        self.updateJsonAndReload()
+        
+        print( self.pageNumInSubject )
+        
+    }
+    
+    
+    
     func addNewElement() {
         
         
@@ -101,6 +137,71 @@ class MathSubjectController : ObservableObject {
        
         
     }
+    
+    
+    
+    func deleteCurrentSubject() {
+        
+
+        
+        if self.subjectNumAll != 1 {
+            
+            let sbjNumTest = self.subjectNo - 1
+            self.jsonObj!.subjects.remove(at: self.subjectNo)
+
+            
+            if sbjNumTest < 0 {
+                
+                self.subjectNo = 0
+                
+            } else {
+                
+                self.subjectNo -= 1
+                
+            }
+
+            self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
+            self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
+            self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
+            
+            self.updateJsonAndReload()
+            
+        }
+        
+        
+    }
+    
+    
+    func deleteCurrentPage() {
+        
+        if self.pageNumInSubject != 1 {
+
+            let pgNumTest = self.pageNo - 1
+            
+            self.jsonObj!.subjects[self.subjectNo].pages.remove(at: self.pageNo)
+            
+            
+            
+            if pgNumTest < 0 {
+                
+                self.pageNo = 0
+                
+            } else {
+                
+                self.pageNo -= 1
+                
+            }
+            
+            self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
+            self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
+            self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
+            
+            self.updateJsonAndReload()
+            
+        }
+        
+    }
+    
     
     
     func deleteElementWithNumber( num: Int ) {
