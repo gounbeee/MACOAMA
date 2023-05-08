@@ -62,16 +62,16 @@ class MathSubjectController : ObservableObject {
                                                                     opacity: 255))
         
         
-        self.jsonObj!.subjects.insert(newSubject, at: self.subjectNo)
+        self.jsonObj!.subjects.insert(newSubject, at: self.subjectNo + 1)
         
         self.subjectNo += 1
-        
+        self.pageNo = 0
 
         self.subjectNumAll = self.jsonObj!.subjects.count
         self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
         self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
         self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
-        self.pageNo = 0
+        
         
         self.updateJsonAndReload()
         
