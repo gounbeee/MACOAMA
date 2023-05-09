@@ -497,13 +497,34 @@ struct MathSubjectCommandView: View {
                     self.ctr.jsonText = String(bytes: jsonValue, encoding: .utf8)!
                     
                     // JSONファイルを新規保存
-                    PersistenceController.shared.addTextDataWithString(input: self.ctr.jsonText)
+                    PersistenceController.shared.addTextDataWithString(title: "New Json", input: self.ctr.jsonText)
                     
                     
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 
+                
+                
+                Button("CSVファイルの出力") {
+                    
+                    var csvText = ""
+                    
+                    for subject in self.ctr.jsonObj!.subjects {
+                        
+                        //print(i)
+                        csvText += String(subject.pages.count) + "\n"
+                        
+                    }
+
+                    // JSONファイルを新規保存
+                    PersistenceController.shared.addTextDataWithString(title: "New CSV", input: csvText)
+                  
+                    
+                    
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
                 
                 
             }

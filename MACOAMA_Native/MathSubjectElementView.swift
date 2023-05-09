@@ -54,7 +54,7 @@ struct MathSubjectElementView: View {
                                    blue: Double(self.elmCtr.element.color.blue)/255,
                                    opacity: Double(self.elmCtr.element.color.opacity)/255))
             .textSelection( .disabled )
-
+            .lineSpacing(self.elmCtr.element.size * 0.2)
 
             .offset(x: self.elmCtr.element.position.x * Double(self.ctr.currentWindowWidthStr)!  + self.elmCtr.differPos.x  ,
                     y: self.elmCtr.element.position.y * Double(self.ctr.currentWindowHeightStr)! + self.elmCtr.differPos.y )

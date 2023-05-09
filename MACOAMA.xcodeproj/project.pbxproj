@@ -19,7 +19,6 @@
 		5809AB8B2A0383080083882F /* MathSubjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8A2A0383080083882F /* MathSubjectController.swift */; };
 		5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */; };
 		5810388029FC0AE7007A799D /* MathSubjectElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */; };
-		5810388729FEB848007A799D /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 5810388629FEB848007A799D /* CodeEditor */; };
 		581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */; };
 		581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */; };
 		581FAB8F29F6B98000A303A6 /* AsciiMath-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */; };
@@ -90,7 +89,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5810388729FEB848007A799D /* CodeEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +211,6 @@
 			);
 			name = MACOAMA;
 			packageProductDependencies = (
-				5810388629FEB848007A799D /* CodeEditor */,
 			);
 			productName = MACOAMA;
 			productReference = 5803DAEF29F164680033EEC2 /* MACOAMA.app */;
@@ -266,7 +263,6 @@
 			);
 			mainGroup = 5803DAE629F164680033EEC2;
 			packageReferences = (
-				5810388529FEB848007A799D /* XCRemoteSwiftPackageReference "CodeEditor" */,
 			);
 			productRefGroup = 5803DAF029F164680033EEC2 /* Products */;
 			projectDirPath = "";
@@ -620,25 +616,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5810388529FEB848007A799D /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ZeeZide/CodeEditor.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5810388629FEB848007A799D /* CodeEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5810388529FEB848007A799D /* XCRemoteSwiftPackageReference "CodeEditor" */;
-			productName = CodeEditor;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5877EB1729F8321000EC71EE /* MACOAMA_Native.xcdatamodeld */ = {

@@ -78,7 +78,7 @@ struct MathSubjectCreatePageView: View {
             // その後、frame()でこのText View自体の、「全体での揃え方」を設定する。
             //
             Text(subject.title)
-                .font(Font.custom("GenEiKoburiMin6-R", size: 42))
+                .font(Font.custom("GenEiKoburiMin6-R", size: 62))
                 .foregroundColor(Color.black)
                 .textSelection(.disabled)
                 .multilineTextAlignment(.trailing)
