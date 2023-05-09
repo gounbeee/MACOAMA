@@ -41,8 +41,10 @@ struct MathSubjectElementView: View {
     
     
     var body: some View {
-
-        Text(self.elmCtr.element.content)
+ 
+        
+        Text( self.getStyledTokenizedString(inputTxt: self.elmCtr.element.content) )
+        //Text( self.stylingText(inputTxt: self.elmCtr.element.content) )
             .background(Color(red: Double(self.elmCtr.element.bgColor.red)/255,
                               green: Double(self.elmCtr.element.bgColor.green)/255,
                               blue: Double(self.elmCtr.element.bgColor.blue)/255,
@@ -58,7 +60,8 @@ struct MathSubjectElementView: View {
 
             .offset(x: self.elmCtr.element.position.x * Double(self.ctr.currentWindowWidthStr)!  + self.elmCtr.differPos.x  ,
                     y: self.elmCtr.element.position.y * Double(self.ctr.currentWindowHeightStr)! + self.elmCtr.differPos.y )
-        
+            //.frame(width: 500)
+            .padding()
             .gesture(
                 
                 DragGesture(minimumDistance: 0, coordinateSpace: .local)
@@ -144,8 +147,130 @@ struct MathSubjectElementView: View {
 
     }
     
+    
+    
+    // ----------------------------------------------------------------------------------------------------------------
+    
+    
+    // 以下の二つの関数で、文字を形態素解析をし、それらに個別のスタイリング施す
+    
+    // AttributedStringを使用し、文字の部分をスタイリング
+    // https://developer.apple.com/documentation/foundation/attributedstring
+    // https://betterprogramming.pub/text-formatting-in-ios-and-swift-with-attributedstring-e821536fbdec
+    func stylingText(inputTxt: String) -> AttributedString {
+        
+        var attributedString = AttributedString(inputTxt)
+        if let range = attributedString.range(of: "の") {
 
+            attributedString[range].foregroundColor = Color(CGColor(red: Double.random(in: 0.6...1.0),
+                                                                    green: Double.random(in: 0...0.3),
+                                                                    blue: Double.random(in: 0...0.3),
+                                                                    alpha: 1.0))
+            
+            attributedString[range].font = Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size/1.3)
+            
+            return attributedString
+            
+        } else if let range = attributedString.range(of: "link") {
+            
+            attributedString[range].foregroundColor = Color(CGColor(red: Double.random(in: 0.6...1.0),
+                                                                    green: Double.random(in: 0...0.3),
+                                                                    blue: Double.random(in: 0...0.3),
+                                                                    alpha: 1.0))
+            
+            attributedString[range].font = Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size/3)
+            
+            return attributedString
+            
+        } else {
+            
+            // サイズのランダム化
+            attributedString.font = Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size * Double.random(in: 0.7...1.0))
+            
+            // カラーのランダム化
+            attributedString.foregroundColor = Color(CGColor(red: Double.random(in: 0...0.6),
+                                                             green: Double.random(in: 0...0.6),
+                                                             blue: Double.random(in: 0...0.6),
+                                                             alpha: 1.0))
+            
+            return attributedString
+            
+        }
+        
+        
+    }
+    
 
+    
+    
+    func getStyledTokenizedString(inputTxt : String) -> AttributedString {
+        
+        //checkLinkNumber(inputTxt: inputTxt)
+        
+        
+        let txtProc = TextProcessor()
+        
+        txtProc.inputText = inputTxt
+        
+        let arrayText : [String] = txtProc.tokenize(text: txtProc.inputText)
+        
+        var resultString : AttributedString = AttributedString("")
+        
+        for word in arrayText {
+            
+            let styledWord = self.stylingText(inputTxt: word)
+            
+            resultString += styledWord
+            
+        }
+        
+        return resultString
+        
+    }
+
+    
+    
+    func checkLinkNumber(inputTxt : String) {
+        
+        // Search for one string in another.
+        let result = inputTxt.range(of: "->",
+                                options: NSString.CompareOptions.literal,
+                                range: inputTxt.startIndex..<inputTxt.endIndex,
+                                locale: nil)
+
+        // See if string was found.
+        if let range = result {
+            
+            // Start of range of found string.
+            var start = range.lowerBound
+            
+            // Display string starting at first index.
+            //print(inputTxt[start..<inputTxt.endIndex])
+            
+            // Display string before first index.
+            //print(inputTxt[inputTxt.startIndex..<start])
+            
+            let beforePart = inputTxt[inputTxt.startIndex..<start]
+            var afterPart = inputTxt[start..<inputTxt.endIndex]
+            
+            if let i = afterPart.firstIndex(of: "-") {
+                afterPart.remove(at: i)
+            }
+            if let t = afterPart.firstIndex(of: ">") {
+                afterPart.remove(at: t)
+            }
+            
+            // Display string starting at first index.
+            print(beforePart)
+            
+            // Display string before first index.
+            print(afterPart)
+            
+            
+        }
+
+        
+    }
     
     
 }

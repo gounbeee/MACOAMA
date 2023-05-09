@@ -42,7 +42,8 @@ struct MathSubjectCreatePageView: View {
             
             // BG
             Color
-                .init(red: Double(subject.color.red)/255, green: Double(subject.color.green)/255, blue: Double(subject.color.blue)/255)
+                .init(red: Double.random(in: 0.85...1.0), green: Double.random(in: 0.85...1.0), blue: Double.random(in: 0.85...1.0))
+                //.init(red: Double(subject.color.red)/255, green: Double(subject.color.green)/255, blue: Double(subject.color.blue)/255)
                 .opacity(1.0)
                 .edgesIgnoringSafeArea(.all)
             
@@ -139,9 +140,7 @@ struct MathSubjectCreatePageView: View {
         
     }
     
-    
 
-    
     
 }
 

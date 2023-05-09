@@ -11,6 +11,15 @@ import SwiftUI
 
 
 
+// Stringの中で特定の文字のINDEX番号を調べる
+// https://stackoverflow.com/questions/24029163/finding-index-of-character-in-swift-string
+public extension String {
+  func indexInt(of char: Character) -> Int? {
+    return firstIndex(of: char)?.utf16Offset(in: self)
+  }
+}
+
+
 
 struct IntDoubleBinding {
     let intValue : Binding<Int>

@@ -125,14 +125,34 @@ struct MathSubjectEditView: View {
                 }
                 .frame(height: 30)
                 
+                
+                // 自然言語処理を行う
+                // https://qiita.com/mashunzhe/items/28c06eafc024954e4256
+                Button("Tokenize") {
+
+                    
+                    let txtProc = TextProcessor()
+                    
+                    txtProc.inputText = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[0].content
+                    
+                    // txtProc.detectLanguage(text: txtProc.inputText)
+                    // txtProc.tokenize(text: txtProc.inputText)
+                    
+                    
+                }
+                
 
                 MathSubjectEditCreateView(ctr: self.ctr)
                 
                 MathSubjectEditDeleteView(deleteElemNo: self.$deleteElemNo, ctr: self.ctr)
            
+                
                 GeometryReader { geo in
+                    
                     VStack (alignment: .leading) {
+                        
                         Text("BgColor").foregroundColor(.blue)
+                        
                         HStack {
                             
                             Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red.formatted()).frame(width: geo.size.width/4)

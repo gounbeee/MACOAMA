@@ -143,7 +143,6 @@ class MathSubjectController : ObservableObject {
     func deleteCurrentSubject() {
         
 
-        
         if self.subjectNumAll != 1 {
             
             let sbjNumTest = self.subjectNo - 1
