@@ -364,7 +364,7 @@ class MathSubjectController : ObservableObject {
             
         }
         
-        print("COUNTING PAGES ::  \(countedPages)   ARE COUNTED !!!!")
+        //print("COUNTING PAGES ::  \(countedPages)   ARE COUNTED !!!!")
         
         return countedPages
         

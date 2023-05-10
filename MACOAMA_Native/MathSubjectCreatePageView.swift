@@ -113,7 +113,9 @@ struct MathSubjectCreatePageView: View {
                 MathSubjectElementView(controller: self.ctr, elmController: elmCtr, elementInfo: elemInfo )
                 
             }
-
+            
+            
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .textSelection(.disabled)
@@ -141,6 +143,8 @@ struct MathSubjectCreatePageView: View {
     }
     
 
+
+    
     
 }
 

@@ -9,6 +9,12 @@ import SwiftUI
 
 
 
+// SUBLIME TEXT で正規表現で検索
+// https://stackoverflow.com/questions/19143429/sublime-text-find-any-text-between-two-defined-characters
+//
+// \{[^}]*\}
+
+
 // Idenfiableにすることで、ForEach文をView構造体内で使用する!
 // とても有用！ INDEXも簡単に追加することもできる！
 // https://sarunw.com/posts/swiftui-foreach/
@@ -146,6 +152,7 @@ struct MathSubjectEditView: View {
                 
                 MathSubjectEditDeleteView(deleteElemNo: self.$deleteElemNo, ctr: self.ctr)
            
+                Divider()
                 
                 GeometryReader { geo in
                     
@@ -161,6 +168,7 @@ struct MathSubjectEditView: View {
                             Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity.formatted()).frame(width: geo.size.width/4)
 
                         }.foregroundColor(.gray)
+                        
                         HStack {
                             
                             TextField("Red", text: self.$newCanvasBgColorR).frame(width: geo.size.width/4).onAppear() {
@@ -214,7 +222,7 @@ struct MathSubjectEditView: View {
                     }
                     
                 }
-                .frame(height: 170)
+                .frame(height: 80)
                 
                 
                 HStack {
