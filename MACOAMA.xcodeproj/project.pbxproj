@@ -18,6 +18,9 @@
 		5809AB882A0382740083882F /* MathSubjectCreatePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB7E2A0371D30083882F /* MathSubjectCreatePageView.swift */; };
 		5809AB8B2A0383080083882F /* MathSubjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8A2A0383080083882F /* MathSubjectController.swift */; };
 		5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */; };
+		580AB7982A0BE59F00C5A63E /* BluetoothConnectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AB7972A0BE59F00C5A63E /* BluetoothConnectionVM.swift */; };
+		580AB79A2A0BE5C200C5A63E /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AB7992A0BE5C200C5A63E /* BluetoothController.swift */; };
+		580AB79C2A0BEACF00C5A63E /* MainIntroVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AB79B2A0BEACF00C5A63E /* MainIntroVM.swift */; };
 		5810388029FC0AE7007A799D /* MathSubjectElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */; };
 		581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */; };
 		581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */; };
@@ -57,6 +60,10 @@
 		5809AB822A037F230083882F /* MathSubjectRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectRootView.swift; sourceTree = "<group>"; };
 		5809AB8A2A0383080083882F /* MathSubjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectController.swift; sourceTree = "<group>"; };
 		5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectElementController.swift; sourceTree = "<group>"; };
+		580AB7972A0BE59F00C5A63E /* BluetoothConnectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothConnectionVM.swift; sourceTree = "<group>"; };
+		580AB7992A0BE5C200C5A63E /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
+		580AB79B2A0BEACF00C5A63E /* MainIntroVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainIntroVM.swift; sourceTree = "<group>"; };
+		580AB79D2A0BEF6500C5A63E /* MACOAMA_NativeRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MACOAMA_NativeRelease.entitlements; sourceTree = "<group>"; };
 		5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectElementView.swift; sourceTree = "<group>"; };
 		581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectEditDeleteView.swift; sourceTree = "<group>"; };
 		581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectEditCreateView.swift; sourceTree = "<group>"; };
@@ -161,6 +168,7 @@
 		5877EB0B29F8321000EC71EE /* MACOAMA_Native */ = {
 			isa = PBXGroup;
 			children = (
+				580AB79D2A0BEF6500C5A63E /* MACOAMA_NativeRelease.entitlements */,
 				5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */,
 				5809AB7A2A02A6590083882F /* Extensions.swift */,
 				5877EB0E29F8321000EC71EE /* ContentView.swift */,
@@ -181,6 +189,9 @@
 				581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */,
 				5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */,
 				5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */,
+				580AB7972A0BE59F00C5A63E /* BluetoothConnectionVM.swift */,
+				580AB7992A0BE5C200C5A63E /* BluetoothController.swift */,
+				580AB79B2A0BEACF00C5A63E /* MainIntroVM.swift */,
 				58D4B60829F83CCB00274444 /* DATA.json */,
 				585F206229FAC0220002A48E /* BitmapImage.swift */,
 				585F206429FACA8D0002A48E /* Raster.swift */,
@@ -321,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580AB79C2A0BEACF00C5A63E /* MainIntroVM.swift in Sources */,
 				58D4B60C29F8404B00274444 /* MathSubjectModel.swift in Sources */,
 				5810388029FC0AE7007A799D /* MathSubjectElementView.swift in Sources */,
 				58D4B60E29F8404D00274444 /* MathSubjectView.swift in Sources */,
@@ -330,10 +342,12 @@
 				5877EB1929F8321000EC71EE /* MACOAMA_Native.xcdatamodeld in Sources */,
 				5809AB882A0382740083882F /* MathSubjectCreatePageView.swift in Sources */,
 				5877EB1629F8321000EC71EE /* Persistence.swift in Sources */,
+				580AB7982A0BE59F00C5A63E /* BluetoothConnectionVM.swift in Sources */,
 				585F206329FAC0220002A48E /* BitmapImage.swift in Sources */,
 				581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */,
 				5809AB792A029CF10083882F /* MathSubjectEditView.swift in Sources */,
 				58D4B60729F8372A00274444 /* TextDataView.swift in Sources */,
+				580AB79A2A0BE5C200C5A63E /* BluetoothController.swift in Sources */,
 				5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */,
 				5877EB0F29F8321000EC71EE /* ContentView.swift in Sources */,
 				581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */,
@@ -544,6 +558,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need to use bluetooth connection";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need to use bluetooth connection";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -564,7 +580,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MACOAMA_Native/MACOAMA_Native.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MACOAMA_Native/MACOAMA_NativeRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -574,6 +590,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need to use bluetooth connection";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need to use bluetooth connection";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -139,6 +139,36 @@ struct TextDataView: View {
                     
                     Divider()
                     
+//
+//                    Button("端末に繋げる") {
+//
+//                        //let _ = print("RENDERING TO IMAGE !!!")
+//                        //let _ = print(content)
+//
+//                        // JSON文字列をParsing、viewへのレンダリングをするためのフラグ
+//                        //renderingView = true
+//
+//
+//                        MathSubjectRootView(jsonText: content,
+//                                        newWindowWidth: $newWindowWidth,
+//                                        newWindowHeight: $newWindowHeight)
+//                            .openNewWindow( title: "教材作成",
+//                                            width: Int($newWindowWidth.wrappedValue)!,
+//                                            height: Int($newWindowHeight.wrappedValue)!)
+//
+//
+//                        
+//                    }
+//                    .buttonStyle(.plain)
+//                    .controlSize(.large)
+//                    .frame(maxWidth: .infinity)
+//                    .font(.title2)
+//                    .foregroundColor(.red)
+//
+//
+//                    Divider()
+                    
+                    
                     // 記事のタイトル
                     Text("タイトル")
                         

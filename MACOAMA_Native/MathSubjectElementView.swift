@@ -174,6 +174,7 @@ struct MathSubjectElementView: View {
                 self.ctr.updateJsonAndReload()
             }
         
+        // 1秒後タイマー停止
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             timer.invalidate()
         }

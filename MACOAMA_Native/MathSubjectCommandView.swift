@@ -19,6 +19,9 @@ struct MathSubjectCommandView: View {
     @State var pageNum : String = "1"
     
     
+    @State var bluetoothCtr : BluetoothController
+    
+    
     var body: some View {
         
         GeometryReader { geo in
@@ -223,6 +226,11 @@ struct MathSubjectCommandView: View {
                                 
                                 // 初期化
                                 self.ctr.pageNo = 0
+                                
+                                
+                                // BlueTooth端末にサブジェクト番号を送る
+                                self.bluetoothCtr.sendDataToPeripheral(String(self.ctr.subjectNo+1).data(using: .utf8)!)
+                                
                                 
                             }
                         }

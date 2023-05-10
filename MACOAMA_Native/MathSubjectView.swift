@@ -21,9 +21,7 @@ struct MathSubjectView: View {
         
         HStack (alignment: .top) {
             
-            MathSubjectCommandView(ctr: self.controller)
-                .frame(width: 400)
-                .padding()
+
             
             
             MathSubjectCreatePageView(controller: self.controller)

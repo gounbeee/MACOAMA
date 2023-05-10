@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+import Network
+import CoreBluetooth
+
+
 
 
 struct MathSubjectRootView: View {
+    
+    /// BLUETOOTH VIEWMODEL
+    @ObservedObject private var bleControls : BluetoothController
+    
     
     
     var jsonText : String = "Initial"
@@ -21,6 +29,12 @@ struct MathSubjectRootView: View {
     
     
     init(jsonText: String, newWindowWidth : Binding<String>, newWindowHeight: Binding<String>) {
+        
+        
+        let bleController = BluetoothController()
+        self.bleControls = bleController
+        
+        
         
         self.jsonText = jsonText
         
@@ -42,11 +56,24 @@ struct MathSubjectRootView: View {
     
     var body: some View {
         
+        Button("端末に繋げる") {
+            // ----------------------------------------------------------------------
+            BluetoothConnectionVM(mathSbjCtr: self.mathSbjCtr, bleCtr: self.bleControls )
+                .openNewWindow( title: "Bluetooth連結",
+                                width: 400,
+                                height: 800)
+        }
+        .buttonStyle(.plain)
+        .controlSize(.large)
+        .frame(width: 800, height: 60)
+        .font(.title)
+        .foregroundColor(.pink)
+        
+        
         
         MathSubjectView(controller: mathSbjCtr)
         
-        
-        
+
         
     }
     
