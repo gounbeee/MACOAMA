@@ -75,14 +75,18 @@ struct MathSubjectEditView: View {
     // 外部からの文脈マネージャ
     @ObservedObject var ctr : MathSubjectController
     
+    @ObservedObject var synthCtr : SynthController
+    
     
     @State var deleteElemNo : String = ""
     
     
     
-    init(controller: MathSubjectController) {
+    init(controller: MathSubjectController, synthCtr: SynthController) {
         
         self.ctr = controller
+        self.synthCtr = synthCtr
+        
         self.elemCount = controller.elementNumAll
         
         let elmList = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems
@@ -132,20 +136,26 @@ struct MathSubjectEditView: View {
                 .frame(height: 30)
                 
                 
-                // 自然言語処理を行う
-                // https://qiita.com/mashunzhe/items/28c06eafc024954e4256
-                Button("Tokenize") {
-
-                    
-                    let txtProc = TextProcessor()
-                    
-                    txtProc.inputText = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[0].content
-                    
-                    // txtProc.detectLanguage(text: txtProc.inputText)
-                    // txtProc.tokenize(text: txtProc.inputText)
-                    
-                    
-                }
+//                // 自然言語処理を行う
+//                // https://qiita.com/mashunzhe/items/28c06eafc024954e4256
+//                Button("Tokenize") {
+//
+//
+//                    let txtProc = TextProcessor()
+//
+//                    txtProc.inputText = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[0].content
+//
+//                    // txtProc.detectLanguage(text: txtProc.inputText)
+//                    // txtProc.tokenize(text: txtProc.inputText)
+//
+//
+//                }
+                
+                
+                // SYNTHESIS を実装
+                SynthVM(synthCtr: self.synthCtr)
+                
+                
                 
 
                 MathSubjectEditCreateView(ctr: self.ctr)

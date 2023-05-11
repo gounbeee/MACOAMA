@@ -12,6 +12,7 @@ import SwiftUI
 struct MathSubjectView: View {
     
     @ObservedObject var controller : MathSubjectController
+    @ObservedObject var synthCtr : SynthController
     
 
     var jsonText : String = "Initial"
@@ -24,7 +25,7 @@ struct MathSubjectView: View {
 
             
             
-            MathSubjectCreatePageView(controller: self.controller)
+            MathSubjectCreatePageView(controller: self.controller, synthCtr: self.synthCtr)
                 .frame(width: MathSubjectController.ElementWidth)
                 .padding()
    

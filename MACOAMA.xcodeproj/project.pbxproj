@@ -26,6 +26,12 @@
 		581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */; };
 		581FAB8F29F6B98000A303A6 /* AsciiMath-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */; };
 		581FAB9229F6D63900A303A6 /* DATA.json in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB9129F6D20200A303A6 /* DATA.json */; };
+		582ECCD62A0C7E4600E0596B /* BluetoothMathRouteVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCD52A0C7E4600E0596B /* BluetoothMathRouteVM.swift */; };
+		582ECCDA2A0C8DA800E0596B /* SynthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCD92A0C8DA800E0596B /* SynthController.swift */; };
+		582ECCDC2A0C8DBB00E0596B /* Synth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCDB2A0C8DBB00E0596B /* Synth.swift */; };
+		582ECCDE2A0C8DCC00E0596B /* Oscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCDD2A0C8DCC00E0596B /* Oscillator.swift */; };
+		585B18EF2A0CF69800BD404A /* SynthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585B18EE2A0CF69800BD404A /* SynthVM.swift */; };
+		585B18F12A0CF72300BD404A /* SynthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585B18F02A0CF72300BD404A /* SynthModel.swift */; };
 		585F206329FAC0220002A48E /* BitmapImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585F206229FAC0220002A48E /* BitmapImage.swift */; };
 		585F206529FACA8D0002A48E /* Raster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585F206429FACA8D0002A48E /* Raster.swift */; };
 		5877EB0D29F8321000EC71EE /* MACOAMA_NativeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */; };
@@ -69,6 +75,12 @@
 		581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectEditCreateView.swift; sourceTree = "<group>"; };
 		581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AsciiMath-Regular.ttf"; sourceTree = "<group>"; };
 		581FAB9129F6D20200A303A6 /* DATA.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DATA.json; sourceTree = "<group>"; };
+		582ECCD52A0C7E4600E0596B /* BluetoothMathRouteVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMathRouteVM.swift; sourceTree = "<group>"; };
+		582ECCD92A0C8DA800E0596B /* SynthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthController.swift; sourceTree = "<group>"; };
+		582ECCDB2A0C8DBB00E0596B /* Synth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synth.swift; sourceTree = "<group>"; };
+		582ECCDD2A0C8DCC00E0596B /* Oscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillator.swift; sourceTree = "<group>"; };
+		585B18EE2A0CF69800BD404A /* SynthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthVM.swift; sourceTree = "<group>"; };
+		585B18F02A0CF72300BD404A /* SynthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthModel.swift; sourceTree = "<group>"; };
 		585F206229FAC0220002A48E /* BitmapImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitmapImage.swift; sourceTree = "<group>"; };
 		585F206429FACA8D0002A48E /* Raster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raster.swift; sourceTree = "<group>"; };
 		5877EB0A29F8320F00EC71EE /* MACOAMA_Native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MACOAMA_Native.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,9 +177,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		582ECCD72A0C8D5B00E0596B /* Synthesis */ = {
+			isa = PBXGroup;
+			children = (
+				585B18F02A0CF72300BD404A /* SynthModel.swift */,
+				582ECCD92A0C8DA800E0596B /* SynthController.swift */,
+				585B18EE2A0CF69800BD404A /* SynthVM.swift */,
+				582ECCDB2A0C8DBB00E0596B /* Synth.swift */,
+				582ECCDD2A0C8DCC00E0596B /* Oscillator.swift */,
+			);
+			path = Synthesis;
+			sourceTree = "<group>";
+		};
 		5877EB0B29F8321000EC71EE /* MACOAMA_Native */ = {
 			isa = PBXGroup;
 			children = (
+				582ECCD72A0C8D5B00E0596B /* Synthesis */,
 				580AB79D2A0BEF6500C5A63E /* MACOAMA_NativeRelease.entitlements */,
 				5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */,
 				5809AB7A2A02A6590083882F /* Extensions.swift */,
@@ -189,6 +214,7 @@
 				581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */,
 				5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */,
 				5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */,
+				582ECCD52A0C7E4600E0596B /* BluetoothMathRouteVM.swift */,
 				580AB7972A0BE59F00C5A63E /* BluetoothConnectionVM.swift */,
 				580AB7992A0BE5C200C5A63E /* BluetoothController.swift */,
 				580AB79B2A0BEACF00C5A63E /* MainIntroVM.swift */,
@@ -332,10 +358,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				582ECCDE2A0C8DCC00E0596B /* Oscillator.swift in Sources */,
 				580AB79C2A0BEACF00C5A63E /* MainIntroVM.swift in Sources */,
 				58D4B60C29F8404B00274444 /* MathSubjectModel.swift in Sources */,
 				5810388029FC0AE7007A799D /* MathSubjectElementView.swift in Sources */,
 				58D4B60E29F8404D00274444 /* MathSubjectView.swift in Sources */,
+				585B18EF2A0CF69800BD404A /* SynthVM.swift in Sources */,
 				5809AB832A037F230083882F /* MathSubjectRootView.swift in Sources */,
 				5809AB8B2A0383080083882F /* MathSubjectController.swift in Sources */,
 				5809AB872A0382740083882F /* MathSubjectCommandView.swift in Sources */,
@@ -346,15 +374,19 @@
 				585F206329FAC0220002A48E /* BitmapImage.swift in Sources */,
 				581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */,
 				5809AB792A029CF10083882F /* MathSubjectEditView.swift in Sources */,
+				585B18F12A0CF72300BD404A /* SynthModel.swift in Sources */,
 				58D4B60729F8372A00274444 /* TextDataView.swift in Sources */,
 				580AB79A2A0BE5C200C5A63E /* BluetoothController.swift in Sources */,
 				5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */,
 				5877EB0F29F8321000EC71EE /* ContentView.swift in Sources */,
 				581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */,
 				5877EB0D29F8321000EC71EE /* MACOAMA_NativeApp.swift in Sources */,
+				582ECCDA2A0C8DA800E0596B /* SynthController.swift in Sources */,
 				585F206529FACA8D0002A48E /* Raster.swift in Sources */,
+				582ECCDC2A0C8DBB00E0596B /* Synth.swift in Sources */,
 				58D00C1E2A0A8E79001869CD /* TextProcessor.swift in Sources */,
 				5809AB7B2A02A6590083882F /* Extensions.swift in Sources */,
+				582ECCD62A0C7E4600E0596B /* BluetoothMathRouteVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

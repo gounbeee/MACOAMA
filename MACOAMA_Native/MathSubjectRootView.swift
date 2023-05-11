@@ -16,8 +16,9 @@ import CoreBluetooth
 struct MathSubjectRootView: View {
     
     /// BLUETOOTH VIEWMODEL
-    @ObservedObject private var bleControls : BluetoothController
-    
+    @ObservedObject private var bleControls : BluetoothController = BluetoothController()
+    @ObservedObject private var synthCtr : SynthController = SynthController()
+    @ObservedObject var mathSbjCtr = MathSubjectController()
     
     
     var jsonText : String = "Initial"
@@ -25,17 +26,12 @@ struct MathSubjectRootView: View {
     @Binding var newWindowWidth : String
     @Binding var newWindowHeight : String
     
-    @ObservedObject var mathSbjCtr = MathSubjectController()
+    
     
     
     init(jsonText: String, newWindowWidth : Binding<String>, newWindowHeight: Binding<String>) {
         
-        
-        let bleController = BluetoothController()
-        self.bleControls = bleController
-        
-        
-        
+
         self.jsonText = jsonText
         
         // Bindingプロパティを初期化
@@ -56,12 +52,16 @@ struct MathSubjectRootView: View {
     
     var body: some View {
         
-        Button("端末に繋げる") {
-            // ----------------------------------------------------------------------
-            BluetoothConnectionVM(mathSbjCtr: self.mathSbjCtr, bleCtr: self.bleControls )
-                .openNewWindow( title: "Bluetooth連結",
+        Button("コントローラを開く") {
+
+            
+            BluetoothMathRouteVM(bleControls: self.bleControls,
+                                 mathSbjCtr: self.mathSbjCtr,
+                                 synthCtr: self.synthCtr)
+                .openNewWindow( title: "コントローラ",
                                 width: 400,
                                 height: 800)
+            
         }
         .buttonStyle(.plain)
         .controlSize(.large)
@@ -71,7 +71,7 @@ struct MathSubjectRootView: View {
         
         
         
-        MathSubjectView(controller: mathSbjCtr)
+        MathSubjectView(controller: self.mathSbjCtr, synthCtr: self.synthCtr)
         
 
         

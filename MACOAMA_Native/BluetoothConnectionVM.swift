@@ -48,8 +48,7 @@ struct BluetoothConnectionVM: View {
     
     
     @ObservedObject var controller : MathSubjectController
-    
-
+    @ObservedObject var synthCtr : SynthController
     @ObservedObject var bluetoothCtr : BluetoothController
         
     /// FOR BLE CONNECTION CHECK
@@ -58,9 +57,10 @@ struct BluetoothConnectionVM: View {
     
     
     
-    init( mathSbjCtr: MathSubjectController, bleCtr : BluetoothController) {
+    init( mathSbjCtr: MathSubjectController, synthCtr: SynthController, bleCtr : BluetoothController) {
         
         self.controller = mathSbjCtr
+        self.synthCtr = synthCtr
         
         /// PASSING TO MEMBER PROPERTY
         self.bluetoothCtr = bleCtr
@@ -73,6 +73,7 @@ struct BluetoothConnectionVM: View {
     
     
     var body: some View {
+        
         
         VStack {
             
@@ -95,11 +96,11 @@ struct BluetoothConnectionVM: View {
                     Text("Coaramauseを選択してください")
                         .font(.body)
                     
-                }.padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
+                }.padding(EdgeInsets(top: 40, leading: 0, bottom: 40, trailing: 0))
                 
                 /// -----------------------------------------------
                 /// LISTING BLUETOOTH PERIPHERALS
-                NavigationView{
+                VStack (alignment: .center) {
                     
                     List(self.bluetoothCtr.peripheralNames,
                          id: \.self) { peripheralName in
@@ -140,7 +141,11 @@ struct BluetoothConnectionVM: View {
                         }) {
                             Text(peripheralName)
                         }
+                        .buttonStyle(.borderedProminent)
+                        
+                        
                     }
+                    .padding()
                     
                     
                 }
@@ -160,7 +165,7 @@ struct BluetoothConnectionVM: View {
                 }) {
                     Text("RESET SCANNING")
                 }
-                
+                .padding()
                 
                 
             }
@@ -174,7 +179,7 @@ struct BluetoothConnectionVM: View {
                 
                 //MathListVM( bluetoothCtr: self.bluetoothCtr )
                 
-                MathSubjectCommandView(ctr: self.controller, bluetoothCtr: self.bluetoothCtr)
+                MathSubjectCommandView(ctr: self.controller, synthCtr: self.synthCtr, bluetoothCtr: self.bluetoothCtr)
                     .frame(width: 500)
                     .padding()
                 
@@ -182,7 +187,7 @@ struct BluetoothConnectionVM: View {
             }
             
         }
-        .frame(width: 500, height: 800)
+        
         
     }
         

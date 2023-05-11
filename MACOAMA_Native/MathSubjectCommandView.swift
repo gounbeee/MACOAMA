@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct MathSubjectCommandView: View {
-    
-    
-    
+
     @ObservedObject var ctr : MathSubjectController
+    @ObservedObject var synthCtr : SynthController
     
     @State var pageNumInSubject : Int = 100
     
@@ -26,10 +25,9 @@ struct MathSubjectCommandView: View {
         
         GeometryReader { geo in
             
-            VStack (alignment: .center) {
+            VStack (alignment: .leading) {
                 
-                
-                
+
                 HStack {
                     
                     // Binding<String> タイプを直接使用する。
@@ -137,7 +135,7 @@ struct MathSubjectCommandView: View {
                             newController.parseJson()
                             
                             // 新規Viewを作成
-                            let viewToAdded = MathSubjectCreatePageView(controller: newController)
+                            let viewToAdded = MathSubjectCreatePageView(controller: newController, synthCtr: self.synthCtr)
                             // LISTに追加
                             allViewsToExport.append( AnyView(viewToAdded) )
                             
@@ -227,7 +225,7 @@ struct MathSubjectCommandView: View {
                                 // 初期化
                                 self.ctr.pageNo = 0
                                 
-                                
+                                // ---------------------------------------------------------------------------------------
                                 // BlueTooth端末にサブジェクト番号を送る
                                 self.bluetoothCtr.sendDataToPeripheral(String(self.ctr.subjectNo+1).data(using: .utf8)!)
                                 
@@ -536,6 +534,7 @@ struct MathSubjectCommandView: View {
                 
                 
             }
+            .padding((EdgeInsets(top: 30, leading: 20, bottom: 30, trailing: 20)))
         }
         
     }
