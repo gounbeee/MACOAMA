@@ -17,7 +17,7 @@ struct SynthVM: View {
     var body: some View {
         
         
-        //Text("Frequency: \(String(self.synthCtr.frequency)) Hz  Amplitude: \(String(self.synthCtr.amplitude)) %")
+        Text("Frequency: \(String(self.synthCtr.frequency)) Hz  Amplitude: \(String(self.synthCtr.amplitude)) %")
         
         
         Slider(value: self.$synthCtr.waveType,

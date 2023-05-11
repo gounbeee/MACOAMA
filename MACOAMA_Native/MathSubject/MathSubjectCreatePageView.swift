@@ -113,7 +113,7 @@ struct MathSubjectCreatePageView: View {
                 // Viewは、基本的に文脈維持のためControllerを食う
                 let elmCtr : MathSubjectElementController = MathSubjectElementController()
                 
-                MathSubjectElementView(controller: self.ctr, elmController: elmCtr, elementInfo: elemInfo )
+                MathSubjectElementView(controller: self.ctr, elmController: elmCtr, elementInfo: elemInfo, synthCtr: self.synthCtr)
                 
             }
             

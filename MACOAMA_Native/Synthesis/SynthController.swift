@@ -61,9 +61,9 @@ class SynthController: ObservableObject {
     
     
     func updateState() {
-        
-        Oscillator.amplitude = Float(self.amplitude)
-        Synth.shared.frequency = Float(self.frequency)
+        updateOscillatorWaveform()
+        Oscillator.amplitude = Float(self.amplitude + Double.random(in: 0.05...0.1))
+        Synth.shared.frequency = Float(self.frequency + Double.random(in: 0.0...500.0))
         
     }
     

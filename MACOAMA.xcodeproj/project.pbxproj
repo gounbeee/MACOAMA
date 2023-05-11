@@ -189,20 +189,20 @@
 			path = Synthesis;
 			sourceTree = "<group>";
 		};
-		5877EB0B29F8321000EC71EE /* MACOAMA_Native */ = {
+		585B18F22A0D1AE300BD404A /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				582ECCD72A0C8D5B00E0596B /* Synthesis */,
-				580AB79D2A0BEF6500C5A63E /* MACOAMA_NativeRelease.entitlements */,
-				5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */,
-				5809AB7A2A02A6590083882F /* Extensions.swift */,
-				5877EB0E29F8321000EC71EE /* ContentView.swift */,
-				5877EB1029F8321000EC71EE /* Assets.xcassets */,
-				5877EB1529F8321000EC71EE /* Persistence.swift */,
-				5877EB1A29F8321000EC71EE /* MACOAMA_Native.entitlements */,
-				5877EB1729F8321000EC71EE /* MACOAMA_Native.xcdatamodeld */,
-				5877EB1229F8321000EC71EE /* Preview Content */,
-				58D4B60629F8372A00274444 /* TextDataView.swift */,
+				580AB79B2A0BEACF00C5A63E /* MainIntroVM.swift */,
+				582ECCD52A0C7E4600E0596B /* BluetoothMathRouteVM.swift */,
+				580AB7972A0BE59F00C5A63E /* BluetoothConnectionVM.swift */,
+				580AB7992A0BE5C200C5A63E /* BluetoothController.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		585B18F32A0D1AFD00BD404A /* MathSubject */ = {
+			isa = PBXGroup;
+			children = (
 				58D4B60B29F8404B00274444 /* MathSubjectModel.swift */,
 				5809AB822A037F230083882F /* MathSubjectRootView.swift */,
 				5809AB8A2A0383080083882F /* MathSubjectController.swift */,
@@ -214,10 +214,26 @@
 				581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */,
 				5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */,
 				5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */,
-				582ECCD52A0C7E4600E0596B /* BluetoothMathRouteVM.swift */,
-				580AB7972A0BE59F00C5A63E /* BluetoothConnectionVM.swift */,
-				580AB7992A0BE5C200C5A63E /* BluetoothController.swift */,
-				580AB79B2A0BEACF00C5A63E /* MainIntroVM.swift */,
+			);
+			path = MathSubject;
+			sourceTree = "<group>";
+		};
+		5877EB0B29F8321000EC71EE /* MACOAMA_Native */ = {
+			isa = PBXGroup;
+			children = (
+				585B18F32A0D1AFD00BD404A /* MathSubject */,
+				585B18F22A0D1AE300BD404A /* Bluetooth */,
+				582ECCD72A0C8D5B00E0596B /* Synthesis */,
+				580AB79D2A0BEF6500C5A63E /* MACOAMA_NativeRelease.entitlements */,
+				5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */,
+				5809AB7A2A02A6590083882F /* Extensions.swift */,
+				5877EB0E29F8321000EC71EE /* ContentView.swift */,
+				5877EB1029F8321000EC71EE /* Assets.xcassets */,
+				5877EB1529F8321000EC71EE /* Persistence.swift */,
+				5877EB1A29F8321000EC71EE /* MACOAMA_Native.entitlements */,
+				5877EB1729F8321000EC71EE /* MACOAMA_Native.xcdatamodeld */,
+				5877EB1229F8321000EC71EE /* Preview Content */,
+				58D4B60629F8372A00274444 /* TextDataView.swift */,
 				58D4B60829F83CCB00274444 /* DATA.json */,
 				585F206229FAC0220002A48E /* BitmapImage.swift */,
 				585F206429FACA8D0002A48E /* Raster.swift */,

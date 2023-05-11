@@ -15,17 +15,20 @@ struct MathSubjectElementView: View {
     
     @ObservedObject var ctr : MathSubjectController
     @ObservedObject var elmCtr : MathSubjectElementController
+    @ObservedObject var synthCtr : SynthController
     
     @GestureState var locationStore = CGPoint(x: 0, y: 0)
     
     var sbjNo : Int = 0
     var pgNo : Int = 0
     
+    @State var isSoundPlaying : Bool = false
     
     
-    
-    init(controller: MathSubjectController, elmController: MathSubjectElementController, elementInfo: MathPageTextElm) {
+    init(controller: MathSubjectController, elmController: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController) {
         self.ctr = controller
+        self.synthCtr = synthCtr
+        
         //self.elemIndex = elemIndex
         self.sbjNo = controller.subjectNo
         self.pgNo = controller.pageNo
@@ -34,10 +37,12 @@ struct MathSubjectElementView: View {
         self.elmCtr = elmController
         self.elmCtr.element = elementInfo
         
+        
+        
         controller.elmCtr = elmController
         
         
-        
+        self.synthCtr.setPlaybackStateTo(false)
     }
     
     
@@ -61,21 +66,20 @@ struct MathSubjectElementView: View {
         
             .offset(x: self.elmCtr.element.position.x * Double(self.ctr.currentWindowWidthStr)!  + self.elmCtr.differPos.x  ,
                     y: self.elmCtr.element.position.y * Double(self.ctr.currentWindowHeightStr)! + self.elmCtr.differPos.y )
-        //.frame(width: 500)
             .padding()
-            .onHover { state in
-                
-                print("HOVERイベント発生!! -- \(state) ")
-                
-                if state == true {
-                    delayTimer()
-                }
-                
-            }
+//            .onHover { state in
+//
+//                print("HOVERイベント発生!! -- \(state) ")
+//
+//                if state == true {
+//                    delayTimer()
+//                }
+//
+//            }
             .gesture(
                 
                 DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                
+                    
                 // ドラッグする間、カーソルの次の位置を取得できる
                     .updating($locationStore) { currentState, pastLocation, transaction in
                         // print("----")
@@ -110,7 +114,10 @@ struct MathSubjectElementView: View {
                         self.elmCtr.differPos.x = state.location.x - state.startLocation.x
                         self.elmCtr.differPos.y = state.location.y - state.startLocation.y
                         
-                       
+                        
+                        self.isSoundPlaying = true
+                        delayTimer()
+                        
                         
                     }
                     .onEnded { state in
@@ -151,6 +158,9 @@ struct MathSubjectElementView: View {
                         // JSON 更新とView更新を誘発
                         self.ctr.updateJsonAndReload()
                         
+                        
+                        self.isSoundPlaying = false
+                        self.synthCtr.waveType = Double.random(in: 0...4).rounded()
                     }
                 
             )
@@ -166,12 +176,30 @@ struct MathSubjectElementView: View {
         
         let timer = Timer
             .scheduledTimer(
-                withTimeInterval: 0.25,
+                withTimeInterval: 0.02,
                 repeats: true
             ) { _ in
                 print("実行しました  --  \(cnt)")
                 cnt += 1
-                self.ctr.updateJsonAndReload()
+                
+                if self.isSoundPlaying == true {
+                    
+                    if cnt % 2 == 0 {
+                        
+                        self.synthCtr.updateState()
+                        self.synthCtr.setPlaybackStateTo(true)
+                        
+                    } else {
+                        
+                        self.synthCtr.setPlaybackStateTo(false)
+                        
+                    }
+                } else {
+                    
+                    self.synthCtr.setPlaybackStateTo(false)
+                    
+                }
+                
             }
         
         // 1秒後タイマー停止
