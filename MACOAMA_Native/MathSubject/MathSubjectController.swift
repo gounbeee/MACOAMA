@@ -11,8 +11,9 @@ import SwiftUI
 
 class MathSubjectController : ObservableObject {
     
-    static let ElementWidth : Double = 540.0
-    static let ElementHeight : Double = 960.0
+    static let ElementWidth : Double = 480
+    static let ElementHeight : Double = 640
+    
     
     @Published var subjectNumAll: Int = 0
 
@@ -22,14 +23,15 @@ class MathSubjectController : ObservableObject {
     @Published var jsonText : String = "Default Json Text"
     @Published var jsonObj : MathSubjectResponse? = nil
 
-    @Published var currentWindowWidthStr : String = "540"
-    @Published var currentWindowHeightStr : String = "960"
+    @Published var currentWindowWidthStr : String = String(MathSubjectController.ElementWidth)
+    @Published var currentWindowHeightStr : String = String(MathSubjectController.ElementHeight)
     
     @Published var subjectNo: Int = 0
     @Published var pageNo: Int = 0
     
-
-    
+    // 開発用画面表示の有無
+    var isEditMode = false
+ 
     public var elmCtr : MathSubjectElementController? = nil
     
     // ページがレンダリングされると、保存のためこちらに入れておく
@@ -53,7 +55,8 @@ class MathSubjectController : ObservableObject {
                                                                                                                                                  color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
                                                                                                                                                  bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
                                                                                                                                                  timeIn: 0,
-                                                                                                                                                 timeOut: 1000),
+                                                                                                                                                 timeOut: 1000,
+                                                                                                                                                 links: "none"),
                                                                                                                       count: 1) ),
                                                                      count: 1),
                                                    color: MathColor(red: 80,
@@ -94,7 +97,8 @@ class MathSubjectController : ObservableObject {
                                                                                                   color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
                                                                                                   bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
                                                                                                   timeIn: 0,
-                                                                                                  timeOut: 1000),
+                                                                                                  timeOut: 1000,
+                                                                                                  links: "none"),
                                                                        count: 1))
                                                                   
                                                    
@@ -126,7 +130,8 @@ class MathSubjectController : ObservableObject {
                                                          position: MathPosition(x: 0.0, y: 0.0),
                                                          color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
                                                          bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
-                                                         timeIn: 0, timeOut: 1000)
+                                                         timeIn: 0, timeOut: 1000,
+                                                         links: "none")
         
         
         self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.append(element)

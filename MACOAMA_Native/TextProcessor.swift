@@ -27,7 +27,8 @@ class TextProcessor : ObservableObject {
     }
     
     
-    
+    // 自然言語処理を行う
+    // https://qiita.com/mashunzhe/items/28c06eafc024954e4256
     func tokenize(text: String) -> [String] {
         
         let tokenizer = NLTokenizer(unit: .word)

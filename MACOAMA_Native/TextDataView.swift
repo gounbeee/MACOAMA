@@ -29,24 +29,46 @@ import SwiftUI
 // https://stackoverflow.com/questions/67344263/swiftui-on-macos-opening-a-new-window
 //
 extension View {
-    private func newWindowInternal(title: String, width: Int , height: Int ) -> NSWindow {
+    
+    
+    // 実際、ウィンドウを生成させる関数
+    private func newWindowInternal(title: String, xPos: Int, yPos: Int, width: Int , height: Int , isCenter: Bool ) -> NSWindow {
+        
+        // NSWindowを使用してウィンドウを作成する。
+        //
         let window = NSWindow(
-            contentRect: NSRect(x: 20, y: 20, width: width, height: height),
+            contentRect: NSRect(x: xPos, y: yPos, width: width, height: height),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered,
             defer: false)
         
-        window.center()
+        // スクリーンの中央にウィンドウを位置させる。
+        if isCenter == true {
+            window.center()
+        }
+        
+        
+        // 閉じられた時、メモリ解放をするかの設定
         window.isReleasedWhenClosed = false
+        
+        // タイトルの設定
         window.title = title
+        
+        // このウィンドウを一番前に持ってくるかの設定
         window.makeKeyAndOrderFront(nil)
         
         return window
         
     }
     
-    func openNewWindow(title: String = "new Window", width: Int, height: Int) {
-        self.newWindowInternal(title: title, width: width, height: height ).contentView = NSHostingView(rootView: self)
+    
+    func openNewWindow(title: String = "new Window", xPos: Int, yPos: Int, width: Int, height: Int, isCenter: Bool) {
+        
+        // NSHostingView オブジェクトを使用
+        // Creates a hosting view object that wraps the specified SwiftUI view.
+        // このオブジェクトは、指定されたSwiftUIのViewをラッピングする、ホスティングViewオブジェクトを生成する。
+        self.newWindowInternal(title: title, xPos: xPos, yPos: yPos, width: width, height: height, isCenter: isCenter).contentView = NSHostingView(rootView: self)
+        
     }
 }
 
@@ -81,8 +103,8 @@ struct TextDataView: View {
     @State private var shouldShowDeleteButton: Bool = false
     @State private var shouldPresentConfirm: Bool = false
     
-    @State private var newWindowWidth: String = "540"
-    @State private var newWindowHeight: String = "960"
+    @State private var newWindowWidth: String = String(MathSubjectController.ElementWidth)
+    @State private var newWindowHeight: String = String(MathSubjectController.ElementHeight)
     
     
     // TEXT をもとに、VIEWをレンダリングするか否かのフラグ
@@ -125,10 +147,13 @@ struct TextDataView: View {
                                         newWindowWidth: $newWindowWidth,
                                         newWindowHeight: $newWindowHeight)
                             .openNewWindow( title: "教材作成",
-                                            width: Int($newWindowWidth.wrappedValue)!,
-                                            height: Int($newWindowHeight.wrappedValue)!)
+                                            xPos: 20,
+                                            yPos: 20,
+                                            width: Int(MathSubjectController.ElementWidth),
+                                            height: Int(MathSubjectController.ElementHeight),
+                                            isCenter: true)
                         
-                        
+  
                         
                     }
                     .buttonStyle(.plain)

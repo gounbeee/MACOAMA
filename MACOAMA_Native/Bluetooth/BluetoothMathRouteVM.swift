@@ -13,6 +13,7 @@ struct BluetoothMathRouteVM: View {
     @ObservedObject var bleControls : BluetoothController
     @ObservedObject var mathSbjCtr : MathSubjectController
     @ObservedObject var synthCtr : SynthController
+    @ObservedObject var linkCtr : MathSubjectLinkController
     
     @State var isBluetoothUsed : Bool? = nil
     
@@ -26,12 +27,12 @@ struct BluetoothMathRouteVM: View {
                 if isBluetoothUsed == true {
                                     
                     // ----------------------------------------------------------------------
-                    BluetoothConnectionVM(mathSbjCtr: self.mathSbjCtr, synthCtr: self.synthCtr, bleCtr: self.bleControls )
+                    BluetoothConnectionVM(mathSbjCtr: self.mathSbjCtr, synthCtr: self.synthCtr, bleCtr: self.bleControls, linkCtr: self.linkCtr )
                         .frame(alignment: .leading)
 
                 } else if isBluetoothUsed == false {
                     
-                    MathSubjectCommandView(ctr: self.mathSbjCtr, synthCtr: self.synthCtr, bluetoothCtr: self.bleControls)
+                    MathSubjectCommandView(ctr: self.mathSbjCtr, bluetoothCtr: self.bleControls)
                         .frame(alignment: .leading)
                 }
                 
@@ -45,7 +46,7 @@ struct BluetoothMathRouteVM: View {
                 }
                 .buttonStyle(.plain)
                 .controlSize(.large)
-                .frame(width: 800, height: 60)
+                .frame(width: 400, height: 60)
                 .font(.title)
                 .foregroundColor(.pink)
                 
@@ -57,14 +58,14 @@ struct BluetoothMathRouteVM: View {
                 }
                 .buttonStyle(.plain)
                 .controlSize(.large)
-                .frame(width: 800, height: 60)
+                //.frame(width: 800, height: 60)
                 .font(.title)
                 .foregroundColor(.pink)
 
             }
         
         }
-        .frame(width: 500, height: 800)
+        .frame(width: 400, height: 400)
         
         
     }

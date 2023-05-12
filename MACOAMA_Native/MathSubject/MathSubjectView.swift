@@ -13,30 +13,18 @@ struct MathSubjectView: View {
     
     @ObservedObject var controller : MathSubjectController
     @ObservedObject var synthCtr : SynthController
+    @ObservedObject var linkCtr : MathSubjectLinkController
     
 
     var jsonText : String = "Initial"
 
 
     var body: some View {
-        
-        HStack (alignment: .top) {
-            
 
-            
-            
-            MathSubjectCreatePageView(controller: self.controller, synthCtr: self.synthCtr)
-                .frame(width: MathSubjectController.ElementWidth)
-                .padding()
+            MathSubjectCreatePageView(controller: self.controller, synthCtr: self.synthCtr, linkCtr: self.linkCtr)
    
-            
-        }
-        
-        
-        
     }
-    
-    
+
 }
 
 

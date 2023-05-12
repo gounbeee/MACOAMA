@@ -50,6 +50,7 @@ struct BluetoothConnectionVM: View {
     @ObservedObject var controller : MathSubjectController
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var bluetoothCtr : BluetoothController
+    @ObservedObject var linkCtr : MathSubjectLinkController
         
     /// FOR BLE CONNECTION CHECK
     @State var isScanning : Bool = false
@@ -57,13 +58,14 @@ struct BluetoothConnectionVM: View {
     
     
     
-    init( mathSbjCtr: MathSubjectController, synthCtr: SynthController, bleCtr : BluetoothController) {
+    init( mathSbjCtr: MathSubjectController, synthCtr: SynthController, bleCtr : BluetoothController, linkCtr: MathSubjectLinkController) {
         
         self.controller = mathSbjCtr
         self.synthCtr = synthCtr
         
         /// PASSING TO MEMBER PROPERTY
         self.bluetoothCtr = bleCtr
+        self.linkCtr = linkCtr
         
         ///print(self.bluetoothCtr.peripheralNames)
         ///print("BluetoothConnectionVM IS INITIALIZED")
@@ -175,14 +177,10 @@ struct BluetoothConnectionVM: View {
             
             if !self.isScanning && self.isConnected {
                 
-                //Text("LIST OF MATHMATICAL BUTTONS")
-                
-                //MathListVM( bluetoothCtr: self.bluetoothCtr )
-                
-                MathSubjectCommandView(ctr: self.controller, synthCtr: self.synthCtr, bluetoothCtr: self.bluetoothCtr)
-                    .frame(width: 500)
-                    .padding()
-                
+//                MathSubjectCommandView(ctr: self.controller, bluetoothCtr: self.bluetoothCtr)
+//                    .frame(width: 500)
+//                    .padding()
+//
                 
             }
             

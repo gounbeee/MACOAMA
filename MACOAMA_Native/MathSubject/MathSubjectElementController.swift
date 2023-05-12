@@ -22,7 +22,8 @@ class MathSubjectElementController : ObservableObject{
                                                      position: MathPosition(x: 0.0, y: 0.0),
                                                      color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
                                                      bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
-                                                     timeIn: 0, timeOut: 0)
+                                                     timeIn: 0, timeOut: 0,
+                                                     links: "none")
 
 }
 

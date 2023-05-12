@@ -66,6 +66,7 @@ struct MathSubjectEditView: View {
     @State private var newCanvasBgColorB : String = "0"
     @State private var newCanvasBgColorO : String = "255"
     
+    @State private var newLinks : [String] = [String](repeating: String(""), count: 50)
     
     var elemCount : Int = 0
     
@@ -74,18 +75,19 @@ struct MathSubjectEditView: View {
     
     // 外部からの文脈マネージャ
     @ObservedObject var ctr : MathSubjectController
-    
     @ObservedObject var synthCtr : SynthController
+    @ObservedObject var linkCtr : MathSubjectLinkController
     
     
     @State var deleteElemNo : String = ""
     
     
     
-    init(controller: MathSubjectController, synthCtr: SynthController) {
+    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController) {
         
         self.ctr = controller
         self.synthCtr = synthCtr
+        self.linkCtr = linkCtr
         
         self.elemCount = controller.elementNumAll
         
@@ -99,355 +101,300 @@ struct MathSubjectEditView: View {
             self.elementList.append(newElm)
             
         }
-        
-        
-        
-        
+
     }
     
-    
-    
-    
+
     var body: some View {
-        
-        
+
+
+        HStack {
             
             VStack {
-                HStack {
+                
+                VStack {
                     
-                    Spacer()
                     
-                    HStack {
-                        
-                        Text("現在のサブジェクト番号")
-                        Text(self.ctr.subjectNo.formatted())
-                        
-                    }
+                    MathSubjectEditExportView(ctr: self.ctr,
+                                              synthCtr: self.synthCtr,
+                                              linkCtr: self.linkCtr)
                     
                     Divider()
                     
-                    Spacer()
+                    Text("スクリーンの大きさ").font(.system(size: 18))
+                    // NSScreen を使用し、現在のスクリーンの大きさを調べる
+                    //https://cocoaapi.hatenablog.com/entry/00000120/recID33859
+                    Text( "スクリーン大きさ　横 \(NSScreen.main!.visibleFrame.size.width)" )
+                    Text( "スクリーン大きさ　縦 \(NSScreen.main!.visibleFrame.size.height)" )
                     
-                    HStack {
-                        Text("現在のページ番号")
-                        Text(self.ctr.pageNo.formatted())
-                    }
                 }
-                .frame(height: 30)
                 
                 
-//                // 自然言語処理を行う
-//                // https://qiita.com/mashunzhe/items/28c06eafc024954e4256
-//                Button("Tokenize") {
-//
-//
-//                    let txtProc = TextProcessor()
-//
-//                    txtProc.inputText = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[0].content
-//
-//                    // txtProc.detectLanguage(text: txtProc.inputText)
-//                    // txtProc.tokenize(text: txtProc.inputText)
-//
-//
-//                }
+                VStack {
+                    
+                    Divider()
+                    Text("表示中の教材番号").font(.system(size: 18))
+                    HStack {
+                        
+                        Spacer()
+                        
+                        HStack {
+                            
+                            Text("現在のサブジェクト番号")
+                            Text(self.ctr.subjectNo.formatted())
+                            
+                        }
+                        
+                        Divider()
+                        
+                        Spacer()
+                        
+                        HStack {
+                            Text("現在のページ番号")
+                            Text(self.ctr.pageNo.formatted())
+                        }
+                    }
+                    .frame(height: 30)
+                }
                 
+                VStack {
+                    
+                    Divider()
+                    
+                    Text("シンセサイザー").font(.system(size: 18))
+                    // SYNTHESIS を実装
+                    SynthVM(synthCtr: self.synthCtr)
+                    
+                    
+                    Divider()
+                    
+                    MathSubjectEditCreateView(ctr: self.ctr)
+                    
+                    
+                    MathSubjectEditDeleteView(deleteElemNo: self.$deleteElemNo, ctr: self.ctr)
+                    
+                }
                 
-                // SYNTHESIS を実装
-                SynthVM(synthCtr: self.synthCtr)
-                
-                
-                
-
-                MathSubjectEditCreateView(ctr: self.ctr)
-                
-                MathSubjectEditDeleteView(deleteElemNo: self.$deleteElemNo, ctr: self.ctr)
-           
-                Divider()
-                
+            }
+            
+            
+            VStack {
+                // 2等分の幅、を知るためにここにGeometry Readerを設定した。
+                // https://swiftspeedy.com/horizontally-divide-the-screen-into-two-equal-parts-in-swiftui/
                 GeometryReader { geo in
                     
-                    VStack (alignment: .leading) {
-                        
-                        Text("BgColor").foregroundColor(.blue)
-                        
-                        HStack {
-                            
-                            Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red.formatted()).frame(width: geo.size.width/4)
-                            Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green.formatted()).frame(width: geo.size.width/4)
-                            Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue.formatted()).frame(width: geo.size.width/4)
-                            Text(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity.formatted()).frame(width: geo.size.width/4)
-
-                        }.foregroundColor(.gray)
-                        
-                        HStack {
-                            
-                            TextField("Red", text: self.$newCanvasBgColorR).frame(width: geo.size.width/4).onAppear() {
-                                self.newCanvasBgColorR = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red.formatted()
-                                self.ctr.updateJsonAndReload()
-                            }
-                            .onSubmit {
-                                self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red = Int(self.newCanvasBgColorR)!
-                                self.ctr.updateJsonAndReload()
-                            }
-                            TextField("Green", text: self.$newCanvasBgColorG).frame(width: geo.size.width/4).onAppear() {
-                                self.newCanvasBgColorG = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green.formatted()
-                            }
-                            .onSubmit {
-                                self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green = Int(self.newCanvasBgColorG)!
-                                self.ctr.updateJsonAndReload()
-                            }
-                            TextField("Blue", text: self.$newCanvasBgColorB).frame(width: geo.size.width/4).onAppear() {
-                                self.newCanvasBgColorB = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue.formatted()
-                            }
-                            .onSubmit {
-                                self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue = Int(self.newCanvasBgColorB)!
-                                self.ctr.updateJsonAndReload()
-                            }
-                            TextField("Opacity", text: self.$newCanvasBgColorO).frame(width: geo.size.width/4).onAppear() {
-                                self.newCanvasBgColorO = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity.formatted()
-                            }
-                            .onSubmit {
-                                self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity = Int(self.newCanvasBgColorO)!
-                                self.ctr.updateJsonAndReload()
-                            }
-                        }
-                        
-                        Button("Canvas Color ランダム化") {
-                            //print("Random Color !")
-                            self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red = 150 + Int.random(in: 1..<100)
-                            self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green = 150 + Int.random(in: 1..<100)
-                            self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue = 150 + Int.random(in: 1..<100)
-                            self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity = 255
-                            
-                            self.newCanvasBgColorR = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.red.formatted()
-                            self.newCanvasBgColorG = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.green.formatted()
-                            self.newCanvasBgColorB = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.blue.formatted()
-                            self.newCanvasBgColorO = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].color.opacity.formatted()
-                            
-                            self.ctr.updateJsonAndReload()
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.large)
-                        
-                    }
                     
-                }
-                .frame(height: 80)
-                
-                
-                HStack {
-                    
-                    // 2等分の幅、を知るためにここにGeometry Readerを設定した。
-                    // https://swiftspeedy.com/horizontally-divide-the-screen-into-two-equal-parts-in-swiftui/
-                    GeometryReader { geo in
+                    ScrollView {
                         
-                        
-                        ScrollView {
+                        VStack (alignment: .leading) {
+                            Text("全体の要素数  :  \(self.elemCount.formatted())")
+                                .font(.caption)
+                                .padding()
                             
-                            VStack (alignment: .leading) {
-                                Text("全体の要素数  :  \(self.elemCount.formatted())")
-                                    .font(.caption)
-                                    .padding()
-                                
-                                Divider()
+                            Divider()
+                            
+                            
+                            ForEach(self.elementList, id: \.self) { el in
                                 
                                 
-                                ForEach(self.elementList, id: \.self) { el in
+                                VStack (alignment: .leading) {
+                                    let plusIndex = el.index + 1
+                                    Text("要素 No. :  \(plusIndex.formatted())")
+                                        .font(.title2).foregroundColor(.blue)
                                     
                                     
-                                    VStack (alignment: .leading) {
-                                        let plusIndex = el.index + 1
-                                        Text("要素 No. :  \(plusIndex.formatted())")
-                                            .font(.title2).foregroundColor(.blue)
+                                    
+                                    HStack {
+                                        Text(el.element.id).frame(width: geo.size.width/2).foregroundColor(.gray)
                                         
-   
-                                        
-                                        HStack {
-                                            Text(el.element.id).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                            
-                                            // TextField の初期値を設定
-                                            // https://www.motokis-brain.com/article/26
-                                            TextField("Id", text: self.$newElemId[el.index]).frame(width: geo.size.width/2).onAppear() {
-                                                self.newElemId[el.index] = el.element.id
-                                            }
-                                        }
-                                        
-                                        Text("Font").foregroundColor(.blue)
-                                        HStack {
-                                            Text(el.element.font).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                            TextField("Font", text: self.$newElemFontName[el.index]).frame(width: geo.size.width/2).onAppear() {
-                                                self.newElemFontName[el.index] = el.element.font
-                                            }
-                                        }
-                                        
-                                        Text("Font Size").foregroundColor(.blue)
-                                        HStack {
-                                            Text(el.element.size.formatted()).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                            TextField("FontSize", text: self.$newElemFontSize[el.index]).frame(width: geo.size.width/2).onAppear() {
-                                                self.newElemFontSize[el.index] = el.element.size.formatted()
-                                            }
+                                        // TextField の初期値を設定
+                                        // https://www.motokis-brain.com/article/26
+                                        TextField("Id", text: self.$newElemId[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                            self.newElemId[el.index] = el.element.id
                                         }
                                     }
                                     
-                                    VStack (alignment: .leading) {
+                                    
+                                    if let linksCheck = el.element.links {
                                         
-                                        Text("Content").foregroundColor(.blue)
-                                        HStack {
-                                            Text(el.element.content).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                            TextField("Content", text: self.$newElemContent[el.index]).frame(width: geo.size.width/2).onAppear() {
-                                                self.newElemContent[el.index] = el.element.content
-                                            }
-                                        }
+                                        Text("Links").foregroundColor(.blue)
+                                        Text( linksCheck ).frame(width: geo.size.width)
                                         
-                                        
-                                        Text("Position").foregroundColor(.blue)
-                                        HStack {
-                                            Text(el.element.position.x.formatted()).frame(width: geo.size.width/4).foregroundColor(.gray)
-                                            TextField("PosX", text: self.$newElemPosX[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemPosX[el.index] = el.element.position.x.formatted()
-                                            }
-                                            Text(el.element.position.y.formatted()).frame(width: geo.size.width/4).foregroundColor(.gray)
-                                            TextField("PosY", text: self.$newElemPosY[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemPosY[el.index] = el.element.position.y.formatted()
-                                            }
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    Text("Font").foregroundColor(.blue)
+                                    HStack {
+                                        Text(el.element.font).frame(width: geo.size.width/2).foregroundColor(.gray)
+                                        TextField("Font", text: self.$newElemFontName[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                            self.newElemFontName[el.index] = el.element.font
                                         }
                                     }
                                     
-
-                                    VStack (alignment: .leading) {
-                                        Text("Color").foregroundColor(.blue)
-                                        HStack {
-                                            Text(el.element.color.red.formatted()).frame(width: geo.size.width/4)
-                                            Text(el.element.color.green.formatted()).frame(width: geo.size.width/4)
-                                            Text(el.element.color.blue.formatted()).frame(width: geo.size.width/4)
-                                            Text(el.element.color.opacity.formatted()).frame(width: geo.size.width/4)
-                                        }.foregroundColor(.gray)
-                                        HStack {
-                                            TextField("Red", text: self.$newElemColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemColorR[el.index] = el.element.color.red.formatted()
-                                            }
-                                            TextField("Green", text: self.$newElemColorG[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemColorG[el.index] = el.element.color.green.formatted()
-                                            }
-                                            TextField("Blue", text: self.$newElemColorB[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemColorB[el.index] = el.element.color.blue.formatted()
-                                            }
-                                            TextField("Opacity", text: self.$newElemColorO[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemColorO[el.index] = el.element.color.opacity.formatted()
-                                            }
+                                    Text("Font Size").foregroundColor(.blue)
+                                    HStack {
+                                        Text(el.element.size.formatted()).frame(width: geo.size.width/2).foregroundColor(.gray)
+                                        TextField("FontSize", text: self.$newElemFontSize[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                            self.newElemFontSize[el.index] = el.element.size.formatted()
                                         }
                                     }
-
-
-                                    VStack (alignment: .leading) {
-
-                                        Text("BgColor").foregroundColor(.blue)
-                                        HStack {
-                                            Text(el.element.bgColor.red.formatted()).frame(width: geo.size.width/4)
-                                            Text(el.element.bgColor.green.formatted()).frame(width: geo.size.width/4)
-                                            Text(el.element.bgColor.blue.formatted()).frame(width: geo.size.width/4)
-                                            Text(el.element.bgColor.opacity.formatted()).frame(width: geo.size.width/4)
-                                        }.foregroundColor(.gray)
-                                        HStack {
-                                            TextField("Red", text: self.$newElemBgColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemBgColorR[el.index] = el.element.bgColor.red.formatted()
-                                            }
-                                            TextField("Green", text: self.$newElemBgColorG[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemBgColorG[el.index] = el.element.bgColor.green.formatted()
-                                            }
-                                            TextField("Blue", text: self.$newElemBgColorB[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemBgColorB[el.index] = el.element.bgColor.blue.formatted()
-                                            }
-                                            TextField("Opacity", text: self.$newElemBgColorO[el.index]).frame(width: geo.size.width/4).onAppear() {
-                                                self.newElemBgColorO[el.index] = el.element.bgColor.opacity.formatted()
-                                            }
+                                }
+                                
+                                VStack (alignment: .leading) {
+                                    
+                                    Text("Content").foregroundColor(.blue)
+                                    HStack {
+                                        Text(el.element.content).frame(width: geo.size.width/2).foregroundColor(.gray)
+                                        TextField("Content", text: self.$newElemContent[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                            self.newElemContent[el.index] = el.element.content
                                         }
                                     }
-
-
-                                    VStack (alignment: .leading) {
-                                        Text("TimeIn").foregroundColor(.blue)
-                                        HStack {
-                                            Text(String("\(el.element.timeIn)")).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                            TextField("TimeIn", text: self.$newElemTimeIn[el.index]).frame(width: geo.size.width/2).onAppear() {
-                                                self.newElemTimeIn[el.index] = String("\(el.element.timeIn)")
-                                            }
+                                    
+                                    
+                                    Text("Position").foregroundColor(.blue)
+                                    HStack {
+                                        Text(el.element.position.x.formatted()).frame(width: geo.size.width/4).foregroundColor(.gray)
+                                        TextField("PosX", text: self.$newElemPosX[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemPosX[el.index] = el.element.position.x.formatted()
                                         }
-                                        Text("TimeOut").foregroundColor(.blue)
-                                        HStack {
-                                            Text(String("\(el.element.timeOut)")).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                            TextField("TimeOut", text: self.$newElemTimeOut[el.index]).frame(width: geo.size.width/2).onAppear() {
-                                                self.newElemTimeOut[el.index] = String("\(el.element.timeOut)")
-                                            }
+                                        Text(el.element.position.y.formatted()).frame(width: geo.size.width/4).foregroundColor(.gray)
+                                        TextField("PosY", text: self.$newElemPosY[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemPosY[el.index] = el.element.position.y.formatted()
                                         }
-
                                     }
-//
-                                    Divider()
-                                    
-                                    Button("データを更新する") {
-                                        
-                                        //print(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position )
-                                        //print(Double(self.newPosX[el.index])!)
-                                        
-                                        
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].id = self.newElemId[el.index]
-                                        
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].content = self.newElemContent[el.index]
-                                        
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].size = Double(self.newElemFontSize[el.index])!
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].font = self.newElemFontName[el.index]
-                                        
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position.x = Double(self.newElemPosX[el.index])!
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position.y = Double(self.newElemPosY[el.index])!
-                                        
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.red = Int(self.newElemColorR[el.index])!
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.green = Int(self.newElemColorG[el.index])!
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.blue = Int(self.newElemColorB[el.index])!
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.opacity = Int(self.newElemColorO[el.index])!
-
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.red = Int(self.newElemBgColorR[el.index])!
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.green = Int(self.newElemBgColorG[el.index])!
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.blue = Int(self.newElemBgColorB[el.index])!
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.opacity = Int(self.newElemBgColorO[el.index])!
-
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].timeIn = Int(self.newElemTimeIn[el.index])!
-                                        self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].timeOut = Int(self.newElemTimeOut[el.index])!
-                                        
-                                        
-                                        
-                                        // JSON 更新とView更新を誘発
-                                        self.ctr.updateJsonAndReload()
-                                        
-                                        
-                                        
-                                    }
-                                    .buttonStyle(.borderedProminent)
-                                    .controlSize(.large)
-                                    
-                                    
-                                    Divider()
-                                    
                                 }
                                 
                                 
+                                VStack (alignment: .leading) {
+                                    Text("Color").foregroundColor(.blue)
+                                    HStack {
+                                        Text(el.element.color.red.formatted()).frame(width: geo.size.width/4)
+                                        Text(el.element.color.green.formatted()).frame(width: geo.size.width/4)
+                                        Text(el.element.color.blue.formatted()).frame(width: geo.size.width/4)
+                                        Text(el.element.color.opacity.formatted()).frame(width: geo.size.width/4)
+                                    }.foregroundColor(.gray)
+                                    HStack {
+                                        TextField("Red", text: self.$newElemColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemColorR[el.index] = el.element.color.red.formatted()
+                                        }
+                                        TextField("Green", text: self.$newElemColorG[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemColorG[el.index] = el.element.color.green.formatted()
+                                        }
+                                        TextField("Blue", text: self.$newElemColorB[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemColorB[el.index] = el.element.color.blue.formatted()
+                                        }
+                                        TextField("Opacity", text: self.$newElemColorO[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemColorO[el.index] = el.element.color.opacity.formatted()
+                                        }
+                                    }
+                                }
+                                
+                                
+                                VStack (alignment: .leading) {
+                                    
+                                    Text("BgColor").foregroundColor(.blue)
+                                    HStack {
+                                        Text(el.element.bgColor.red.formatted()).frame(width: geo.size.width/4)
+                                        Text(el.element.bgColor.green.formatted()).frame(width: geo.size.width/4)
+                                        Text(el.element.bgColor.blue.formatted()).frame(width: geo.size.width/4)
+                                        Text(el.element.bgColor.opacity.formatted()).frame(width: geo.size.width/4)
+                                    }.foregroundColor(.gray)
+                                    HStack {
+                                        TextField("Red", text: self.$newElemBgColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemBgColorR[el.index] = el.element.bgColor.red.formatted()
+                                        }
+                                        TextField("Green", text: self.$newElemBgColorG[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemBgColorG[el.index] = el.element.bgColor.green.formatted()
+                                        }
+                                        TextField("Blue", text: self.$newElemBgColorB[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemBgColorB[el.index] = el.element.bgColor.blue.formatted()
+                                        }
+                                        TextField("Opacity", text: self.$newElemBgColorO[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                            self.newElemBgColorO[el.index] = el.element.bgColor.opacity.formatted()
+                                        }
+                                    }
+                                }
+                                
+                                
+                                VStack (alignment: .leading) {
+                                    Text("TimeIn").foregroundColor(.blue)
+                                    HStack {
+                                        Text(String("\(el.element.timeIn)")).frame(width: geo.size.width/2).foregroundColor(.gray)
+                                        TextField("TimeIn", text: self.$newElemTimeIn[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                            self.newElemTimeIn[el.index] = String("\(el.element.timeIn)")
+                                        }
+                                    }
+                                    Text("TimeOut").foregroundColor(.blue)
+                                    HStack {
+                                        Text(String("\(el.element.timeOut)")).frame(width: geo.size.width/2).foregroundColor(.gray)
+                                        TextField("TimeOut", text: self.$newElemTimeOut[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                            self.newElemTimeOut[el.index] = String("\(el.element.timeOut)")
+                                        }
+                                    }
+                                    
+                                }
+                                //
+                                Divider()
+                                
+                                Button("データを更新する") {
+                                    
+                                    //print(self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position )
+                                    //print(Double(self.newPosX[el.index])!)
+                                    
+                                    
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].id = self.newElemId[el.index]
+                                    
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].content = self.newElemContent[el.index]
+                                    
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].size = Double(self.newElemFontSize[el.index])!
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].font = self.newElemFontName[el.index]
+                                    
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position.x = Double(self.newElemPosX[el.index])!
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].position.y = Double(self.newElemPosY[el.index])!
+                                    
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.red = Int(self.newElemColorR[el.index])!
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.green = Int(self.newElemColorG[el.index])!
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.blue = Int(self.newElemColorB[el.index])!
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].color.opacity = Int(self.newElemColorO[el.index])!
+                                    
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.red = Int(self.newElemBgColorR[el.index])!
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.green = Int(self.newElemBgColorG[el.index])!
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.blue = Int(self.newElemBgColorB[el.index])!
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].bgColor.opacity = Int(self.newElemBgColorO[el.index])!
+                                    
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].timeIn = Int(self.newElemTimeIn[el.index])!
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].timeOut = Int(self.newElemTimeOut[el.index])!
+                                    
+                                    
+                                    
+                                    // JSON 更新とView更新を誘発
+                                    self.ctr.updateJsonAndReload()
+                                    
+                                    
+                                    
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .controlSize(.large)
+                                
+                                Divider()
+                                
                             }
-                            .padding()
                             
                         }
+                        .padding()
                         
                     }
                     
                 }
                 
-                
             }
-            .frame(alignment: .topLeading)
-            .padding()
             
-        
-        
-        
+            
+        }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .padding()
     }
     
     

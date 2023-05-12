@@ -19,6 +19,7 @@ struct MathSubjectRootView: View {
     @ObservedObject private var bleControls : BluetoothController = BluetoothController()
     @ObservedObject private var synthCtr : SynthController = SynthController()
     @ObservedObject var mathSbjCtr = MathSubjectController()
+    @ObservedObject var linkCtr = MathSubjectLinkController()
     
     
     var jsonText : String = "Initial"
@@ -46,6 +47,8 @@ struct MathSubjectRootView: View {
         mathSbjCtr.currentWindowWidthStr = self.newWindowWidth
         mathSbjCtr.currentWindowHeightStr = self.newWindowHeight
         
+        // ここでデバックモードを切り替えている
+        mathSbjCtr.isEditMode = true
     }
     
     
@@ -57,21 +60,23 @@ struct MathSubjectRootView: View {
             
             BluetoothMathRouteVM(bleControls: self.bleControls,
                                  mathSbjCtr: self.mathSbjCtr,
-                                 synthCtr: self.synthCtr)
+                                 synthCtr: self.synthCtr,
+                                 linkCtr: self.linkCtr)
                 .openNewWindow( title: "コントローラ",
+                                xPos: 0,
+                                yPos: 0,
                                 width: 400,
-                                height: 800)
+                                height: 400,
+                                isCenter: true)
             
         }
         .buttonStyle(.plain)
-        .controlSize(.large)
-        .frame(width: 800, height: 60)
-        .font(.title)
+        .font(.title2)
         .foregroundColor(.pink)
+        .padding(EdgeInsets(top: 15.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
         
         
-        
-        MathSubjectView(controller: self.mathSbjCtr, synthCtr: self.synthCtr)
+        MathSubjectView(controller: self.mathSbjCtr, synthCtr: self.synthCtr, linkCtr: self.linkCtr)
         
 
         

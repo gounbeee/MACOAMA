@@ -66,6 +66,7 @@ struct MathPageTextElm : Codable, Hashable {
     var bgColor : MathColor
     var timeIn : Int
     var timeOut : Int
+    var links : String?
     
 }
 

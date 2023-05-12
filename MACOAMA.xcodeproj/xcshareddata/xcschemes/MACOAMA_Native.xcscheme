@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5877EB0929F8320F00EC71EE"
-               BuildableName = "MACOAMA_Native.app"
-               BlueprintName = "MACOAMA_Native"
+               BuildableName = "COARAMAUSE.app"
+               BlueprintName = "COARAMAUSE"
                ReferencedContainer = "container:MACOAMA.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5877EB0929F8320F00EC71EE"
-            BuildableName = "MACOAMA_Native.app"
-            BlueprintName = "MACOAMA_Native"
+            BuildableName = "COARAMAUSE.app"
+            BlueprintName = "COARAMAUSE"
             ReferencedContainer = "container:MACOAMA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5877EB0929F8320F00EC71EE"
-            BuildableName = "MACOAMA_Native.app"
-            BlueprintName = "MACOAMA_Native"
+            BuildableName = "COARAMAUSE.app"
+            BlueprintName = "COARAMAUSE"
             ReferencedContainer = "container:MACOAMA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

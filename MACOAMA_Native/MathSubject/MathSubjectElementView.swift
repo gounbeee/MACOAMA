@@ -16,13 +16,18 @@ struct MathSubjectElementView: View {
     @ObservedObject var ctr : MathSubjectController
     @ObservedObject var elmCtr : MathSubjectElementController
     @ObservedObject var synthCtr : SynthController
+
+   
     
     @GestureState var locationStore = CGPoint(x: 0, y: 0)
     
     var sbjNo : Int = 0
     var pgNo : Int = 0
     
+    // 音再生中のフラグ
     @State var isSoundPlaying : Bool = false
+    
+    
     
     
     init(controller: MathSubjectController, elmController: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController) {
@@ -37,11 +42,9 @@ struct MathSubjectElementView: View {
         self.elmCtr = elmController
         self.elmCtr.element = elementInfo
         
-        
-        
         controller.elmCtr = elmController
         
-        
+        // シンセ用コントローラで音を切る
         self.synthCtr.setPlaybackStateTo(false)
     }
     
@@ -67,15 +70,6 @@ struct MathSubjectElementView: View {
             .offset(x: self.elmCtr.element.position.x * Double(self.ctr.currentWindowWidthStr)!  + self.elmCtr.differPos.x  ,
                     y: self.elmCtr.element.position.y * Double(self.ctr.currentWindowHeightStr)! + self.elmCtr.differPos.y )
             .padding()
-//            .onHover { state in
-//
-//                print("HOVERイベント発生!! -- \(state) ")
-//
-//                if state == true {
-//                    delayTimer()
-//                }
-//
-//            }
             .gesture(
                 
                 DragGesture(minimumDistance: 0, coordinateSpace: .local)
@@ -158,9 +152,33 @@ struct MathSubjectElementView: View {
                         // JSON 更新とView更新を誘発
                         self.ctr.updateJsonAndReload()
                         
-                        
+                        // シンセ関連：再生を停止
                         self.isSoundPlaying = false
                         self.synthCtr.waveType = Double.random(in: 0...4).rounded()
+                        
+                        
+                        let newController = MathSubjectController()
+                        let newSynthCtr = SynthController()
+                        let linkCtr = MathSubjectLinkController()
+                        
+                        // 新しいコントローラに、既存のJSONデータを引き継がせる必要がある
+                        newController.jsonText = self.ctr.jsonText
+                        newController.parseJson()
+                        
+                        
+                        MathSubjectLinkView(windowWidth: linkCtr.wndWidth,
+                                            windowHeight: linkCtr.wndHeight+50,
+                                            controller: newController,
+                                            synthCtr: newSynthCtr,
+                                            linkCtr: linkCtr).padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
+                            .openNewWindow( title: "リンクVIEW",
+                                            xPos: Int(linkCtr.wndXPos),
+                                            yPos: Int(linkCtr.wndYPos),
+                                            width: linkCtr.wndWidth,
+                                            height: linkCtr.wndHeight+50,
+                                            isCenter: false)
+                        
+                        
                     }
                 
             )
