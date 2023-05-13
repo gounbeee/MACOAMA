@@ -63,7 +63,7 @@ struct MathSubjectCreatePageView: View {
         HStack {
             
             VStack {
-                
+ 
                 // もしリンクされた教材なら、コントローラは２倍の大きさにする必要がある
                 if self.ctr.isLinkedView == false {
                     MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible)
@@ -192,7 +192,8 @@ struct MathSubjectCreatePageView: View {
             
             }
             //.frame(maxHeight: .infinity)
-            .frame(height: 740)
+            //.frame(height: 740)
+            .frame(height: 800)
             .padding()
             
 

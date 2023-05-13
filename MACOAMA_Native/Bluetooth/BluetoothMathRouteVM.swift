@@ -44,18 +44,19 @@ struct BluetoothMathRouteVM: View {
                      """)
                 .frame(alignment: .center)
                 
+
                 
                 Button("Bluetoothで繋げる") {
 
                     self.isBluetoothUsed = true
-   
+
                 }
                 .buttonStyle(.plain)
                 .controlSize(.large)
                 .frame(width: 400, height: 60)
                 .font(.title)
                 .foregroundColor(.pink)
-                
+//
 //
 //                Button("端末なしで使用") {
 //

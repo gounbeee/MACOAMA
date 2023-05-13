@@ -25,8 +25,9 @@ struct MathSubjectCommandView: View {
             
             if self.isSubjectVisible == true {
                 
+                MusicPlayView()
+                
                 HStack {
-                    
                     
                     TextField("サブジェクト番号", text: self.$subjectNum)
                         .frame(width: 50)
@@ -342,7 +343,7 @@ struct MathSubjectCommandView: View {
             
 
         }
-        .frame(height: 40)
+        .frame(height: 100)
         .padding()
 
     }

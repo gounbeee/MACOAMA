@@ -58,8 +58,9 @@ struct MathSubjectRootView: View {
     
     var body: some View {
         
-        Button("コントローラを開く") {
-
+        
+        
+        Button(action: {
             
             BluetoothMathRouteVM(bleControls: self.bleControls,
                                  mathSbjCtr: self.mathSbjCtr,
@@ -73,12 +74,17 @@ struct MathSubjectRootView: View {
                                 isCenter: true,
                                 windowCtr: self.windowCtr)
             
+        }) {
+            
+            Image(systemName: "network")
+                .tint(.pink)
+                .font(.system(size: 12))
+                
         }
-        .buttonStyle(.plain)
-        .font(.title2)
-        .foregroundColor(.pink)
-        .padding(EdgeInsets(top: 15.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
+        .padding(EdgeInsets(top: 15.0, leading: 0.0, bottom: 25.0, trailing: 0.0))
+
         
+       
         
         MathSubjectView(controller: self.mathSbjCtr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr)
         
