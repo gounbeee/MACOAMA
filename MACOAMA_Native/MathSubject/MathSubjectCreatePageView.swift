@@ -61,8 +61,12 @@ struct MathSubjectCreatePageView: View {
             
             VStack {
                 
-                
-                MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible)
+                if self.ctr.isLinkedView == false {
+                    MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible)
+                } else {
+                    MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible)
+                        .scaleEffect(x: 2.0, y: 2.0)
+                }
 
                 
             

@@ -29,7 +29,7 @@ struct MathSubjectLinkView: View {
         self.controller.isLinkedView = true
         
         
-        print(self.controller.subjectNo)
+        //print(self.controller.subjectNo)
         
     }
     
@@ -47,17 +47,11 @@ struct MathSubjectLinkView: View {
                                       subjectSpecified: self.linkCtr.subjectNo)
                 .scaleEffect(x: 0.5, y: 0.5)
                 .frame(width: Double(self.windowWidth), height: Double(self.windowHeight))
-                
-    
+
         }
-        
-        
-        
+   
     }
-    
-    
-    
-    
+  
 }
 
 
