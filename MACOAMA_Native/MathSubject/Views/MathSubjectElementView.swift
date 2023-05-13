@@ -14,9 +14,11 @@ struct MathSubjectElementView: View {
     
     
     @ObservedObject var ctr : MathSubjectController
-    // このオブジェクトで主に必要になる要素のコントローラーは、各々の要素が別々のコントローラを持つべきだ。
+    // このオブジェクトで主に必要になる要素のコントローラーは、各々の要素が別々のコントローラを持つべきだ
+    // 別のインスランスを作成するのは、このオブジェクトを作成する際に行っているので、ここでは受け取っているだけだ
     @ObservedObject var elmCtr : MathSubjectElementController
     @ObservedObject var synthCtr : SynthController
+    @ObservedObject var windowCtr : MathSubjectWindowController
 
    
     
@@ -32,10 +34,11 @@ struct MathSubjectElementView: View {
     
     
     //init(controller: MathSubjectController, elmController: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController) {
-    init(controller: MathSubjectController, elmCtr: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController) {
+    init(controller: MathSubjectController, elmCtr: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController, windowCtr: MathSubjectWindowController) {
         self.ctr = controller
         self.elmCtr = elmCtr
         self.synthCtr = synthCtr
+        self.windowCtr = windowCtr
         
         //self.elemIndex = elemIndex
         self.sbjNo = controller.subjectNo
@@ -157,6 +160,9 @@ struct MathSubjectElementView: View {
                         self.synthCtr.waveType = Double.random(in: 0...4).rounded()
                         
                         
+                      
+                        
+                        
                         if self.ctr.isLinkedView == false {
                             
                             // 要素コントローラで、リンク情報を整える
@@ -179,19 +185,27 @@ struct MathSubjectElementView: View {
                                 // JSONオブジェクトに変換
                                 newController.parseJson()
                                 
-                                                                
+                                
+                                    
                                 
                                 MathSubjectLinkView(windowWidth: linkCtr.wndWidth,
                                                     windowHeight: linkCtr.wndHeight+50,
                                                     controller: newController,
                                                     synthCtr: newSynthCtr,
-                                                    linkCtr: linkCtr).padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
+                                                    linkCtr: linkCtr,
+                                                    windowCtr: self.windowCtr)
+                                    .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
+           
                                     .openNewWindow( title: "リンクVIEW",
                                                     xPos: Int(linkCtr.wndXPos),
                                                     yPos: Int(linkCtr.wndYPos),
                                                     width: linkCtr.wndWidth,
                                                     height: linkCtr.wndHeight+50,
-                                                    isCenter: false)
+                                                    isCenter: false,
+                                                    windowCtr: self.windowCtr)
+                                
+                                
+                                
                                 
                             }
                             

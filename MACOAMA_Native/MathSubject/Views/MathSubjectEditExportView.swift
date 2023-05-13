@@ -17,6 +17,7 @@ struct MathSubjectEditExportView: View {
     @ObservedObject var synthCtr : SynthController
     
     @ObservedObject var linkCtr : MathSubjectLinkController
+    @ObservedObject var windowCtr : MathSubjectWindowController
     
 
     
@@ -133,6 +134,7 @@ struct MathSubjectEditExportView: View {
                     let viewToAdded = MathSubjectCreatePageView(controller: newController,
                                                                 synthCtr: self.synthCtr,
                                                                 linkCtr: self.linkCtr,
+                                                                windowCtr: self.windowCtr,
                                                                 isSubjectVisible: false,
                                                                 isPageVisible: false,
                                                                 subjectSpecified: nil)

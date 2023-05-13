@@ -82,12 +82,16 @@ struct MathSubjectEditView: View {
     @State var deleteElemNo : String = ""
     
     
+    @ObservedObject var windowCtr : MathSubjectWindowController
     
-    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController) {
+    
+    
+    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController) {
         
         self.ctr = controller
         self.synthCtr = synthCtr
         self.linkCtr = linkCtr
+        self.windowCtr = windowCtr
         
         self.elemCount = controller.elementNumAll
         
@@ -117,7 +121,8 @@ struct MathSubjectEditView: View {
                     
                     MathSubjectEditExportView(ctr: self.ctr,
                                               synthCtr: self.synthCtr,
-                                              linkCtr: self.linkCtr)
+                                              linkCtr: self.linkCtr,
+                                              windowCtr: self.windowCtr)
                     
                     Divider()
                     

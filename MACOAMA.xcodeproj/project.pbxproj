@@ -48,6 +48,8 @@
 		58A9C3CD29F4192A00238A35 /* MathSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3CC29F4192A00238A35 /* MathSubjectView.swift */; };
 		58A9C3D129F5857900238A35 /* GenEiKoburiMin6-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58A9C3D029F5857900238A35 /* GenEiKoburiMin6-R.ttf */; };
 		58AFF8802A0E8F4D002CC99D /* MainIntroVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF87F2A0E8F4D002CC99D /* MainIntroVM.swift */; };
+		58AFF8852A0F719F002CC99D /* MathSubjectLinkArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8842A0F719F002CC99D /* MathSubjectLinkArrowView.swift */; };
+		58AFF8872A0F91D5002CC99D /* MathSubjectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8862A0F91D5002CC99D /* MathSubjectWindowController.swift */; };
 		58D00C1E2A0A8E79001869CD /* TextProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D00C1D2A0A8E79001869CD /* TextProcessor.swift */; };
 		58D0BFB12A0DEC810021F52D /* MathSubjectLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0BFB02A0DEC810021F52D /* MathSubjectLinkView.swift */; };
 		58D0BFB32A0DEEAA0021F52D /* MathSubjectLinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0BFB22A0DEEAA0021F52D /* MathSubjectLinkController.swift */; };
@@ -102,6 +104,8 @@
 		58A9C3CC29F4192A00238A35 /* MathSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectView.swift; sourceTree = "<group>"; };
 		58A9C3D029F5857900238A35 /* GenEiKoburiMin6-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GenEiKoburiMin6-R.ttf"; sourceTree = "<group>"; };
 		58AFF87F2A0E8F4D002CC99D /* MainIntroVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainIntroVM.swift; sourceTree = "<group>"; };
+		58AFF8842A0F719F002CC99D /* MathSubjectLinkArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectLinkArrowView.swift; sourceTree = "<group>"; };
+		58AFF8862A0F91D5002CC99D /* MathSubjectWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectWindowController.swift; sourceTree = "<group>"; };
 		58D00C1D2A0A8E79001869CD /* TextProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextProcessor.swift; sourceTree = "<group>"; };
 		58D0BFB02A0DEC810021F52D /* MathSubjectLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectLinkView.swift; sourceTree = "<group>"; };
 		58D0BFB22A0DEEAA0021F52D /* MathSubjectLinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectLinkController.swift; sourceTree = "<group>"; };
@@ -209,20 +213,9 @@
 		585B18F32A0D1AFD00BD404A /* MathSubject */ = {
 			isa = PBXGroup;
 			children = (
+				58AFF8812A0F70CA002CC99D /* Contollers */,
+				58AFF8832A0F70EF002CC99D /* Views */,
 				58D4B60B29F8404B00274444 /* MathSubjectModel.swift */,
-				5809AB822A037F230083882F /* MathSubjectRootView.swift */,
-				5809AB8A2A0383080083882F /* MathSubjectController.swift */,
-				58D4B60D29F8404D00274444 /* MathSubjectView.swift */,
-				5809AB7E2A0371D30083882F /* MathSubjectCreatePageView.swift */,
-				5809AB7C2A033D9F0083882F /* MathSubjectCommandView.swift */,
-				5809AB782A029CF10083882F /* MathSubjectEditView.swift */,
-				581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */,
-				581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */,
-				5808BA0D2A0E7DE900895CDF /* MathSubjectEditExportView.swift */,
-				5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */,
-				5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */,
-				58D0BFB22A0DEEAA0021F52D /* MathSubjectLinkController.swift */,
-				58D0BFB02A0DEC810021F52D /* MathSubjectLinkView.swift */,
 			);
 			path = MathSubject;
 			sourceTree = "<group>";
@@ -230,6 +223,7 @@
 		5877EB0B29F8321000EC71EE /* MACOAMA_Native */ = {
 			isa = PBXGroup;
 			children = (
+				58AFF8882A0F9397002CC99D /* TextEditor */,
 				585B18F32A0D1AFD00BD404A /* MathSubject */,
 				585B18F22A0D1AE300BD404A /* Bluetooth */,
 				582ECCD72A0C8D5B00E0596B /* Synthesis */,
@@ -242,11 +236,9 @@
 				5877EB1A29F8321000EC71EE /* MACOAMA_Native.entitlements */,
 				5877EB1729F8321000EC71EE /* MACOAMA_Native.xcdatamodeld */,
 				5877EB1229F8321000EC71EE /* Preview Content */,
-				58D4B60629F8372A00274444 /* TextDataView.swift */,
 				58D4B60829F83CCB00274444 /* DATA.json */,
 				585F206229FAC0220002A48E /* BitmapImage.swift */,
 				585F206429FACA8D0002A48E /* Raster.swift */,
-				58D00C1D2A0A8E79001869CD /* TextProcessor.swift */,
 			);
 			path = MACOAMA_Native;
 			sourceTree = "<group>";
@@ -257,6 +249,44 @@
 				5877EB1329F8321000EC71EE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		58AFF8812A0F70CA002CC99D /* Contollers */ = {
+			isa = PBXGroup;
+			children = (
+				5809AB8A2A0383080083882F /* MathSubjectController.swift */,
+				5809AB8C2A073E7D0083882F /* MathSubjectElementController.swift */,
+				58D0BFB22A0DEEAA0021F52D /* MathSubjectLinkController.swift */,
+				58AFF8862A0F91D5002CC99D /* MathSubjectWindowController.swift */,
+			);
+			path = Contollers;
+			sourceTree = "<group>";
+		};
+		58AFF8832A0F70EF002CC99D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5809AB822A037F230083882F /* MathSubjectRootView.swift */,
+				58D4B60D29F8404D00274444 /* MathSubjectView.swift */,
+				5809AB7E2A0371D30083882F /* MathSubjectCreatePageView.swift */,
+				5809AB7C2A033D9F0083882F /* MathSubjectCommandView.swift */,
+				5809AB782A029CF10083882F /* MathSubjectEditView.swift */,
+				581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */,
+				581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */,
+				5808BA0D2A0E7DE900895CDF /* MathSubjectEditExportView.swift */,
+				5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */,
+				58D0BFB02A0DEC810021F52D /* MathSubjectLinkView.swift */,
+				58AFF8842A0F719F002CC99D /* MathSubjectLinkArrowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		58AFF8882A0F9397002CC99D /* TextEditor */ = {
+			isa = PBXGroup;
+			children = (
+				58D4B60629F8372A00274444 /* TextDataView.swift */,
+				58D00C1D2A0A8E79001869CD /* TextProcessor.swift */,
+			);
+			path = TextEditor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,8 +432,10 @@
 				581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */,
 				5809AB792A029CF10083882F /* MathSubjectEditView.swift in Sources */,
 				585B18F12A0CF72300BD404A /* SynthModel.swift in Sources */,
+				58AFF8852A0F719F002CC99D /* MathSubjectLinkArrowView.swift in Sources */,
 				58D4B60729F8372A00274444 /* TextDataView.swift in Sources */,
 				580AB79A2A0BE5C200C5A63E /* BluetoothController.swift in Sources */,
+				58AFF8872A0F91D5002CC99D /* MathSubjectWindowController.swift in Sources */,
 				5809AB8D2A073E7D0083882F /* MathSubjectElementController.swift in Sources */,
 				5877EB0F29F8321000EC71EE /* ContentView.swift in Sources */,
 				5808BA0E2A0E7DE900895CDF /* MathSubjectEditExportView.swift in Sources */,

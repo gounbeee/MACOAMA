@@ -14,6 +14,7 @@ struct MathSubjectCreatePageView: View {
     @ObservedObject var ctr : MathSubjectController
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var linkCtr : MathSubjectLinkController
+    @ObservedObject var windowCtr : MathSubjectWindowController
     
     
     var isSubjectVisible : Bool = true
@@ -31,11 +32,14 @@ struct MathSubjectCreatePageView: View {
     
     var subjectNo : Int = 0
 
+    //@State var arrowRotation : Double = 0.0
     
-    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, isSubjectVisible: Bool, isPageVisible: Bool, subjectSpecified: Int?) {
+    
+    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController, isSubjectVisible: Bool, isPageVisible: Bool, subjectSpecified: Int?) {
         self.ctr = controller
         self.synthCtr = synthCtr
         self.linkCtr = linkCtr
+        self.windowCtr = windowCtr
         
         self.isSubjectVisible = isSubjectVisible
         self.isPageVisible = isPageVisible
@@ -51,7 +55,6 @@ struct MathSubjectCreatePageView: View {
             self.subjectSpecified = sbjSpecf
             self.subjectNo = sbjSpecf
         }
-
     }
 
     
@@ -61,6 +64,7 @@ struct MathSubjectCreatePageView: View {
             
             VStack {
                 
+                // もしリンクされた教材なら、コントローラは２倍の大きさにする必要がある
                 if self.ctr.isLinkedView == false {
                     MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible)
                 } else {
@@ -147,11 +151,24 @@ struct MathSubjectCreatePageView: View {
                         // Viewは、基本的に文脈維持のためControllerを食う
                         let elmCtr : MathSubjectElementController = MathSubjectElementController()
                         
-                        MathSubjectElementView(controller: self.ctr, elmCtr: elmCtr, elementInfo: elemInfo, synthCtr: self.synthCtr)
+                        MathSubjectElementView(controller: self.ctr, elmCtr: elmCtr, elementInfo: elemInfo, synthCtr: self.synthCtr, windowCtr: self.windowCtr)
                         
                     }
                     
                     
+                    if self.ctr.isLinkedView == false && self.windowCtr.windowCount > 1 {
+                        //let _ = print(self.windowCtr.windowListPosCenter.count)
+                        
+
+                        // ---------------------------
+                        // 矢印
+                        MathSubjectLinkArrowView(position: CGPoint(x: MathSubjectController.ElementWidth/2, y: MathSubjectController.ElementHeight/2),
+                                                 controller: self.ctr,
+                                                 windowCtr: self.windowCtr,
+                                                 opacity: 1.0)
+                    
+
+                    }
                     
                 }
                 .frame(width: MathSubjectController.ElementWidth, height: MathSubjectController.ElementHeight)
@@ -180,7 +197,7 @@ struct MathSubjectCreatePageView: View {
             
 
             if self.ctr.isEditMode == true {
-                MathSubjectEditView(controller: self.ctr, synthCtr: self.synthCtr, linkCtr: self.linkCtr)
+                MathSubjectEditView(controller: self.ctr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr)
                     .frame(width: 900)
                     .padding()
             }

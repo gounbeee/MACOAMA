@@ -14,6 +14,7 @@ struct MathSubjectView: View {
     @ObservedObject var controller : MathSubjectController
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var linkCtr : MathSubjectLinkController
+    @ObservedObject var windowCtr : MathSubjectWindowController
     
 
     var jsonText : String = "Initial"
@@ -24,6 +25,7 @@ struct MathSubjectView: View {
         MathSubjectCreatePageView(controller: self.controller,
                                   synthCtr: self.synthCtr,
                                   linkCtr: self.linkCtr,
+                                  windowCtr: self.windowCtr,
                                   isSubjectVisible: true,
                                   isPageVisible: true,
                                   subjectSpecified: nil)

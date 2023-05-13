@@ -38,8 +38,14 @@ struct BluetoothMathRouteVM: View {
                 
             } else {
                 
+                Text("""
+                     Bluetoothの使用許可をお願いします。
+                     Bluetooth装置を検索し、COARAMAUSEを選択して下さい。
+                     """)
+                .frame(alignment: .center)
                 
-                Button("端末に繋げてから使用") {
+                
+                Button("Bluetoothで繋げる") {
 
                     self.isBluetoothUsed = true
    
@@ -50,22 +56,22 @@ struct BluetoothMathRouteVM: View {
                 .font(.title)
                 .foregroundColor(.pink)
                 
-
-                Button("端末なしで使用") {
-                    
-                    self.isBluetoothUsed = false
-  
-                }
-                .buttonStyle(.plain)
-                .controlSize(.large)
-                //.frame(width: 800, height: 60)
-                .font(.title)
-                .foregroundColor(.pink)
+//
+//                Button("端末なしで使用") {
+//
+//                    self.isBluetoothUsed = false
+//
+//                }
+//                .buttonStyle(.plain)
+//                .controlSize(.large)
+//                //.frame(width: 800, height: 60)
+//                .font(.title)
+//                .foregroundColor(.pink)
 
             }
         
         }
-        .frame(width: 400, height: 400)
+        .frame(width: 400, height: 300)
         
         
     }

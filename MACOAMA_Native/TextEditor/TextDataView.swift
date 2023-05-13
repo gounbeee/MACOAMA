@@ -19,71 +19,6 @@ import SwiftUI
 
 
 
-// ┌─────────────────────┐
-// │                     │
-// │ CREATING NEW WINDOW │
-// │                     │
-// └─────────────────────┘
-//
-// 新規ウィンドウを生成する
-// https://stackoverflow.com/questions/67344263/swiftui-on-macos-opening-a-new-window
-//
-extension View {
-    
-    
-    // 実際、ウィンドウを生成させる関数
-    private func newWindowInternal(title: String, xPos: Int, yPos: Int, width: Int , height: Int , isCenter: Bool ) -> NSWindow {
-        
-        // NSWindowを使用してウィンドウを作成する。
-        //
-        let window = NSWindow(
-            contentRect: NSRect(x: xPos, y: yPos, width: width, height: height),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-            backing: .buffered,
-            defer: false)
-        
-        // スクリーンの中央にウィンドウを位置させる。
-        if isCenter == true {
-            window.center()
-        }
-        
-        
-        // 閉じられた時、メモリ解放をするかの設定
-        window.isReleasedWhenClosed = false
-        
-        // タイトルの設定
-        window.title = title
-        
-        // このウィンドウを一番前に持ってくるかの設定
-        window.makeKeyAndOrderFront(nil)
-        
-        return window
-        
-    }
-    
-    
-    func openNewWindow(title: String = "new Window", xPos: Int, yPos: Int, width: Int, height: Int, isCenter: Bool) {
-        
-        // NSHostingView オブジェクトを使用
-        // Creates a hosting view object that wraps the specified SwiftUI view.
-        // このオブジェクトは、指定されたSwiftUIのViewをラッピングする、ホスティングViewオブジェクトを生成する。
-        self.newWindowInternal(title: title, xPos: xPos, yPos: yPos, width: width, height: height, isCenter: isCenter).contentView = NSHostingView(rootView: self)
-        
-    }
-}
-
-class NewWindow : ObservableObject {
-    
-    @Published var newWindowWidth : Int
-    @Published var newWindowHeight : Int
-    
-    init(newWindowWidth: Int, newWindowHeight: Int) {
-        self.newWindowWidth = newWindowWidth
-        self.newWindowHeight = newWindowHeight
-    }
-    
-}
-
 // JSONのテキストを確認するview
 struct TextDataView: View {
     //@AppStorage("fontsize") var fontSize = Int(NSFont.systemFontSize)
@@ -111,6 +46,10 @@ struct TextDataView: View {
     //@State private var renderingView = false
     
 
+    var mathWindowCtr : MathSubjectWindowController = MathSubjectWindowController()
+    
+    
+    
     var body: some View {
         
         // 表示しようとするテキストのデータが存在するならば、
@@ -145,13 +84,15 @@ struct TextDataView: View {
                         
                         MathSubjectRootView(jsonText: content,
                                         newWindowWidth: $newWindowWidth,
-                                        newWindowHeight: $newWindowHeight)
+                                        newWindowHeight: $newWindowHeight,
+                                        windowCtr: self.mathWindowCtr)
                             .openNewWindow( title: "教材作成",
-                                            xPos: 20,
-                                            yPos: 20,
+                                            xPos: 0,
+                                            yPos: 0,
                                             width: Int(MathSubjectController.ElementWidth),
                                             height: Int(MathSubjectController.ElementHeight),
-                                            isCenter: true)
+                                            isCenter: true,
+                                            windowCtr: self.mathWindowCtr)
                         
   
                         

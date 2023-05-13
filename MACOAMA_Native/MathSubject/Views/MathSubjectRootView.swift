@@ -20,6 +20,7 @@ struct MathSubjectRootView: View {
     @ObservedObject private var synthCtr : SynthController = SynthController()
     @ObservedObject var mathSbjCtr = MathSubjectController()
     @ObservedObject var linkCtr = MathSubjectLinkController()
+    @ObservedObject var windowCtr : MathSubjectWindowController
     
     
     var jsonText : String = "Initial"
@@ -30,7 +31,7 @@ struct MathSubjectRootView: View {
     
     
     
-    init(jsonText: String, newWindowWidth : Binding<String>, newWindowHeight: Binding<String>) {
+    init(jsonText: String, newWindowWidth : Binding<String>, newWindowHeight: Binding<String>, windowCtr: MathSubjectWindowController) {
         
 
         self.jsonText = jsonText
@@ -39,6 +40,8 @@ struct MathSubjectRootView: View {
         // https://stackoverflow.com/questions/56973959/swiftui-how-to-implement-a-custom-init-with-binding-variables
         self._newWindowWidth = newWindowWidth
         self._newWindowHeight = newWindowHeight
+        
+        self.windowCtr = windowCtr
         
         // コントローラーをセットアップ
         mathSbjCtr.jsonText = jsonText
@@ -67,7 +70,8 @@ struct MathSubjectRootView: View {
                                 yPos: 0,
                                 width: 400,
                                 height: 400,
-                                isCenter: true)
+                                isCenter: true,
+                                windowCtr: self.windowCtr)
             
         }
         .buttonStyle(.plain)
@@ -76,7 +80,7 @@ struct MathSubjectRootView: View {
         .padding(EdgeInsets(top: 15.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
         
         
-        MathSubjectView(controller: self.mathSbjCtr, synthCtr: self.synthCtr, linkCtr: self.linkCtr)
+        MathSubjectView(controller: self.mathSbjCtr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr)
         
 
         

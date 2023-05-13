@@ -17,13 +17,15 @@ struct MathSubjectLinkView: View {
     @ObservedObject var controller : MathSubjectController
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var linkCtr : MathSubjectLinkController
+    @ObservedObject var windowCtr : MathSubjectWindowController
  
-    init(windowWidth: Int, windowHeight: Int, controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController) {
+    init(windowWidth: Int, windowHeight: Int, controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController) {
         self.windowWidth = windowWidth
         self.windowHeight = windowHeight
         self.controller = controller
         self.synthCtr = synthCtr
         self.linkCtr = linkCtr
+        self.windowCtr = windowCtr
         
         // 同じ教材ウィンドウを表示するが、ここではクリックで新規教材を開くことはできなくさせたい。
         self.controller.isLinkedView = true
@@ -37,17 +39,21 @@ struct MathSubjectLinkView: View {
     var body: some View {
         
         HStack (alignment: .top) {
-            
-            
-            MathSubjectCreatePageView(controller: self.controller,
-                                      synthCtr: self.synthCtr,
-                                      linkCtr: self.linkCtr,
-                                      isSubjectVisible: false,
-                                      isPageVisible: true,
-                                      subjectSpecified: self.linkCtr.subjectNo)
+            ZStack {
+                
+                MathSubjectCreatePageView(controller: self.controller,
+                                          synthCtr: self.synthCtr,
+                                          linkCtr: self.linkCtr,
+                                          windowCtr: self.windowCtr,
+                                          isSubjectVisible: false,
+                                          isPageVisible: true,
+                                          subjectSpecified: self.linkCtr.subjectNo)
                 .scaleEffect(x: 0.5, y: 0.5)
                 .frame(width: Double(self.windowWidth), height: Double(self.windowHeight))
-
+                
+                
+                
+            }
         }
    
     }
