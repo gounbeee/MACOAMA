@@ -130,7 +130,12 @@ struct MathSubjectEditExportView: View {
                     newController.parseJson()
 
                     // 新規Viewを作成
-                    let viewToAdded = MathSubjectCreatePageView(controller: newController, synthCtr: self.synthCtr, linkCtr: self.linkCtr)
+                    let viewToAdded = MathSubjectCreatePageView(controller: newController,
+                                                                synthCtr: self.synthCtr,
+                                                                linkCtr: self.linkCtr,
+                                                                isSubjectVisible: false,
+                                                                isPageVisible: false,
+                                                                subjectSpecified: nil)
                     // LISTに追加
                     allViewsToExport.append( AnyView(viewToAdded) )
 

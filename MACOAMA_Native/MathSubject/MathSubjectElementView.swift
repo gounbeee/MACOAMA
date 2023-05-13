@@ -14,6 +14,7 @@ struct MathSubjectElementView: View {
     
     
     @ObservedObject var ctr : MathSubjectController
+    // このオブジェクトで主に必要になる要素のコントローラーは、各々の要素が別々のコントローラを持つべきだ。
     @ObservedObject var elmCtr : MathSubjectElementController
     @ObservedObject var synthCtr : SynthController
 
@@ -30,19 +31,18 @@ struct MathSubjectElementView: View {
     
     
     
-    init(controller: MathSubjectController, elmController: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController) {
+    //init(controller: MathSubjectController, elmController: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController) {
+    init(controller: MathSubjectController, elmCtr: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController) {
         self.ctr = controller
+        self.elmCtr = elmCtr
         self.synthCtr = synthCtr
         
         //self.elemIndex = elemIndex
         self.sbjNo = controller.subjectNo
         self.pgNo = controller.pageNo
         
-        // エレメントのコントロールのエレメント本体は差し替え
-        self.elmCtr = elmController
-        self.elmCtr.element = elementInfo
-        
-        controller.elmCtr = elmController
+        // エレメントコントロールのエレメント本体は差し替え
+        self.elmCtr.updateElement(elemObj: elementInfo)
         
         // シンセ用コントローラで音を切る
         self.synthCtr.setPlaybackStateTo(false)
@@ -148,7 +148,7 @@ struct MathSubjectElementView: View {
                         self.elmCtr.differPos.x = 0
                         self.elmCtr.differPos.y = 0
                         
-                        self.ctr.elmCtr!.isSelected = false
+                        self.elmCtr.isSelected = false
                         // JSON 更新とView更新を誘発
                         self.ctr.updateJsonAndReload()
                         
@@ -157,28 +157,47 @@ struct MathSubjectElementView: View {
                         self.synthCtr.waveType = Double.random(in: 0...4).rounded()
                         
                         
-                        let newController = MathSubjectController()
-                        let newSynthCtr = SynthController()
-                        let linkCtr = MathSubjectLinkController()
-                        
-                        // 新しいコントローラに、既存のJSONデータを引き継がせる必要がある
-                        newController.jsonText = self.ctr.jsonText
-                        newController.parseJson()
-                        
-                        
-                        MathSubjectLinkView(windowWidth: linkCtr.wndWidth,
-                                            windowHeight: linkCtr.wndHeight+50,
-                                            controller: newController,
-                                            synthCtr: newSynthCtr,
-                                            linkCtr: linkCtr).padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
-                            .openNewWindow( title: "リンクVIEW",
-                                            xPos: Int(linkCtr.wndXPos),
-                                            yPos: Int(linkCtr.wndYPos),
-                                            width: linkCtr.wndWidth,
-                                            height: linkCtr.wndHeight+50,
-                                            isCenter: false)
-                        
-                        
+                        if self.ctr.isLinkedView == false {
+                            
+                            // 要素コントローラで、リンク情報を整える
+                            if let linkedSbj = self.elmCtr.parseLinkString() {
+                                // リンク教材を新規ウィンドウで表示
+                                let newController = MathSubjectController()
+                                let newSynthCtr = SynthController()
+                                let linkCtr = MathSubjectLinkController()
+                                
+                                linkCtr.subjectNo = linkedSbj
+                                
+                                // 新しいコントローラに、既存のJSONデータを引き継がせる必要がある
+                                newController.jsonText = self.ctr.jsonText
+                                
+                                // 新しいコントローラの教材番号は、リンクされた教材番号になる必要がある
+                                newController.subjectNo = linkedSbj
+                                // リンク教材のページは初期化で良い
+                                newController.pageNo = 0
+                                
+                                // JSONオブジェクトに変換
+                                newController.parseJson()
+                                
+                                                                
+                                
+                                MathSubjectLinkView(windowWidth: linkCtr.wndWidth,
+                                                    windowHeight: linkCtr.wndHeight+50,
+                                                    controller: newController,
+                                                    synthCtr: newSynthCtr,
+                                                    linkCtr: linkCtr).padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
+                                    .openNewWindow( title: "リンクVIEW",
+                                                    xPos: Int(linkCtr.wndXPos),
+                                                    yPos: Int(linkCtr.wndYPos),
+                                                    width: linkCtr.wndWidth,
+                                                    height: linkCtr.wndHeight+50,
+                                                    isCenter: false)
+                                
+                            }
+                            
+ 
+                        }
+
                     }
                 
             )
@@ -197,7 +216,7 @@ struct MathSubjectElementView: View {
                 withTimeInterval: 0.02,
                 repeats: true
             ) { _ in
-                print("実行しました  --  \(cnt)")
+                //print("実行しました  --  \(cnt)")
                 cnt += 1
                 
                 if self.isSoundPlaying == true {

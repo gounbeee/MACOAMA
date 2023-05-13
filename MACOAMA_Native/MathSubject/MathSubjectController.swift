@@ -26,18 +26,25 @@ class MathSubjectController : ObservableObject {
     @Published var currentWindowWidthStr : String = String(MathSubjectController.ElementWidth)
     @Published var currentWindowHeightStr : String = String(MathSubjectController.ElementHeight)
     
-    @Published var subjectNo: Int = 0
-    @Published var pageNo: Int = 0
+    var subjectNo: Int = 0
+    var pageNo: Int = 0
     
     // 開発用画面表示の有無
     var isEditMode = false
  
-    public var elmCtr : MathSubjectElementController? = nil
-    
     // ページがレンダリングされると、保存のためこちらに入れておく
     public var parsedView : MathSubjectCreatePageView? = nil
     
     @Published var pageNumInSubject: Int = 0
+    
+    // ページ移動用のコントローラの表示有無
+    @Published var isSubjectVisible : Bool = true
+    @Published var isPageVisible : Bool = true
+    
+    
+    var isLinkedView : Bool = false
+    
+
     
     
     func addNewSubject() {

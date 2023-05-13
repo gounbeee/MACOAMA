@@ -16,6 +16,11 @@ struct MathSubjectCreatePageView: View {
     @ObservedObject var linkCtr : MathSubjectLinkController
     
     
+    var isSubjectVisible : Bool = true
+    var isPageVisible : Bool = true
+    
+    // もし教材番号が振られてきたなら、こちらの教材をロードする
+    var subjectSpecified : Int? = nil
     
     // メモリアドレスを調べる
     // https://forums.swift.org/t/memory-address-of-value-types-and-reference-types/6637
@@ -23,15 +28,29 @@ struct MathSubjectCreatePageView: View {
     // 画面サイズを取得する
     // https://stackoverflow.com/questions/24110762/swift-determine-ios-screen-size
     // let screenSize: CGRect = UIScreen.main.bounds
+    
+    var subjectNo : Int = 0
 
     
-    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController) {
+    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, isSubjectVisible: Bool, isPageVisible: Bool, subjectSpecified: Int?) {
         self.ctr = controller
         self.synthCtr = synthCtr
         self.linkCtr = linkCtr
         
+        self.isSubjectVisible = isSubjectVisible
+        self.isPageVisible = isPageVisible
+        
         self.ctr.parsedView = self
         
+        // このオブジェクト固有の値として教材番号を扱う
+        // そうしないと、コントローラのプロパティを更新することになり、無限ループでView更新をし続けることになる。
+        self.subjectNo = self.ctr.subjectNo
+        
+        if let sbjSpecf = subjectSpecified {
+            
+            self.subjectSpecified = sbjSpecf
+            self.subjectNo = sbjSpecf
+        }
 
     }
 
@@ -42,15 +61,17 @@ struct MathSubjectCreatePageView: View {
             
             VStack {
                 
-                MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil)
                 
+                MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible)
+
                 
             
                 ZStack (alignment: .topLeading) {
                     
                     //let _ = print( page )
                     
-                    let subject = self.ctr.jsonObj!.subjects[self.ctr.subjectNo]
+                    // 固有のインスタンスプロパティとして教材番号を使用している。
+                    let subject = self.ctr.jsonObj!.subjects[self.subjectNo]
                     
                     // BG
                     Color
@@ -122,7 +143,7 @@ struct MathSubjectCreatePageView: View {
                         // Viewは、基本的に文脈維持のためControllerを食う
                         let elmCtr : MathSubjectElementController = MathSubjectElementController()
                         
-                        MathSubjectElementView(controller: self.ctr, elmController: elmCtr, elementInfo: elemInfo, synthCtr: self.synthCtr)
+                        MathSubjectElementView(controller: self.ctr, elmCtr: elmCtr, elementInfo: elemInfo, synthCtr: self.synthCtr)
                         
                     }
                     

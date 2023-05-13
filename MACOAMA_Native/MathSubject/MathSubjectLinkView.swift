@@ -18,21 +18,37 @@ struct MathSubjectLinkView: View {
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var linkCtr : MathSubjectLinkController
  
+    init(windowWidth: Int, windowHeight: Int, controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController) {
+        self.windowWidth = windowWidth
+        self.windowHeight = windowHeight
+        self.controller = controller
+        self.synthCtr = synthCtr
+        self.linkCtr = linkCtr
+        
+        // 同じ教材ウィンドウを表示するが、ここではクリックで新規教材を開くことはできなくさせたい。
+        self.controller.isLinkedView = true
+        
+        
+        print(self.controller.subjectNo)
+        
+    }
+    
     
     var body: some View {
         
         HStack (alignment: .top) {
             
             
-            MathSubjectCreatePageView(controller: self.controller, synthCtr: self.synthCtr, linkCtr: self.linkCtr)
+            MathSubjectCreatePageView(controller: self.controller,
+                                      synthCtr: self.synthCtr,
+                                      linkCtr: self.linkCtr,
+                                      isSubjectVisible: false,
+                                      isPageVisible: true,
+                                      subjectSpecified: self.linkCtr.subjectNo)
                 .scaleEffect(x: 0.5, y: 0.5)
                 .frame(width: Double(self.windowWidth), height: Double(self.windowHeight))
                 
-                
-            
-            
-            
-            
+    
         }
         
         

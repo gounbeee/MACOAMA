@@ -48,7 +48,7 @@ struct MathSubjectRootView: View {
         mathSbjCtr.currentWindowHeightStr = self.newWindowHeight
         
         // ここでデバックモードを切り替えている
-        mathSbjCtr.isEditMode = true
+        mathSbjCtr.isEditMode = false
     }
     
     

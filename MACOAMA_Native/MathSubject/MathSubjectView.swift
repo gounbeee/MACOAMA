@@ -21,7 +21,12 @@ struct MathSubjectView: View {
 
     var body: some View {
 
-            MathSubjectCreatePageView(controller: self.controller, synthCtr: self.synthCtr, linkCtr: self.linkCtr)
+        MathSubjectCreatePageView(controller: self.controller,
+                                  synthCtr: self.synthCtr,
+                                  linkCtr: self.linkCtr,
+                                  isSubjectVisible: true,
+                                  isPageVisible: true,
+                                  subjectSpecified: nil)
    
     }
 
