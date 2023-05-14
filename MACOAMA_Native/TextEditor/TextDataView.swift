@@ -68,7 +68,28 @@ struct TextDataView: View {
                     Text("イメージの大きさ")
                     HStack {
                         TextField("イメージ幅", text: $newWindowWidth)
+                            .onChange(of: newWindowWidth) { newValue in
+                                
+                                if newValue != "" && newValue.isNumber {
+                                    MathSubjectController.ElementWidth = self.checkWidthValue(input:Double(newValue)!)
+                                }
+                                
+                            }
+                            .onAppear {
+                                self.newWindowWidth = String(MathSubjectController.ElementWidth)
+                            }
+                        
                         TextField("イメージ高さ", text: $newWindowHeight)
+                            .onChange(of: newWindowHeight) { newValue in
+                                
+                                if newValue != "" && newValue.isNumber {
+                                    MathSubjectController.ElementHeight = self.checkHeightValue(input:Double(newValue)!)
+                                }
+                                
+                            }
+                            .onAppear {
+                                self.newWindowHeight = String(MathSubjectController.ElementHeight)
+                            }
                     }
                         
                     
@@ -225,10 +246,10 @@ struct TextDataView: View {
                             
                         }
                         .buttonStyle(.plain)
-                        .confirmationDialog("delete_question",
+                        .confirmationDialog("削除しますか？",
                                             isPresented: $shouldPresentConfirm) {
                             
-                            Button("delete_confirm", role: .destructive) {
+                            Button("削除する", role: .destructive) {
                                 PersistenceController.shared.deleteTextData(
                                     textData: textData)
                                 
@@ -258,6 +279,41 @@ struct TextDataView: View {
         
     }
     
+    
+    
+    func checkWidthValue(input: Double) -> Double {
+        
+        var result : Double = input
+        
+        if result > MathSubjectController.ElementWidthLimit {
+            result = MathSubjectController.ElementWidthLimit
+            
+        } else if result < 5.0 {
+            
+            result = 5.0
+        }
+        
+        return result
+        
+    }
+    
+    
+    
+    func checkHeightValue(input: Double) -> Double {
+        
+        var result : Double = input
+        
+        if result > MathSubjectController.ElementHeightLimit {
+            result = MathSubjectController.ElementHeightLimit
+            
+        } else if result < 5.0 {
+            
+            result = 5.0
+        }
+        
+        return result
+        
+    }
     
 }
 

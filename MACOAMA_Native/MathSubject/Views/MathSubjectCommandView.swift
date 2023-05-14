@@ -18,6 +18,8 @@ struct MathSubjectCommandView: View {
     @State var isSubjectVisible : Bool = true
     @State var isPageVisible : Bool = true
     
+    @ObservedObject var synthCtr : SynthController
+    
     
     var body: some View {
         
@@ -25,7 +27,7 @@ struct MathSubjectCommandView: View {
             
             if self.isSubjectVisible == true {
                 
-                MusicPlayView()
+                MusicPlayView(synthCtr: self.synthCtr)
                 
                 HStack {
                     

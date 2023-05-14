@@ -52,7 +52,6 @@
 		58AFF8872A0F91D5002CC99D /* MathSubjectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8862A0F91D5002CC99D /* MathSubjectWindowController.swift */; };
 		58AFF8C22A0FD349002CC99D /* 01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 58AFF8C12A0FD349002CC99D /* 01.mp3 */; };
 		58AFF8C52A0FD38C002CC99D /* MusicPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8C42A0FD38C002CC99D /* MusicPlayView.swift */; };
-		58AFF8C72A0FD39D002CC99D /* MusicPlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8C62A0FD39D002CC99D /* MusicPlayController.swift */; };
 		58AFF8C92A0FDA4C002CC99D /* MusicVolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8C82A0FDA4C002CC99D /* MusicVolumeSlider.swift */; };
 		58AFF8CB2A0FDA99002CC99D /* MusicCustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8CA2A0FDA99002CC99D /* MusicCustomSlider.swift */; };
 		58AFF8CD2A0FDAF1002CC99D /* MusicVerticalVolSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8CC2A0FDAF1002CC99D /* MusicVerticalVolSlider.swift */; };
@@ -115,7 +114,6 @@
 		58AFF8862A0F91D5002CC99D /* MathSubjectWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectWindowController.swift; sourceTree = "<group>"; };
 		58AFF8C12A0FD349002CC99D /* 01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 01.mp3; sourceTree = "<group>"; };
 		58AFF8C42A0FD38C002CC99D /* MusicPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayView.swift; sourceTree = "<group>"; };
-		58AFF8C62A0FD39D002CC99D /* MusicPlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayController.swift; sourceTree = "<group>"; };
 		58AFF8C82A0FDA4C002CC99D /* MusicVolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVolumeSlider.swift; sourceTree = "<group>"; };
 		58AFF8CA2A0FDA99002CC99D /* MusicCustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCustomSlider.swift; sourceTree = "<group>"; };
 		58AFF8CC2A0FDAF1002CC99D /* MusicVerticalVolSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVerticalVolSlider.swift; sourceTree = "<group>"; };
@@ -317,7 +315,6 @@
 			isa = PBXGroup;
 			children = (
 				58AFF8C42A0FD38C002CC99D /* MusicPlayView.swift */,
-				58AFF8C62A0FD39D002CC99D /* MusicPlayController.swift */,
 				58AFF8C82A0FDA4C002CC99D /* MusicVolumeSlider.swift */,
 				58AFF8CA2A0FDA99002CC99D /* MusicCustomSlider.swift */,
 				58AFF8CC2A0FDAF1002CC99D /* MusicVerticalVolSlider.swift */,
@@ -454,7 +451,6 @@
 				58AFF8802A0E8F4D002CC99D /* MainIntroVM.swift in Sources */,
 				582ECCDE2A0C8DCC00E0596B /* Oscillator.swift in Sources */,
 				58D0BFB32A0DEEAA0021F52D /* MathSubjectLinkController.swift in Sources */,
-				58AFF8C72A0FD39D002CC99D /* MusicPlayController.swift in Sources */,
 				58D4B60C29F8404B00274444 /* MathSubjectModel.swift in Sources */,
 				58AFF8CF2A0FDB20002CC99D /* MusicProgressSlider.swift in Sources */,
 				58AFF8CD2A0FDAF1002CC99D /* MusicVerticalVolSlider.swift in Sources */,

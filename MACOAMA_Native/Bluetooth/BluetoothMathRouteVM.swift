@@ -32,7 +32,7 @@ struct BluetoothMathRouteVM: View {
 
                 } else if isBluetoothUsed == false {
                     
-                    MathSubjectCommandView(ctr: self.mathSbjCtr, bluetoothCtr: self.bleControls)
+                    MathSubjectCommandView(ctr: self.mathSbjCtr, bluetoothCtr: self.bleControls, synthCtr: self.synthCtr)
                         .frame(alignment: .leading)
                 }
                 

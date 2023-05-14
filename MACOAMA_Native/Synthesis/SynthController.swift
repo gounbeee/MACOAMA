@@ -22,11 +22,11 @@ import SwiftUI
 class SynthController: ObservableObject {
     
     
-    var synthModel : SynthModel = SynthModel(frequency: 0.0, amplitude: 0.0, waveType: 0)
+    var synthModel : SynthModel = SynthModel(frequency: 0.0, amplitude: 0.3, waveType: 0)
     
 
     @Published var frequency : Double = 0.0
-    @Published var amplitude : Double = 0.0
+    @Published var amplitude : Double = 0.3
     @Published var waveType : Double = 0.0
 
     

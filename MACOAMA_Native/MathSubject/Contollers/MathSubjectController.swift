@@ -11,9 +11,11 @@ import SwiftUI
 
 class MathSubjectController : ObservableObject {
     
-    static let ElementWidth : Double = 480
-    static let ElementHeight : Double = 640
+    static var ElementWidth : Double = 480
+    static var ElementHeight : Double = 640
     
+    static var ElementWidthLimit : Double = 1920
+    static var ElementHeightLimit : Double = 1920
     
     @Published var subjectNumAll: Int = 0
 

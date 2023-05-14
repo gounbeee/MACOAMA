@@ -66,9 +66,9 @@ struct MathSubjectCreatePageView: View {
  
                 // もしリンクされた教材なら、コントローラは２倍の大きさにする必要がある
                 if self.ctr.isLinkedView == false {
-                    MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible)
+                    MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible, synthCtr: self.synthCtr)
                 } else {
-                    MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible)
+                    MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible, synthCtr: self.synthCtr)
                         .scaleEffect(x: 2.0, y: 2.0)
                 }
 

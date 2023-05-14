@@ -23,10 +23,20 @@ struct MusicPlayView: View {
     @State private var sliderValue: Double = 10
     private var maxSliderValue: Double = 100
     
-    @State private var color: Color = .white
+    @State private var color: Color = .accentColor
     
     private var normalFillColor: Color { color.opacity(0.5) }
     private var emptyColor: Color { color.opacity(0.3) }
+    
+    @ObservedObject var synthCtr : SynthController
+    
+    
+    init(synthCtr: SynthController) {
+        
+        self.synthCtr = synthCtr
+        
+    }
+    
     
     
     var body: some View {
@@ -81,7 +91,9 @@ struct MusicPlayView: View {
                     
                     print(started)
                     print(self.volume)
+                    
                     self.audioPlayer.volume = Float(self.volume)
+                    self.synthCtr.amplitude = self.volume
                     
                 }
                 .frame(height: 20)
