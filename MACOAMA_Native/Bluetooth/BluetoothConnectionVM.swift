@@ -24,7 +24,7 @@ struct BluetoothScanButtonVM: View {
     
     var body: some View {
         
-        MainIntroVM().padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
+        //MainIntroVM().padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
         
         
         Button(isScanning ? "STOP SCANNING" : "スキャンを開始") {
