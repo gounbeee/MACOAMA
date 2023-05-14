@@ -123,7 +123,14 @@ extension View {
     }
     
     
-    func openNewWindow(title: String = "new Window", xPos: Int, yPos: Int, width: Int, height: Int, isCenter: Bool, windowCtr: MathSubjectWindowController) {
+    // この関数を、Viewを返すようにすることでView ModelファイルのBodyで、条件次第でこちらの関数を実行して終われるようになる。
+    // なぜなら、View構造体のBodyでは、もしIf文を使うなら、「同じタイプのView」オブジェクトを返す必要があるからである。
+    func openNewWindow(title: String = "new Window",
+                       xPos: Int, yPos: Int,
+                       width: Int, height: Int,
+                       isCenter: Bool,
+                       windowCtr: MathSubjectWindowController,
+                       view: AnyView?) -> AnyView? {
         
         // NSHostingView オブジェクトを使用
         // Creates a hosting view object that wraps the specified SwiftUI view.
@@ -133,7 +140,14 @@ extension View {
         
         windowCtr.addWindowToList(window: newWindow)
         
+                
+        if view != nil {
+            return view
+        } else {
+            return nil
+        }
         
+            
     }
 }
 
@@ -154,3 +168,15 @@ class NewWindow : ObservableObject {
     
 }
 
+
+
+
+extension Scene {
+    func windowResizabilityContentSize() -> some Scene {
+        if #available(macOS 13.0, *) {
+            return windowResizability(.contentSize)
+        } else {
+            return self
+        }
+    }
+}

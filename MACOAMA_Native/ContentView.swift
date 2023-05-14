@@ -18,35 +18,79 @@ struct ContentView: View {
         animation: .default)
     
     private var allTextData: FetchedResults<TextData>
+
+    
+    @Binding var isEditMode : Bool
+    @ObservedObject var mathWindowCtr : MathSubjectWindowController
+    @Binding var newWindowWidth: String
+    @Binding var newWindowHeight: String
+ 
+    
     
     
     var body: some View {
         
-        
-        NavigationView {
+        if self.isEditMode == true {
             
-            
-            List {
-                
-                ForEach(allTextData) { textData in
-                                        
-                    TextDataView(textData: textData)
-                    
-                }
-                
-            }
-            .toolbar {
-                
-                ToolbarItem {
-                    Button(action: PersistenceController.shared.addTextData) {
-                        Label("Add Item", systemImage: "plus")
+            VStack {
+
+                NavigationView {
+
+                    List {
+
+                        ForEach(allTextData) { textData in
+
+                            TextDataView(textData: textData,
+                                         mathWindowCtr: self.mathWindowCtr,
+                                         newWindowWidth: self.$newWindowWidth,
+                                         newWindowHeight: self.$newWindowHeight,
+                                         isEditMode: self.$isEditMode)
+
+                        }
+
                     }
+                    .toolbar {
+
+                        ToolbarItem {
+                            Button(action: PersistenceController.shared.addTextData) {
+                                Label("Add Item", systemImage: "plus")
+                            }
+                        }
+
+                    }
+                    Text("JSONテキストを選択して下さい")
                 }
                 
-                
+  
             }
-            Text("JSONテキストを選択して下さい")
+            
+        } else {
+            
+            
+            MainIntroVM()
+                .frame(minWidth: 300, idealWidth: 300, maxWidth: 300,
+                       minHeight: 100, idealHeight: 100, maxHeight: 100,
+                       alignment: .center)
+            
+            
+            MathSubjectRootView(jsonText: allTextData[allTextData.count-1].content!,
+                                newWindowWidth: $newWindowWidth,
+                                newWindowHeight: $newWindowHeight,
+                                windowCtr: self.mathWindowCtr,
+                                isEditMode: self.isEditMode)
+                .openNewWindow( title: "COARAMAUSE教材",
+                                xPos: 0,
+                                yPos: 0,
+                                width: Int(MathSubjectController.ElementWidth),
+                                height: Int(MathSubjectController.ElementHeight),
+                                isCenter: true,
+                                windowCtr: self.mathWindowCtr,
+                                view: nil)
+    
+            
+            
         }
+   
     }
     
 }
@@ -66,10 +110,3 @@ private let itemFormatter: DateFormatter = {
 }()
 
 
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}

@@ -214,7 +214,6 @@
 		585B18F22A0D1AE300BD404A /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				58AFF87F2A0E8F4D002CC99D /* MainIntroVM.swift */,
 				582ECCD52A0C7E4600E0596B /* BluetoothMathRouteVM.swift */,
 				580AB7972A0BE59F00C5A63E /* BluetoothConnectionVM.swift */,
 				580AB7992A0BE5C200C5A63E /* BluetoothController.swift */,
@@ -243,6 +242,7 @@
 				582ECCD72A0C8D5B00E0596B /* Synthesis */,
 				580AB79D2A0BEF6500C5A63E /* MACOAMA_NativeRelease.entitlements */,
 				5877EB0C29F8321000EC71EE /* MACOAMA_NativeApp.swift */,
+				58AFF87F2A0E8F4D002CC99D /* MainIntroVM.swift */,
 				5809AB7A2A02A6590083882F /* Extensions.swift */,
 				5877EB0E29F8321000EC71EE /* ContentView.swift */,
 				5877EB1029F8321000EC71EE /* Assets.xcassets */,

@@ -202,7 +202,8 @@ struct MathSubjectElementView: View {
                                                     width: linkCtr.wndWidth,
                                                     height: linkCtr.wndHeight+50,
                                                     isCenter: false,
-                                                    windowCtr: self.windowCtr)
+                                                    windowCtr: self.windowCtr,
+                                                    view: nil)
                                 
                                 
                                 

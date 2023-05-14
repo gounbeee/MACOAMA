@@ -28,10 +28,11 @@ struct MathSubjectRootView: View {
     @Binding var newWindowWidth : String
     @Binding var newWindowHeight : String
     
+    var isEditMode : Bool
     
     
     
-    init(jsonText: String, newWindowWidth : Binding<String>, newWindowHeight: Binding<String>, windowCtr: MathSubjectWindowController) {
+    init(jsonText: String, newWindowWidth : Binding<String>, newWindowHeight: Binding<String>, windowCtr: MathSubjectWindowController, isEditMode: Bool) {
         
 
         self.jsonText = jsonText
@@ -42,6 +43,8 @@ struct MathSubjectRootView: View {
         self._newWindowHeight = newWindowHeight
         
         self.windowCtr = windowCtr
+        self.isEditMode = isEditMode
+        
         
         // コントローラーをセットアップ
         mathSbjCtr.jsonText = jsonText
@@ -50,8 +53,8 @@ struct MathSubjectRootView: View {
         mathSbjCtr.currentWindowWidthStr = self.newWindowWidth
         mathSbjCtr.currentWindowHeightStr = self.newWindowHeight
         
-        // ここでデバックモードを切り替えている
-        mathSbjCtr.isEditMode = false
+        self.mathSbjCtr.isEditMode = isEditMode
+        
     }
     
     
@@ -72,7 +75,8 @@ struct MathSubjectRootView: View {
                                 width: 400,
                                 height: 400,
                                 isCenter: true,
-                                windowCtr: self.windowCtr)
+                                windowCtr: self.windowCtr,
+                                view: nil)
             
         }) {
             

@@ -14,11 +14,36 @@ struct MACOAMA_NativeApp: App {
     // Staticを使用し、SINGLETON として実装されている。
     let persistenceController = PersistenceController.shared
 
+    
+    
+    @State var isEditMode : Bool = false
+    
+    
+    
+    var mathWindowCtr : MathSubjectWindowController = MathSubjectWindowController()
+    @State private var newWindowWidth: String = String(MathSubjectController.ElementWidth)
+    @State private var newWindowHeight: String = String(MathSubjectController.ElementHeight)
+
+    
+    
     var body: some Scene {
+        
+        
         WindowGroup {
-            ContentView()
+            
+            
+            ContentView(isEditMode: self.$isEditMode,
+                        mathWindowCtr: self.mathWindowCtr,
+                        newWindowWidth: self.$newWindowWidth,
+                        newWindowHeight: self.$newWindowHeight)
+
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            
+
         }
+        // ウィンドウのサイズを固定させる
+        // https://developer.apple.com/forums/thread/719389
+        .windowResizabilityContentSize()
         
         
     }

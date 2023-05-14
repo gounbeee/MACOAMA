@@ -21,15 +21,11 @@ import SwiftUI
 
 // JSONのテキストを確認するview
 struct TextDataView: View {
-    //@AppStorage("fontsize") var fontSize = Int(NSFont.systemFontSize)
-    
+
     @AppStorage("fontsize") var fontSize = 22
     
     @Environment(\.openWindow) var openWindow
-    
-    //@State private var language = CodeEditor.Language.swift
-    //@State private var theme    = CodeEditor.ThemeName.pojoaque
-    
+
     @ObservedObject var textData: TextData
     
     @State private var titleInput: String = ""
@@ -38,15 +34,20 @@ struct TextDataView: View {
     @State private var shouldShowDeleteButton: Bool = false
     @State private var shouldPresentConfirm: Bool = false
     
-    @State private var newWindowWidth: String = String(MathSubjectController.ElementWidth)
-    @State private var newWindowHeight: String = String(MathSubjectController.ElementHeight)
-    
-    
+
     // TEXT をもとに、VIEWをレンダリングするか否かのフラグ
     //@State private var renderingView = false
     
+    @ObservedObject var mathWindowCtr: MathSubjectWindowController
+    
+    
+    //State private var newWindowWidth: String = String(MathSubjectController.ElementWidth)
+    //State private var newWindowHeight: String = String(MathSubjectController.ElementHeight)
 
-    var mathWindowCtr : MathSubjectWindowController = MathSubjectWindowController()
+    @Binding var newWindowWidth: String
+    @Binding var newWindowHeight: String
+    
+    @Binding var isEditMode : Bool
     
     
     
@@ -106,14 +107,16 @@ struct TextDataView: View {
                         MathSubjectRootView(jsonText: content,
                                         newWindowWidth: $newWindowWidth,
                                         newWindowHeight: $newWindowHeight,
-                                        windowCtr: self.mathWindowCtr)
+                                        windowCtr: self.mathWindowCtr,
+                                        isEditMode: self.isEditMode)
                             .openNewWindow( title: "教材作成",
                                             xPos: 0,
                                             yPos: 0,
                                             width: Int(MathSubjectController.ElementWidth),
                                             height: Int(MathSubjectController.ElementHeight),
                                             isCenter: true,
-                                            windowCtr: self.mathWindowCtr)
+                                            windowCtr: self.mathWindowCtr,
+                                            view: nil)
                         
   
                         
