@@ -24,12 +24,15 @@
 		5810388029FC0AE7007A799D /* MathSubjectElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5810387F29FC0AE7007A799D /* MathSubjectElementView.swift */; };
 		581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */; };
 		581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */; };
-		581FAB8F29F6B98000A303A6 /* AsciiMath-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */; };
 		581FAB9229F6D63900A303A6 /* DATA.json in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB9129F6D20200A303A6 /* DATA.json */; };
 		582ECCD62A0C7E4600E0596B /* BluetoothMathRouteVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCD52A0C7E4600E0596B /* BluetoothMathRouteVM.swift */; };
 		582ECCDA2A0C8DA800E0596B /* SynthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCD92A0C8DA800E0596B /* SynthController.swift */; };
 		582ECCDC2A0C8DBB00E0596B /* Synth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCDB2A0C8DBB00E0596B /* Synth.swift */; };
 		582ECCDE2A0C8DCC00E0596B /* Oscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCDD2A0C8DCC00E0596B /* Oscillator.swift */; };
+		5836282A2A11E46A00B6E532 /* GenEiKoburiMin6-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58A9C3D029F5857900238A35 /* GenEiKoburiMin6-R.ttf */; };
+		5836282B2A11E46D00B6E532 /* AsciiMath-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */; };
+		5836282C2A11E47000B6E532 /* GenEiAntiquePv5-M.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 583628252A11E1B600B6E532 /* GenEiAntiquePv5-M.ttf */; };
+		5836282D2A11E47300B6E532 /* GenEiMonoCode-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 583628272A11E37200B6E532 /* GenEiMonoCode-Regular.ttf */; };
 		585B18EF2A0CF69800BD404A /* SynthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585B18EE2A0CF69800BD404A /* SynthVM.swift */; };
 		585B18F12A0CF72300BD404A /* SynthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585B18F02A0CF72300BD404A /* SynthModel.swift */; };
 		585F206329FAC0220002A48E /* BitmapImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585F206229FAC0220002A48E /* BitmapImage.swift */; };
@@ -46,7 +49,6 @@
 		58A9C3BF29F2CBA700238A35 /* TextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3BE29F2CBA700238A35 /* TextDocument.swift */; };
 		58A9C3C529F3DA6800238A35 /* MathSubjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3C429F3DA6800238A35 /* MathSubjectModel.swift */; };
 		58A9C3CD29F4192A00238A35 /* MathSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9C3CC29F4192A00238A35 /* MathSubjectView.swift */; };
-		58A9C3D129F5857900238A35 /* GenEiKoburiMin6-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58A9C3D029F5857900238A35 /* GenEiKoburiMin6-R.ttf */; };
 		58AFF8802A0E8F4D002CC99D /* MainIntroVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF87F2A0E8F4D002CC99D /* MainIntroVM.swift */; };
 		58AFF8852A0F719F002CC99D /* MathSubjectLinkArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8842A0F719F002CC99D /* MathSubjectLinkArrowView.swift */; };
 		58AFF8872A0F91D5002CC99D /* MathSubjectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8862A0F91D5002CC99D /* MathSubjectWindowController.swift */; };
@@ -90,6 +92,9 @@
 		582ECCD92A0C8DA800E0596B /* SynthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthController.swift; sourceTree = "<group>"; };
 		582ECCDB2A0C8DBB00E0596B /* Synth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synth.swift; sourceTree = "<group>"; };
 		582ECCDD2A0C8DCC00E0596B /* Oscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillator.swift; sourceTree = "<group>"; };
+		583628232A114C5C00B6E532 /* COARAMAUSE-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "COARAMAUSE-Info.plist"; sourceTree = "<group>"; };
+		583628252A11E1B600B6E532 /* GenEiAntiquePv5-M.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GenEiAntiquePv5-M.ttf"; sourceTree = "<group>"; };
+		583628272A11E37200B6E532 /* GenEiMonoCode-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GenEiMonoCode-Regular.ttf"; sourceTree = "<group>"; };
 		585B18EE2A0CF69800BD404A /* SynthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthVM.swift; sourceTree = "<group>"; };
 		585B18F02A0CF72300BD404A /* SynthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthModel.swift; sourceTree = "<group>"; };
 		585F206229FAC0220002A48E /* BitmapImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitmapImage.swift; sourceTree = "<group>"; };
@@ -148,6 +153,7 @@
 		5803DAE629F164680033EEC2 = {
 			isa = PBXGroup;
 			children = (
+				583628232A114C5C00B6E532 /* COARAMAUSE-Info.plist */,
 				5803DAF129F164680033EEC2 /* MACOAMA */,
 				5877EB0B29F8321000EC71EE /* MACOAMA_Native */,
 				5803DAF029F164680033EEC2 /* Products */,
@@ -167,8 +173,6 @@
 		5803DAF129F164680033EEC2 /* MACOAMA */ = {
 			isa = PBXGroup;
 			children = (
-				581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */,
-				58A9C3D029F5857900238A35 /* GenEiKoburiMin6-R.ttf */,
 				5803DAF229F164680033EEC2 /* MACOAMAApp.swift */,
 				5803DAF429F164680033EEC2 /* ContentView.swift */,
 				58A9C3BE29F2CBA700238A35 /* TextDocument.swift */,
@@ -211,6 +215,17 @@
 			path = Synthesis;
 			sourceTree = "<group>";
 		};
+		583628262A11E36C00B6E532 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				58A9C3D029F5857900238A35 /* GenEiKoburiMin6-R.ttf */,
+				583628272A11E37200B6E532 /* GenEiMonoCode-Regular.ttf */,
+				583628252A11E1B600B6E532 /* GenEiAntiquePv5-M.ttf */,
+				581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		585B18F22A0D1AE300BD404A /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +249,7 @@
 		5877EB0B29F8321000EC71EE /* MACOAMA_Native */ = {
 			isa = PBXGroup;
 			children = (
+				583628262A11E36C00B6E532 /* Fonts */,
 				58AFF8C32A0FD359002CC99D /* Music */,
 				58AFF8C02A0FD329002CC99D /* MusicFiles */,
 				58AFF8882A0F9397002CC99D /* TextEditor */,
@@ -408,11 +424,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58A9C3D129F5857900238A35 /* GenEiKoburiMin6-R.ttf in Resources */,
 				581FAB9229F6D63900A303A6 /* DATA.json in Resources */,
 				5803DAFA29F1646A0033EEC2 /* Preview Assets.xcassets in Resources */,
 				5803DAF729F1646A0033EEC2 /* Assets.xcassets in Resources */,
-				581FAB8F29F6B98000A303A6 /* AsciiMath-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,8 +435,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				58AFF8C22A0FD349002CC99D /* 01.mp3 in Resources */,
+				5836282B2A11E46D00B6E532 /* AsciiMath-Regular.ttf in Resources */,
 				5877EB1429F8321000EC71EE /* Preview Assets.xcassets in Resources */,
+				5836282D2A11E47300B6E532 /* GenEiMonoCode-Regular.ttf in Resources */,
+				5836282A2A11E46A00B6E532 /* GenEiKoburiMin6-R.ttf in Resources */,
 				5877EB1129F8321000EC71EE /* Assets.xcassets in Resources */,
+				5836282C2A11E47000B6E532 /* GenEiAntiquePv5-M.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +707,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "COARAMAUSE-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need to use bluetooth connection";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need to use bluetooth connection";
@@ -721,6 +740,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "COARAMAUSE-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need to use bluetooth connection";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need to use bluetooth connection";

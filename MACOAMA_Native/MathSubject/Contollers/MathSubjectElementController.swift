@@ -18,11 +18,11 @@ class MathSubjectElementController : ObservableObject{
     @Published var element : MathPageTextElm = MathPageTextElm(id: "initial",
                                                      font: "initial",
                                                      content: "initial",
-                                                     size: 160.0,
-                                                     position: MathPosition(x: 0.0, y: 0.0),
+                                                     size: 100.0,
+                                                     position: MathPosition(x: 0.02, y: 0.25),
                                                      color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
                                                      bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
-                                                     timeIn: 0, timeOut: 0,
+                                                     timeIn: 0, timeOut: 1000,
                                                      links: "none")
     
     var linkedSubject : Int = 0
@@ -51,5 +51,11 @@ class MathSubjectElementController : ObservableObject{
         return nil
     }
 
+    
+
+    
+    
+    
+    
 }
 

@@ -190,7 +190,7 @@ struct MathSubjectCommandView: View {
                     TextField("ページ番号", text: self.$pageNum)
                         .frame(width: 50)
                         .onSubmit {
-                            print("CURRENT SUBJECT NO IS ::  \(self.pageNum)")
+                            //print("CURRENT PAGE NO IS ::  \(self.pageNum)")
                             
                             // 空欄への対応
                             if self.pageNum == "" {
@@ -221,7 +221,7 @@ struct MathSubjectCommandView: View {
                                 
                                 // エレメントの個数を数え直す
                                 self.ctr.elementNumAll = self.ctr.jsonObj!.subjects[ctr.subjectNo].pages[self.ctr.pageNo].textElems.count
-                                
+                                //print(self.ctr.elementNumAll)
                                 
                             }
                         }
@@ -241,13 +241,16 @@ struct MathSubjectCommandView: View {
                             
                             
                         } else {
+                            //print("NOT UNDER 0")
                             
                             self.ctr.pageNo -= 1
                             self.pageNum = String(self.ctr.pageNo + 1)
                             
+                            //print(self.pageNum)
+                            
                             // エレメントの個数を数え直す
                             self.ctr.elementNumAll = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems.count
-                            
+                            //print(self.ctr.elementNumAll)
                         }
                         
                         
@@ -263,6 +266,8 @@ struct MathSubjectCommandView: View {
                     
                     
                     Button(">>") {
+                        
+                        //print(self.ctr.pageNumInSubject)
                         
                         
                         let pgNumTest = self.ctr.pageNo + 1
@@ -280,10 +285,11 @@ struct MathSubjectCommandView: View {
                             
                             self.ctr.pageNo += 1
                             self.pageNum = String(self.ctr.pageNo + 1)
+                            print(self.pageNum)
                             
                             // エレメントの個数を数え直す
                             self.ctr.elementNumAll = self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems.count
-                            
+                            print(self.ctr.elementNumAll)
                         }
                         
                         

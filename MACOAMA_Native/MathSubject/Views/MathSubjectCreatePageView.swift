@@ -93,7 +93,10 @@ struct MathSubjectCreatePageView: View {
                     // ┃    USING CUSTOM FONT     ┃
                     // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━┛
                     // https://developer.apple.com/documentation/swiftui/applying-custom-fonts-to-text
-                    //
+                    
+                    // **** とても重要 ****
+                    // https://stackoverflow.com/questions/27006772/custom-font-not-working-programmatically-in-swift
+                    
                     // カスタムフォントは、プロジェクト設定にまず、
                     // Fonts provided by application -> Item 0 で新規追加
                     // そのValueに、フォントのファイル名を記述
@@ -130,6 +133,8 @@ struct MathSubjectCreatePageView: View {
                             alignment: .topTrailing)
                     
                     
+
+                    
                     // ----------------------------------------------------------------
                     // CONTENTS
                     
@@ -154,6 +159,8 @@ struct MathSubjectCreatePageView: View {
                         MathSubjectElementView(controller: self.ctr, elmCtr: elmCtr, elementInfo: elemInfo, synthCtr: self.synthCtr, windowCtr: self.windowCtr)
                         
                     }
+                    
+                    
                     
                     
                     if self.ctr.isLinkedView == false && self.windowCtr.windowCount > 1 {
@@ -201,6 +208,7 @@ struct MathSubjectCreatePageView: View {
                 MathSubjectEditView(controller: self.ctr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr)
                     .frame(width: 900)
                     .padding()
+                    //.padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 50))
             }
             
         }

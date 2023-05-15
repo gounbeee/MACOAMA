@@ -105,17 +105,17 @@ struct MathSubjectView: View {
     private func createViews( parsedJson: MathSubjectResponse, sbjNum: Int) -> some View {
         
         
-        let _ = print(parsedJson.subjects[sbjNum].title)
-        let _ = print(parsedJson.subjects[sbjNum].pages[0].pageNum)
-        let _ = print(parsedJson.subjects[sbjNum].pages[0].textElems[0].content)
-        let _ = print(parsedJson.subjects[sbjNum].pages[0].textElems[0].position)
-        let _ = print(parsedJson.subjects[sbjNum].pages[0].textElems[0].timeIn)
-        let _ = print(parsedJson.subjects[sbjNum].pages[0].textElems[0].timeOut)
+        //let _ = print(parsedJson.subjects[sbjNum].title)
+        //let _ = print(parsedJson.subjects[sbjNum].pages[0].pageNum)
+        //let _ = print(parsedJson.subjects[sbjNum].pages[0].textElems[0].content)
+        //let _ = print(parsedJson.subjects[sbjNum].pages[0].textElems[0].position)
+        //let _ = print(parsedJson.subjects[sbjNum].pages[0].textElems[0].timeIn)
+        //let _ = print(parsedJson.subjects[sbjNum].pages[0].textElems[0].timeOut)
 
-        let _ = print(parsedJson.subjects[sbjNum].pages[0].graphicElems[0].url)
-        let _ = print(parsedJson.subjects[sbjNum].pages[0].graphicElems[0].position)
-        let _ = print(parsedJson.subjects[sbjNum].pages[0].graphicElems[0].timeIn)
-        let _ = print(parsedJson.subjects[sbjNum].pages[0].graphicElems[0].timeOut)
+        //let _ = print(parsedJson.subjects[sbjNum].pages[0].graphicElems[0].url)
+        //let _ = print(parsedJson.subjects[sbjNum].pages[0].graphicElems[0].position)
+        //let _ = print(parsedJson.subjects[sbjNum].pages[0].graphicElems[0].timeIn)
+        //let _ = print(parsedJson.subjects[sbjNum].pages[0].graphicElems[0].timeOut)
         
         let subject = parsedJson.subjects[sbjNum]
         //let pageNum = subject.pages.count
@@ -125,7 +125,7 @@ struct MathSubjectView: View {
         let screenSize: CGRect = UIScreen.main.bounds
         
         
-        let _ = print(screenSize)
+        //let _ = print(screenSize)
         //let _ = print(pageNum)
         
 

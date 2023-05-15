@@ -24,7 +24,7 @@ struct MathSubjectEditDeleteView: View {
             Button("サブジェクト削除") {
                 
                 self.ctr.deleteCurrentSubject()
-                
+                self.ctr.renameElemTitleWithIndex()
                 
             }
             .buttonStyle(.borderedProminent)
@@ -34,7 +34,7 @@ struct MathSubjectEditDeleteView: View {
             Button("ページ削除") {
 
                 self.ctr.deleteCurrentPage()
-                
+                self.ctr.renameElemTitleWithIndex()
                 
             }
             .buttonStyle(.borderedProminent)
@@ -56,6 +56,7 @@ struct MathSubjectEditDeleteView: View {
                 
                 self.deleteElemNo = ""
                 
+                self.ctr.renameElemTitleWithIndex()
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)

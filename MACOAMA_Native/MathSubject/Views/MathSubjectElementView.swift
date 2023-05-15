@@ -31,6 +31,7 @@ struct MathSubjectElementView: View {
     @State var isSoundPlaying : Bool = false
     
     
+    var stringData : AttributedString = ""
     
     
     //init(controller: MathSubjectController, elmController: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController) {
@@ -49,20 +50,37 @@ struct MathSubjectElementView: View {
         
         // シンセ用コントローラで音を切る
         self.synthCtr.setPlaybackStateTo(false)
+        
+        //self.elmCtr.element.font = "GenEiAntiquePv5-M"
+        //self.elmCtr.element.font = "AsciiMath-Regular"
+        
+        self.stringData = AttributedString(self.elmCtr.element.content)
+        
+        //Text( self.elmCtr.element.content )
+        if self.elmCtr.element.font == "GenEiKoburiMin6-R" {
+            
+            self.stringData = self.getStyledTokenizedString(inputTxt: self.elmCtr.element.content)
+            
+        }
+        
+        //print(self.elmCtr.element.font)
+
     }
     
     
 
     var body: some View {
         
+
         
-        Text( self.getStyledTokenizedString(inputTxt: self.elmCtr.element.content) )
+        Text( self.stringData )
             .background(Color(red: Double(self.elmCtr.element.bgColor.red)/255,
                               green: Double(self.elmCtr.element.bgColor.green)/255,
                               blue: Double(self.elmCtr.element.bgColor.blue)/255,
                               opacity: Double(self.elmCtr.element.bgColor.opacity)/255))
         
             .font(Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size))
+            //.font(Font.custom("GenEiMonoCode-Regular", size: self.elmCtr.element.size))
             .foregroundColor(Color(red: Double(self.elmCtr.element.color.red)/255,
                                    green: Double(self.elmCtr.element.color.green)/255,
                                    blue: Double(self.elmCtr.element.color.blue)/255,
@@ -333,6 +351,7 @@ struct MathSubjectElementView: View {
                                                                          alpha: 1.0))
                         
                         attributedString[range].font = Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size/1.3)
+                        //attributedString[range].font = Font.custom("AsciiMath-Regular", size: self.elmCtr.element.size/1.3)
                     }
                     
                 

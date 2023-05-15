@@ -18,7 +18,7 @@ struct MathSubjectEditCreateView: View {
             Button("新規サブジェクト") {
                 
                 self.ctr.addNewSubject()
-                
+                self.ctr.renameElemTitleWithIndex()
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
@@ -27,6 +27,7 @@ struct MathSubjectEditCreateView: View {
             Button("新規ページ") {
                 
                 self.ctr.addNewPage()
+                self.ctr.renameElemTitleWithIndex()
                 
             }
             .buttonStyle(.borderedProminent)
@@ -36,10 +37,13 @@ struct MathSubjectEditCreateView: View {
             Button("新規要素") {
                 
                 self.ctr.addNewElement()
+                self.ctr.renameElemTitleWithIndex()
                 
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
+            
+            
         }
     }
 }

@@ -59,8 +59,8 @@ class MathSubjectController : ObservableObject {
                                                                                          textElems: [MathPageTextElm](repeating: MathPageTextElm(id: newElemId,
                                                                                                                                                  font: "GenEiKoburiMin6-R",
                                                                                                                                                  content: "サンプルコンテンツ"+"-1",
-                                                                                                                                                 size: CGFloat(60.0),
-                                                                                                                                                 position: MathPosition(x: 0.0, y: 0.0),
+                                                                                                                                                 size: CGFloat(100.0),
+                                                                                                                                                 position: MathPosition(x: 0.02, y: 0.25),
                                                                                                                                                  color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
                                                                                                                                                  bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
                                                                                                                                                  timeIn: 0,
@@ -101,8 +101,8 @@ class MathSubjectController : ObservableObject {
                                           textElems: [MathPageTextElm](repeating: MathPageTextElm(id: newElemId,
                                                                                                   font: "GenEiKoburiMin6-R",
                                                                                                   content: "サンプルコンテンツ"+"-1",
-                                                                                                  size: CGFloat(60.0),
-                                                                                                  position: MathPosition(x: 0.0, y: 0.0),
+                                                                                                  size: CGFloat(100.0),
+                                                                                                  position: MathPosition(x: 0.02, y: 0.25),
                                                                                                   color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
                                                                                                   bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
                                                                                                   timeIn: 0,
@@ -133,10 +133,10 @@ class MathSubjectController : ObservableObject {
         
         
         let element : MathPageTextElm = MathPageTextElm(id: "initial",
-                                                         font: "initial",
+                                                         font: "GenEiKoburiMin6-R",
                                                          content: "initial",
-                                                         size: 60.0,
-                                                         position: MathPosition(x: 0.0, y: 0.0),
+                                                         size: 100.0,
+                                                         position: MathPosition(x: 0.02, y: 0.25),
                                                          color: MathColor(red: 0, green: 0, blue: 0, opacity: 255),
                                                          bgColor: MathColor(red: 0, green: 0, blue: 0, opacity: 0),
                                                          timeIn: 0, timeOut: 1000,
@@ -382,6 +382,37 @@ class MathSubjectController : ObservableObject {
         
         return countedPages
         
+        
+    }
+    
+    
+    
+    func renameElemTitleWithIndex() {
+                
+        //var countedPages = 0
+        
+        for subjectInd in 0...self.jsonObj!.subjects.count-1 {
+            
+            for pageInd in 0...self.jsonObj!.subjects[subjectInd].pages.count-1 {
+                
+                //JSONのページ番号をインデックス番号にする
+                self.jsonObj!.subjects[subjectInd].pages[pageInd].pageNum = pageInd + 1
+                
+                for elemInd in 0...self.jsonObj!.subjects[subjectInd].pages[pageInd].textElems.count-1 {
+                    
+                    //JSONの要素番号をインデックス番号にする
+                    self.jsonObj!.subjects[subjectInd].pages[pageInd].textElems[elemInd].id = "txt" + String(subjectInd+1) + "-" + String(pageInd+1) + "-" + String(elemInd+1)
+                    
+                }
+                
+            }
+            
+        }
+        
+        self.updateJsonAndReload()
+        //print("COUNTING PAGES ::  \(countedPages)   ARE COUNTED !!!!")
+        
+        print("RENAMED!")
         
     }
     

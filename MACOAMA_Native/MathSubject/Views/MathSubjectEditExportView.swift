@@ -64,6 +64,13 @@ struct MathSubjectEditExportView: View {
         //            }
         
         
+        Button("要素の名前整理") {
+            
+            self.ctr.renameElemTitleWithIndex()
+            
+        }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
         
 
 

@@ -214,17 +214,23 @@ struct MathSubjectEditView: View {
                                         
                                         // TextField の初期値を設定
                                         // https://www.motokis-brain.com/article/26
-                                        TextField("Id", text: self.$newElemId[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                        TextField("Id", text: self.$newElemId[el.index]).frame(width: geo.size.width/3).onAppear() {
                                             self.newElemId[el.index] = el.element.id
                                         }
                                     }
                                     
                                     
                                     if let linksCheck = el.element.links {
-                                        
-                                        Text("Links").foregroundColor(.blue)
-                                        Text( linksCheck ).frame(width: geo.size.width)
-                                        
+                                        VStack (alignment: .leading) {
+                                            HStack {
+                                                Text("Links").foregroundColor(.blue).frame(width: geo.size.width/4)
+                                                Text( linksCheck ).frame(width: geo.size.width).frame(width: geo.size.width/4)
+                                                
+                                                TextField("Links", text: self.$newLinks[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                                    self.newLinks[el.index] = linksCheck
+                                                }
+                                            }
+                                        }
                                     }
                                     
                                     
@@ -232,27 +238,37 @@ struct MathSubjectEditView: View {
                                     
                                     Text("Font").foregroundColor(.blue)
                                     HStack {
-                                        Text(el.element.font).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                        TextField("Font", text: self.$newElemFontName[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                        Text(el.element.font).frame(width: geo.size.width/6).foregroundColor(.gray)
+                                        TextField("Font", text: self.$newElemFontName[el.index]).frame(width: geo.size.width/6).onAppear() {
                                             self.newElemFontName[el.index] = el.element.font
                                         }
+                                        Button("Font 1") {
+                                            self.newElemFontName[el.index] = "GenEiKoburiMin6-R"
+                                        }.frame(width: geo.size.width/6)
+                                        Button("Font 2") {
+                                            self.newElemFontName[el.index] = "GenEiMonoCode-Regular"
+                                        }.frame(width: geo.size.width/6)
+                                        Button("Font 3") {
+                                            self.newElemFontName[el.index] = "AsciiMath-Regular"
+                                        }.frame(width: geo.size.width/6)
                                     }
                                     
                                     Text("Font Size").foregroundColor(.blue)
                                     HStack {
-                                        Text(el.element.size.formatted()).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                        TextField("FontSize", text: self.$newElemFontSize[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                        Text(el.element.size.formatted()).frame(width: geo.size.width/3).foregroundColor(.gray)
+                                        TextField("FontSize", text: self.$newElemFontSize[el.index]).frame(width: geo.size.width/3).onAppear() {
                                             self.newElemFontSize[el.index] = el.element.size.formatted()
                                         }
                                     }
                                 }
                                 
+                                
                                 VStack (alignment: .leading) {
                                     
                                     Text("Content").foregroundColor(.blue)
                                     HStack {
-                                        Text(el.element.content).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                        TextField("Content", text: self.$newElemContent[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                        Text(el.element.content).frame(width: geo.size.width/3).foregroundColor(.gray)
+                                        TextField("Content", text: self.$newElemContent[el.index]).frame(width: geo.size.width/3).onAppear() {
                                             self.newElemContent[el.index] = el.element.content
                                         }
                                     }
@@ -260,40 +276,42 @@ struct MathSubjectEditView: View {
                                     
                                     Text("Position").foregroundColor(.blue)
                                     HStack {
-                                        Text(el.element.position.x.formatted()).frame(width: geo.size.width/4).foregroundColor(.gray)
-                                        TextField("PosX", text: self.$newElemPosX[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        Text(el.element.position.x.formatted()).frame(width: geo.size.width/5).foregroundColor(.gray)
+                                        TextField("PosX", text: self.$newElemPosX[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemPosX[el.index] = el.element.position.x.formatted()
                                         }
-                                        Text(el.element.position.y.formatted()).frame(width: geo.size.width/4).foregroundColor(.gray)
-                                        TextField("PosY", text: self.$newElemPosY[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        Text(el.element.position.y.formatted()).frame(width: geo.size.width/5).foregroundColor(.gray)
+                                        TextField("PosY", text: self.$newElemPosY[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemPosY[el.index] = el.element.position.y.formatted()
                                         }
                                     }
+                                    
                                 }
                                 
                                 
                                 VStack (alignment: .leading) {
                                     Text("Color").foregroundColor(.blue)
                                     HStack {
-                                        Text(el.element.color.red.formatted()).frame(width: geo.size.width/4)
-                                        Text(el.element.color.green.formatted()).frame(width: geo.size.width/4)
-                                        Text(el.element.color.blue.formatted()).frame(width: geo.size.width/4)
-                                        Text(el.element.color.opacity.formatted()).frame(width: geo.size.width/4)
+                                        Text(el.element.color.red.formatted()).frame(width: geo.size.width/5)
+                                        Text(el.element.color.green.formatted()).frame(width: geo.size.width/5)
+                                        Text(el.element.color.blue.formatted()).frame(width: geo.size.width/5)
+                                        Text(el.element.color.opacity.formatted()).frame(width: geo.size.width/5)
                                     }.foregroundColor(.gray)
                                     HStack {
-                                        TextField("Red", text: self.$newElemColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        TextField("Red", text: self.$newElemColorR[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemColorR[el.index] = el.element.color.red.formatted()
                                         }
-                                        TextField("Green", text: self.$newElemColorG[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        TextField("Green", text: self.$newElemColorG[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemColorG[el.index] = el.element.color.green.formatted()
                                         }
-                                        TextField("Blue", text: self.$newElemColorB[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        TextField("Blue", text: self.$newElemColorB[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemColorB[el.index] = el.element.color.blue.formatted()
                                         }
-                                        TextField("Opacity", text: self.$newElemColorO[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        TextField("Opacity", text: self.$newElemColorO[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemColorO[el.index] = el.element.color.opacity.formatted()
                                         }
                                     }
+                                    
                                 }
                                 
                                 
@@ -301,45 +319,48 @@ struct MathSubjectEditView: View {
                                     
                                     Text("BgColor").foregroundColor(.blue)
                                     HStack {
-                                        Text(el.element.bgColor.red.formatted()).frame(width: geo.size.width/4)
-                                        Text(el.element.bgColor.green.formatted()).frame(width: geo.size.width/4)
-                                        Text(el.element.bgColor.blue.formatted()).frame(width: geo.size.width/4)
-                                        Text(el.element.bgColor.opacity.formatted()).frame(width: geo.size.width/4)
+                                        Text(el.element.bgColor.red.formatted()).frame(width: geo.size.width/5)
+                                        Text(el.element.bgColor.green.formatted()).frame(width: geo.size.width/5)
+                                        Text(el.element.bgColor.blue.formatted()).frame(width: geo.size.width/5)
+                                        Text(el.element.bgColor.opacity.formatted()).frame(width: geo.size.width/5)
                                     }.foregroundColor(.gray)
                                     HStack {
-                                        TextField("Red", text: self.$newElemBgColorR[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        TextField("Red", text: self.$newElemBgColorR[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemBgColorR[el.index] = el.element.bgColor.red.formatted()
                                         }
-                                        TextField("Green", text: self.$newElemBgColorG[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        TextField("Green", text: self.$newElemBgColorG[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemBgColorG[el.index] = el.element.bgColor.green.formatted()
                                         }
-                                        TextField("Blue", text: self.$newElemBgColorB[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        TextField("Blue", text: self.$newElemBgColorB[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemBgColorB[el.index] = el.element.bgColor.blue.formatted()
                                         }
-                                        TextField("Opacity", text: self.$newElemBgColorO[el.index]).frame(width: geo.size.width/4).onAppear() {
+                                        TextField("Opacity", text: self.$newElemBgColorO[el.index]).frame(width: geo.size.width/5).onAppear() {
                                             self.newElemBgColorO[el.index] = el.element.bgColor.opacity.formatted()
                                         }
                                     }
+                                    
                                 }
                                 
                                 
                                 VStack (alignment: .leading) {
                                     Text("TimeIn").foregroundColor(.blue)
                                     HStack {
-                                        Text(String("\(el.element.timeIn)")).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                        TextField("TimeIn", text: self.$newElemTimeIn[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                        Text(String("\(el.element.timeIn)")).frame(width: geo.size.width/3).foregroundColor(.gray)
+                                        TextField("TimeIn", text: self.$newElemTimeIn[el.index]).frame(width: geo.size.width/3).onAppear() {
                                             self.newElemTimeIn[el.index] = String("\(el.element.timeIn)")
                                         }
                                     }
                                     Text("TimeOut").foregroundColor(.blue)
                                     HStack {
-                                        Text(String("\(el.element.timeOut)")).frame(width: geo.size.width/2).foregroundColor(.gray)
-                                        TextField("TimeOut", text: self.$newElemTimeOut[el.index]).frame(width: geo.size.width/2).onAppear() {
+                                        Text(String("\(el.element.timeOut)")).frame(width: geo.size.width/3).foregroundColor(.gray)
+                                        TextField("TimeOut", text: self.$newElemTimeOut[el.index]).frame(width: geo.size.width/3).onAppear() {
                                             self.newElemTimeOut[el.index] = String("\(el.element.timeOut)")
                                         }
                                     }
                                     
                                 }
+                                
+                                
                                 //
                                 Divider()
                                 
@@ -372,6 +393,8 @@ struct MathSubjectEditView: View {
                                     self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].timeIn = Int(self.newElemTimeIn[el.index])!
                                     self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].timeOut = Int(self.newElemTimeOut[el.index])!
                                     
+                                    self.ctr.jsonObj!.subjects[self.ctr.subjectNo].pages[self.ctr.pageNo].textElems[el.index].links = self.newLinks[el.index]
+                                    
                                     
                                     
                                     // JSON 更新とView更新を誘発
@@ -395,8 +418,8 @@ struct MathSubjectEditView: View {
                 }
                 
             }
-            
-            
+            //.frame(width: 500)
+            .padding()
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)
         .padding()
