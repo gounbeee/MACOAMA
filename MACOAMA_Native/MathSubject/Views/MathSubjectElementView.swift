@@ -19,6 +19,7 @@ struct MathSubjectElementView: View {
     @ObservedObject var elmCtr : MathSubjectElementController
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var windowCtr : MathSubjectWindowController
+    @ObservedObject var blueToothCtr : BluetoothController
 
    
     
@@ -35,11 +36,12 @@ struct MathSubjectElementView: View {
     
     
     //init(controller: MathSubjectController, elmController: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController) {
-    init(controller: MathSubjectController, elmCtr: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController, windowCtr: MathSubjectWindowController) {
+    init(controller: MathSubjectController, elmCtr: MathSubjectElementController, elementInfo: MathPageTextElm, synthCtr : SynthController, windowCtr: MathSubjectWindowController, blueToothCtr: BluetoothController) {
         self.ctr = controller
         self.elmCtr = elmCtr
         self.synthCtr = synthCtr
         self.windowCtr = windowCtr
+        self.blueToothCtr = blueToothCtr
         
         //self.elemIndex = elemIndex
         self.sbjNo = controller.subjectNo
@@ -211,7 +213,8 @@ struct MathSubjectElementView: View {
                                                     controller: newController,
                                                     synthCtr: newSynthCtr,
                                                     linkCtr: linkCtr,
-                                                    windowCtr: self.windowCtr)
+                                                    windowCtr: self.windowCtr,
+                                                    blueToothCtr: self.blueToothCtr)
                                     .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
            
                                     .openNewWindow( title: "リンクVIEW",

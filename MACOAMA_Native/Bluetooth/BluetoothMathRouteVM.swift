@@ -14,6 +14,7 @@ struct BluetoothMathRouteVM: View {
     @ObservedObject var mathSbjCtr : MathSubjectController
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var linkCtr : MathSubjectLinkController
+    @ObservedObject var windowCtr : MathSubjectWindowController
     
     @State var isBluetoothUsed : Bool? = nil
     
@@ -27,7 +28,7 @@ struct BluetoothMathRouteVM: View {
                 if isBluetoothUsed == true {
                                     
                     // ----------------------------------------------------------------------
-                    BluetoothConnectionVM(mathSbjCtr: self.mathSbjCtr, synthCtr: self.synthCtr, bleCtr: self.bleControls, linkCtr: self.linkCtr )
+                    BluetoothConnectionVM(mathSbjCtr: self.mathSbjCtr, synthCtr: self.synthCtr, bleCtr: self.bleControls, linkCtr: self.linkCtr, windowCtr: self.windowCtr)
                         .frame(alignment: .leading)
 
                 } else if isBluetoothUsed == false {

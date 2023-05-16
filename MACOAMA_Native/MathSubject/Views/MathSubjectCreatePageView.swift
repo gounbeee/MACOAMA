@@ -15,6 +15,7 @@ struct MathSubjectCreatePageView: View {
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var linkCtr : MathSubjectLinkController
     @ObservedObject var windowCtr : MathSubjectWindowController
+    @ObservedObject var blueToothCtr : BluetoothController
     
     
     var isSubjectVisible : Bool = true
@@ -35,7 +36,10 @@ struct MathSubjectCreatePageView: View {
     //@State var arrowRotation : Double = 0.0
     
     
-    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController, isSubjectVisible: Bool, isPageVisible: Bool, subjectSpecified: Int?) {
+    let isFinalExport : Bool
+    
+    
+    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController, isSubjectVisible: Bool, isPageVisible: Bool, subjectSpecified: Int?, blueToothCtr: BluetoothController, isFinalExport: Bool) {
         self.ctr = controller
         self.synthCtr = synthCtr
         self.linkCtr = linkCtr
@@ -43,6 +47,12 @@ struct MathSubjectCreatePageView: View {
         
         self.isSubjectVisible = isSubjectVisible
         self.isPageVisible = isPageVisible
+        
+        self.blueToothCtr = blueToothCtr
+        
+        self.isFinalExport = isFinalExport
+        
+        self.blueToothCtr = blueToothCtr
         
         self.ctr.parsedView = self
         
@@ -55,6 +65,8 @@ struct MathSubjectCreatePageView: View {
             self.subjectSpecified = sbjSpecf
             self.subjectNo = sbjSpecf
         }
+        
+        
     }
 
     
@@ -64,15 +76,18 @@ struct MathSubjectCreatePageView: View {
             
             VStack {
  
-                // もしリンクされた教材なら、コントローラは２倍の大きさにする必要がある
-                if self.ctr.isLinkedView == false {
-                    MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible, synthCtr: self.synthCtr)
-                } else {
-                    MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible, synthCtr: self.synthCtr)
-                        .scaleEffect(x: 2.0, y: 2.0)
+                // PNGファイルに書き出しを行う際は、上の部分は描画しない
+                if self.isFinalExport == false {
+                    
+                    // もしリンクされた教材なら、コントローラは２倍の大きさにする必要がある
+                    if self.ctr.isLinkedView == false {
+                        MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: self.blueToothCtr, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible, synthCtr: self.synthCtr)
+                    } else {
+                        MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible, synthCtr: self.synthCtr)
+                            .scaleEffect(x: 2.0, y: 2.0)
+                    }
+                    
                 }
-
-                
             
                 ZStack (alignment: .topLeading) {
                     
@@ -156,7 +171,7 @@ struct MathSubjectCreatePageView: View {
                         // Viewは、基本的に文脈維持のためControllerを食う
                         let elmCtr : MathSubjectElementController = MathSubjectElementController()
                         
-                        MathSubjectElementView(controller: self.ctr, elmCtr: elmCtr, elementInfo: elemInfo, synthCtr: self.synthCtr, windowCtr: self.windowCtr)
+                        MathSubjectElementView(controller: self.ctr, elmCtr: elmCtr, elementInfo: elemInfo, synthCtr: self.synthCtr, windowCtr: self.windowCtr, blueToothCtr: self.blueToothCtr)
                         
                     }
                     
@@ -205,7 +220,7 @@ struct MathSubjectCreatePageView: View {
             
 
             if self.ctr.isEditMode == true {
-                MathSubjectEditView(controller: self.ctr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr)
+                MathSubjectEditView(controller: self.ctr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr, blueToothCtr: self.blueToothCtr)
                     .frame(width: 900)
                     .padding()
                     //.padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 50))

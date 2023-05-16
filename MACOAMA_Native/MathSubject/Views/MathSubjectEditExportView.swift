@@ -18,6 +18,7 @@ struct MathSubjectEditExportView: View {
     
     @ObservedObject var linkCtr : MathSubjectLinkController
     @ObservedObject var windowCtr : MathSubjectWindowController
+    @ObservedObject var blueToothCtr : BluetoothController
     
 
     
@@ -144,7 +145,9 @@ struct MathSubjectEditExportView: View {
                                                                 windowCtr: self.windowCtr,
                                                                 isSubjectVisible: false,
                                                                 isPageVisible: false,
-                                                                subjectSpecified: nil)
+                                                                subjectSpecified: nil,
+                                                                blueToothCtr: self.blueToothCtr,
+                                                                isFinalExport: true)
                     // LISTに追加
                     allViewsToExport.append( AnyView(viewToAdded) )
 
@@ -240,7 +243,117 @@ struct MathSubjectEditExportView: View {
         .buttonStyle(.borderedProminent)
         .controlSize(.large)
 
+        
 
+        Button("HEADERファイルの出力") {
+
+            var hdTextSbjArray = [[String]]()
+
+            
+            for subjectInd in 0...self.ctr.jsonObj!.subjects.count-1 {
+                // 各要素たちのリンク文字列を取得
+                var lnkCollected : [String] = []
+                
+                // すべてのPageたちに対して
+                for pageInd in 0...self.ctr.jsonObj!.subjects[subjectInd].pages.count-1 {
+                    
+                    // すべてのElementたちに対して
+                    for elemInd in 0...self.ctr.jsonObj!.subjects[subjectInd].pages[pageInd].textElems.count-1 {
+    
+                        let elem = self.ctr.jsonObj!.subjects[subjectInd].pages[pageInd].textElems[elemInd]
+                        
+                        // elem.links は１ベースのインデックス
+                        // subjectInd は０ベースのインデックスなので１を足して使用
+                        if let lnk = elem.links {
+                            
+                            if lnk == "none" {
+                                lnkCollected.append(String(subjectInd+1))
+                            } else {
+                                
+                                lnkCollected.append(lnk)
+                            }
+                            //print(lnk)
+                        }
+                        
+                    }
+                }
+                
+                //print(lnkCollected)
+                
+                // ヘッダーファイル
+                // 配列内のインデックス番号 -> 教材のサブジェクト番号
+                // {61, 52, 51, 50, 59, 52, 51, 50, 59},関連するサブジェクト番号　→ 左は旧教材番号
+                
+                // 1. まずは、現行の教材番号でリンク情報をまとめ、
+
+                // 重複を消す
+                // https://stackoverflow.com/questions/25738817/removing-duplicate-elements-from-an-array-in-swift
+                lnkCollected = Array(Set(lnkCollected))
+                
+                //print("\(subjectInd) vv" )
+                //print(lnkCollected)
+                
+                let resultSbjString = self.ctr.randomLinkArray(currentSbjNo: subjectInd, inputLinks: lnkCollected)
+                //print(resultSbjString)
+                
+                
+                hdTextSbjArray.append(self.ctr.transformLinkArray(inputLinksStr: resultSbjString))
+                
+            }
+
+            print(hdTextSbjArray)
+            //print(hdTextSbjArray.count)
+            
+            // CSV で出力
+            
+            var csvFinal : String = ""
+            
+            
+            for sbjInd in 1...hdTextSbjArray.count {
+                
+                var csvTextOneLine : String = ""
+                
+                csvTextOneLine += "//-- SUBJECT INDEX \(sbjInd) \n"
+                csvTextOneLine += "//           TITLE \(self.ctr.jsonObj!.subjects[sbjInd-1].title) \n"
+
+                csvTextOneLine += "{ "
+                
+                for i in 0...hdTextSbjArray[sbjInd-1].count-1 {
+                    
+                    let oneSbj = hdTextSbjArray[sbjInd-1][i] + ","
+                    csvTextOneLine += oneSbj
+                }
+                
+                // 最後の文字を削除
+                // https://stackoverflow.com/questions/24122288/remove-last-character-from-string-swift-language
+                csvTextOneLine.remove(at: csvTextOneLine.index(before: csvTextOneLine.endIndex))
+                
+                csvTextOneLine += " },\n"
+                
+                csvFinal += csvTextOneLine
+                
+            }
+            
+            //print(csvFinal)
+            
+            // JSONファイルを新規保存
+            PersistenceController.shared.addTextDataWithString(title: "New HEADER", input: csvFinal)
+
+
+
+        }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
+        
+        
+        
+        Button("PRINT OLD SUBJECT INDEX") {
+            
+            print(self.ctr.transformLinkArray(inputLinksStr: ["119","120","121","122","123","124","125","126","157"]))
+  
+        }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
         
         
     }

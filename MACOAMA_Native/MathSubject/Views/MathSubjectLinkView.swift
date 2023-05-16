@@ -18,15 +18,16 @@ struct MathSubjectLinkView: View {
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var linkCtr : MathSubjectLinkController
     @ObservedObject var windowCtr : MathSubjectWindowController
+    @ObservedObject var blueToothCtr : BluetoothController
  
-    init(windowWidth: Int, windowHeight: Int, controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController) {
+    init(windowWidth: Int, windowHeight: Int, controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController, blueToothCtr: BluetoothController) {
         self.windowWidth = windowWidth
         self.windowHeight = windowHeight
         self.controller = controller
         self.synthCtr = synthCtr
         self.linkCtr = linkCtr
         self.windowCtr = windowCtr
-        
+        self.blueToothCtr = blueToothCtr
         // 同じ教材ウィンドウを表示するが、ここではクリックで新規教材を開くことはできなくさせたい。
         self.controller.isLinkedView = true
         
@@ -47,7 +48,9 @@ struct MathSubjectLinkView: View {
                                           windowCtr: self.windowCtr,
                                           isSubjectVisible: false,
                                           isPageVisible: true,
-                                          subjectSpecified: self.linkCtr.subjectNo)
+                                          subjectSpecified: self.linkCtr.subjectNo,
+                                          blueToothCtr: self.blueToothCtr,
+                                          isFinalExport: false)
                 .scaleEffect(x: 0.5, y: 0.5)
                 .frame(width: Double(self.windowWidth), height: Double(self.windowHeight))
                 

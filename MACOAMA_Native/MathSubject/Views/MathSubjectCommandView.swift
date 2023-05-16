@@ -34,7 +34,7 @@ struct MathSubjectCommandView: View {
                     TextField("サブジェクト番号", text: self.$subjectNum)
                         .frame(width: 50)
                         .onSubmit {
-                            //print("CURRENT SUBJECT NO IS ::  \(self.subjectNum)")
+                            print("CURRENT SUBJECT NO IS ::  \(self.subjectNum)")
                             
                             self.pageNum = "1"
                             
@@ -77,8 +77,12 @@ struct MathSubjectCommandView: View {
                                 
                                 // ---------------------------------------------------------------------------------------
                                 // BlueTooth端末にサブジェクト番号を送る
+                                print(self.bluetoothCtr)
+                                
                                 if let bleCtr = self.bluetoothCtr {
                                     bleCtr.sendDataToPeripheral(String(self.ctr.subjectNo+1).data(using: .utf8)!)
+                                    print(self.ctr.subjectNo+1)
+                                    
                                 }
                                 
                                 

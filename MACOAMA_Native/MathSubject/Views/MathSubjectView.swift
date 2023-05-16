@@ -15,6 +15,7 @@ struct MathSubjectView: View {
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var linkCtr : MathSubjectLinkController
     @ObservedObject var windowCtr : MathSubjectWindowController
+    @ObservedObject var blueToothCtr : BluetoothController
     
 
     var jsonText : String = "Initial"
@@ -28,7 +29,9 @@ struct MathSubjectView: View {
                                   windowCtr: self.windowCtr,
                                   isSubjectVisible: true,
                                   isPageVisible: true,
-                                  subjectSpecified: nil)
+                                  subjectSpecified: nil,
+                                  blueToothCtr: self.blueToothCtr,
+                                  isFinalExport: false)
    
     }
 

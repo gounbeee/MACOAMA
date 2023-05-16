@@ -51,6 +51,7 @@ struct BluetoothConnectionVM: View {
     @ObservedObject var synthCtr : SynthController
     @ObservedObject var bluetoothCtr : BluetoothController
     @ObservedObject var linkCtr : MathSubjectLinkController
+    @ObservedObject var windowCtr : MathSubjectWindowController
         
     /// FOR BLE CONNECTION CHECK
     @State var isScanning : Bool = false
@@ -58,7 +59,7 @@ struct BluetoothConnectionVM: View {
     
     
     
-    init( mathSbjCtr: MathSubjectController, synthCtr: SynthController, bleCtr : BluetoothController, linkCtr: MathSubjectLinkController) {
+    init( mathSbjCtr: MathSubjectController, synthCtr: SynthController, bleCtr : BluetoothController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController) {
         
         self.controller = mathSbjCtr
         self.synthCtr = synthCtr
@@ -66,7 +67,7 @@ struct BluetoothConnectionVM: View {
         /// PASSING TO MEMBER PROPERTY
         self.bluetoothCtr = bleCtr
         self.linkCtr = linkCtr
-        
+        self.windowCtr = windowCtr
         ///print(self.bluetoothCtr.peripheralNames)
         ///print("BluetoothConnectionVM IS INITIALIZED")
 
@@ -111,7 +112,7 @@ struct BluetoothConnectionVM: View {
                         /// WHEN PERIPHERAL'S NAME IS PRESSED
                         ///let _ = print(peripheralName)
                         Button(action: {
-                            print("BUTTON CLICKED  --  \(peripheralName)")
+                            //print("BUTTON CLICKED  --  \(peripheralName)")
                             
                             /// print(bluetoothViewModel.peripherals)
                             
@@ -137,6 +138,21 @@ struct BluetoothConnectionVM: View {
                                     self.isScanning  = false
                                     self.isConnected = true
                                     
+                                    
+                                    // Bluetooth 連結が成立
+                                    // なのでWindowを閉じる
+                                    //print(self.windowCtr.windowList.count)
+                                    //print(self.windowCtr.windowList[0].title)
+                                    //print(self.windowCtr.windowList[1].title)
+                                    
+                                    for windowObj in self.windowCtr.windowList {
+                                        
+                                        if windowObj.title == "コントローラ" {
+                                            windowObj.close()
+                                        }
+                                        
+                                    }
+
                                 }
                             }
                             

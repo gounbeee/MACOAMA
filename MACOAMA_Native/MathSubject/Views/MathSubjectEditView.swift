@@ -83,15 +83,17 @@ struct MathSubjectEditView: View {
     
     
     @ObservedObject var windowCtr : MathSubjectWindowController
+    @ObservedObject var blueToothCtr : BluetoothController
     
     
     
-    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController) {
+    init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController, blueToothCtr: BluetoothController) {
         
         self.ctr = controller
         self.synthCtr = synthCtr
         self.linkCtr = linkCtr
         self.windowCtr = windowCtr
+        self.blueToothCtr = blueToothCtr
         
         self.elemCount = controller.elementNumAll
         
@@ -122,7 +124,8 @@ struct MathSubjectEditView: View {
                     MathSubjectEditExportView(ctr: self.ctr,
                                               synthCtr: self.synthCtr,
                                               linkCtr: self.linkCtr,
-                                              windowCtr: self.windowCtr)
+                                              windowCtr: self.windowCtr,
+                                              blueToothCtr: self.blueToothCtr)
                     
                     Divider()
                     

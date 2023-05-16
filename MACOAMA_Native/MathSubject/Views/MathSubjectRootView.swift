@@ -68,7 +68,8 @@ struct MathSubjectRootView: View {
             BluetoothMathRouteVM(bleControls: self.bleControls,
                                  mathSbjCtr: self.mathSbjCtr,
                                  synthCtr: self.synthCtr,
-                                 linkCtr: self.linkCtr)
+                                 linkCtr: self.linkCtr,
+                                 windowCtr: self.windowCtr)
                 .openNewWindow( title: "コントローラ",
                                 xPos: 0,
                                 yPos: 0,
@@ -90,7 +91,7 @@ struct MathSubjectRootView: View {
         
        
         
-        MathSubjectView(controller: self.mathSbjCtr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr)
+        MathSubjectView(controller: self.mathSbjCtr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr, blueToothCtr: self.bleControls)
         
 
         
