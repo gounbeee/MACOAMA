@@ -25,6 +25,7 @@
 		581258122A07ECAF0070333C /* MathSubjectEditDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258112A07ECAF0070333C /* MathSubjectEditDeleteView.swift */; };
 		581258142A07EDA30070333C /* MathSubjectEditCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */; };
 		581FAB9229F6D63900A303A6 /* DATA.json in Resources */ = {isa = PBXBuildFile; fileRef = 581FAB9129F6D20200A303A6 /* DATA.json */; };
+		5827CFF92A25D6AA0080B13F /* 002.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5827CFF82A25D6AA0080B13F /* 002.mp3 */; };
 		582ECCD62A0C7E4600E0596B /* BluetoothMathRouteVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCD52A0C7E4600E0596B /* BluetoothMathRouteVM.swift */; };
 		582ECCDA2A0C8DA800E0596B /* SynthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCD92A0C8DA800E0596B /* SynthController.swift */; };
 		582ECCDC2A0C8DBB00E0596B /* Synth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ECCDB2A0C8DBB00E0596B /* Synth.swift */; };
@@ -52,7 +53,7 @@
 		58AFF8802A0E8F4D002CC99D /* MainIntroVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF87F2A0E8F4D002CC99D /* MainIntroVM.swift */; };
 		58AFF8852A0F719F002CC99D /* MathSubjectLinkArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8842A0F719F002CC99D /* MathSubjectLinkArrowView.swift */; };
 		58AFF8872A0F91D5002CC99D /* MathSubjectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8862A0F91D5002CC99D /* MathSubjectWindowController.swift */; };
-		58AFF8C22A0FD349002CC99D /* 01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 58AFF8C12A0FD349002CC99D /* 01.mp3 */; };
+		58AFF8C22A0FD349002CC99D /* 001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 58AFF8C12A0FD349002CC99D /* 001.mp3 */; };
 		58AFF8C52A0FD38C002CC99D /* MusicPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8C42A0FD38C002CC99D /* MusicPlayView.swift */; };
 		58AFF8C92A0FDA4C002CC99D /* MusicVolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8C82A0FDA4C002CC99D /* MusicVolumeSlider.swift */; };
 		58AFF8CB2A0FDA99002CC99D /* MusicCustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AFF8CA2A0FDA99002CC99D /* MusicCustomSlider.swift */; };
@@ -88,6 +89,7 @@
 		581258132A07EDA30070333C /* MathSubjectEditCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectEditCreateView.swift; sourceTree = "<group>"; };
 		581FAB8E29F6B8DF00A303A6 /* AsciiMath-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AsciiMath-Regular.ttf"; sourceTree = "<group>"; };
 		581FAB9129F6D20200A303A6 /* DATA.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DATA.json; sourceTree = "<group>"; };
+		5827CFF82A25D6AA0080B13F /* 002.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 002.mp3; sourceTree = "<group>"; };
 		582ECCD52A0C7E4600E0596B /* BluetoothMathRouteVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMathRouteVM.swift; sourceTree = "<group>"; };
 		582ECCD92A0C8DA800E0596B /* SynthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthController.swift; sourceTree = "<group>"; };
 		582ECCDB2A0C8DBB00E0596B /* Synth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synth.swift; sourceTree = "<group>"; };
@@ -117,7 +119,7 @@
 		58AFF87F2A0E8F4D002CC99D /* MainIntroVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainIntroVM.swift; sourceTree = "<group>"; };
 		58AFF8842A0F719F002CC99D /* MathSubjectLinkArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectLinkArrowView.swift; sourceTree = "<group>"; };
 		58AFF8862A0F91D5002CC99D /* MathSubjectWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSubjectWindowController.swift; sourceTree = "<group>"; };
-		58AFF8C12A0FD349002CC99D /* 01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 01.mp3; sourceTree = "<group>"; };
+		58AFF8C12A0FD349002CC99D /* 001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 001.mp3; sourceTree = "<group>"; };
 		58AFF8C42A0FD38C002CC99D /* MusicPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayView.swift; sourceTree = "<group>"; };
 		58AFF8C82A0FDA4C002CC99D /* MusicVolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVolumeSlider.swift; sourceTree = "<group>"; };
 		58AFF8CA2A0FDA99002CC99D /* MusicCustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCustomSlider.swift; sourceTree = "<group>"; };
@@ -322,7 +324,8 @@
 		58AFF8C02A0FD329002CC99D /* MusicFiles */ = {
 			isa = PBXGroup;
 			children = (
-				58AFF8C12A0FD349002CC99D /* 01.mp3 */,
+				58AFF8C12A0FD349002CC99D /* 001.mp3 */,
+				5827CFF82A25D6AA0080B13F /* 002.mp3 */,
 			);
 			path = MusicFiles;
 			sourceTree = "<group>";
@@ -434,13 +437,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58AFF8C22A0FD349002CC99D /* 01.mp3 in Resources */,
+				58AFF8C22A0FD349002CC99D /* 001.mp3 in Resources */,
+				5827CFF92A25D6AA0080B13F /* 002.mp3 in Resources */,
 				5836282B2A11E46D00B6E532 /* AsciiMath-Regular.ttf in Resources */,
-				5877EB1429F8321000EC71EE /* Preview Assets.xcassets in Resources */,
 				5836282D2A11E47300B6E532 /* GenEiMonoCode-Regular.ttf in Resources */,
 				5836282A2A11E46A00B6E532 /* GenEiKoburiMin6-R.ttf in Resources */,
-				5877EB1129F8321000EC71EE /* Assets.xcassets in Resources */,
 				5836282C2A11E47000B6E532 /* GenEiAntiquePv5-M.ttf in Resources */,
+				5877EB1429F8321000EC71EE /* Preview Assets.xcassets in Resources */,
+				5877EB1129F8321000EC71EE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

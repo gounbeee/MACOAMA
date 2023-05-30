@@ -180,3 +180,24 @@ extension Scene {
         }
     }
 }
+
+
+
+
+extension String {
+    // ひらがなかどうか
+    var isHiragana: Bool {
+        let range = "^[ぁ-ゞ 　]+$"
+        return NSPredicate(format: "SELF MATCHES %@", range).evaluate(with: self)
+    }
+    // カタカナかどうか
+    var isKatakana: Bool {
+        let range = "^[ァ-ヾ]+$"
+        return NSPredicate(format: "SELF MATCHES %@", range).evaluate(with: self)
+    }
+    // 英数字かどうか
+    var isAlphanumeric:Bool {
+        let range = "[a-zA-Z0-9]+"
+        return NSPredicate(format: "SELF MATCHES %@", range).evaluate(with: self)
+    }
+}

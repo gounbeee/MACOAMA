@@ -15,8 +15,8 @@
 
 
 import SwiftUI
-
-
+import AVKit
+import Combine
 
 
 class SynthController: ObservableObject {
@@ -29,6 +29,12 @@ class SynthController: ObservableObject {
     @Published var amplitude : Double = 0.3
     @Published var waveType : Double = 0.0
 
+    
+    var timeObserverToken: Any?
+    
+    var audioPlayer: AVAudioPlayer?
+    //var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
+    
     
     // @objc 属性指定でObj-Cとしても実行するようにコンパイルする
     //
@@ -88,6 +94,27 @@ class SynthController: ObservableObject {
     }
     
 
-
+//    func addPeriodicTimeObserver(audioPlayer: AVAudioPlayer) {
+//        // Notify every half second
+//        let timeScale = CMTimeScale(NSEC_PER_SEC)
+//        let time = CMTime(seconds: 0.5, preferredTimescale: timeScale)
+//
+//        timeObserverToken = audioPlayer.addPeriodicTimeObserver(forInterval: time,
+//                                                          queue: .main) {
+//            [weak self] time in
+//            // update player transport UI
+//        }
+//    }
+//
+//
+//
+//    func removePeriodicTimeObserver(audioPlayer: AVAudioPlayer) {
+//        if let timeObserverToken = timeObserverToken {
+//            audioPlayer.removeTimeObserver(timeObserverToken)
+//            self.timeObserverToken = nil
+//        }
+//    }
+    
+    
     
 }

@@ -32,14 +32,20 @@ struct MathSubjectCreatePageView: View {
     // let screenSize: CGRect = UIScreen.main.bounds
     
     var subjectNo : Int = 0
+    @State var pageNoStr : String = "1"
 
     //@State var arrowRotation : Double = 0.0
     
     
     let isFinalExport : Bool
     
+    @State var musicIsPlaying : Bool = false
+    
     
     init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController, isSubjectVisible: Bool, isPageVisible: Bool, subjectSpecified: Int?, blueToothCtr: BluetoothController, isFinalExport: Bool) {
+        //print("MathSubjectCreatePageView　が生成")
+        
+        
         self.ctr = controller
         self.synthCtr = synthCtr
         self.linkCtr = linkCtr
@@ -59,6 +65,7 @@ struct MathSubjectCreatePageView: View {
         // このオブジェクト固有の値として教材番号を扱う
         // そうしないと、コントローラのプロパティを更新することになり、無限ループでView更新をし続けることになる。
         self.subjectNo = self.ctr.subjectNo
+        self.pageNoStr = String(self.ctr.pageNo+1)
         
         if let sbjSpecf = subjectSpecified {
             
@@ -66,6 +73,8 @@ struct MathSubjectCreatePageView: View {
             self.subjectNo = sbjSpecf
         }
         
+        
+        //print("self.pageNo --> \(self.pageNo)")
         
     }
 
@@ -75,16 +84,30 @@ struct MathSubjectCreatePageView: View {
         HStack {
             
             VStack {
- 
+                
+                //let _ = print("IN MathSubjectCreatePageView   -->    \(self.ctr.pageNo)")
+                
                 // PNGファイルに書き出しを行う際は、上の部分は描画しない
                 if self.isFinalExport == false {
                     
                     // もしリンクされた教材なら、コントローラは２倍の大きさにする必要がある
                     if self.ctr.isLinkedView == false {
-                        MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: self.blueToothCtr, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible, synthCtr: self.synthCtr)
+
+                        MusicPlayView(synthCtr: self.synthCtr, ctr: self.ctr, bleCtr: self.blueToothCtr)
+                        
+
                     } else {
-                        MathSubjectCommandView(ctr: self.ctr, bluetoothCtr: nil, isSubjectVisible: self.isSubjectVisible, isPageVisible: self.isPageVisible, synthCtr: self.synthCtr)
+                        
+                        MathSubjectCommandView(ctr: self.ctr,
+                                               pageNumInSubject: self.ctr.pageNumInSubject,
+                                               subjectNum: String(self.ctr.subjectNo+1),
+                                               pageNum: self.$pageNoStr,
+                                               isSubjectVisible: self.isSubjectVisible,
+                                               isPageVisible: self.isPageVisible,
+                                               synthCtr: self.synthCtr,
+                                               musicIsPlaying: self.$musicIsPlaying)
                             .scaleEffect(x: 2.0, y: 2.0)
+                        
                     }
                     
                 }
@@ -195,7 +218,7 @@ struct MathSubjectCreatePageView: View {
                 }
                 .frame(width: MathSubjectController.ElementWidth, height: MathSubjectController.ElementHeight)
                 .textSelection(.disabled)
-                .padding()
+                .padding(EdgeInsets(top: -20, leading: 0, bottom: 0, trailing: 0))
                 
                 
                 //        .onAppear(perform: {

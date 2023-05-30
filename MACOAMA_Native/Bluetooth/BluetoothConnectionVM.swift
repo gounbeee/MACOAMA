@@ -181,24 +181,13 @@ struct BluetoothConnectionVM: View {
                     
                     
                 }) {
-                    Text("RESET SCANNING")
+                    Text("もう一度スキャンする")
                 }
                 .padding()
                 
                 
             }
             
-            
-            
-            
-            if !self.isScanning && self.isConnected {
-                
-//                MathSubjectCommandView(ctr: self.controller, bluetoothCtr: self.bluetoothCtr)
-//                    .frame(width: 500)
-//                    .padding()
-//
-                
-            }
             
         }
         

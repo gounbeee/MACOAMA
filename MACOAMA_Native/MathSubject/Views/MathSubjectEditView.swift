@@ -167,11 +167,10 @@ struct MathSubjectEditView: View {
                 
                 VStack {
                     
-                    Divider()
-                    
-                    Text("シンセサイザー").font(.system(size: 18))
+                    //Divider()
+                    //Text("シンセサイザー").font(.system(size: 18))
                     // SYNTHESIS を実装
-                    SynthVM(synthCtr: self.synthCtr)
+                    //SynthVM(synthCtr: self.synthCtr)
                     
                     
                     Divider()
@@ -190,7 +189,6 @@ struct MathSubjectEditView: View {
                 // 2等分の幅、を知るためにここにGeometry Readerを設定した。
                 // https://swiftspeedy.com/horizontally-divide-the-screen-into-two-equal-parts-in-swiftui/
                 GeometryReader { geo in
-                    
                     
                     ScrollView {
                         

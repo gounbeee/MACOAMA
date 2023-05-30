@@ -82,11 +82,15 @@ struct MathSubjectRootView: View {
         }) {
             
             Image(systemName: "network")
-                .tint(.pink)
-                .font(.system(size: 12))
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 30, height: 30).padding()
+                .foregroundColor(.indigo)
+                
                 
         }
-        .padding(EdgeInsets(top: 15.0, leading: 0.0, bottom: 25.0, trailing: 0.0))
+        .buttonStyle(.borderless)
+        .padding(EdgeInsets(top: 15.0, leading: 0.0, bottom: -10.0, trailing: 0.0))
 
         
        

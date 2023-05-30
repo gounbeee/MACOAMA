@@ -244,6 +244,27 @@ struct MathSubjectEditExportView: View {
         .controlSize(.large)
 
         
+        Button("CSVタイトルの出力") {
+
+            var csvText = ""
+
+            for subject in self.ctr.jsonObj!.subjects {
+
+                //print(i)
+                csvText += String(subject.title) + "\n"
+
+            }
+
+            // JSONファイルを新規保存
+            PersistenceController.shared.addTextDataWithString(title: "New CSV TITLE", input: csvText)
+
+
+
+        }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
+        
+        
 
         Button("HEADERファイルの出力") {
 

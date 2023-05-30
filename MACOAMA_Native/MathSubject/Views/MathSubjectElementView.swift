@@ -61,7 +61,7 @@ struct MathSubjectElementView: View {
         //Text( self.elmCtr.element.content )
         if self.elmCtr.element.font == "GenEiKoburiMin6-R" {
             
-            self.stringData = self.getStyledTokenizedString(inputTxt: self.elmCtr.element.content)
+            self.stringData = self.getStyledTokenizedString(inputTxt: self.elmCtr.element.content, randomScaleFrom: 1.0, randomScaleTo: 1.0)
             
         }
         
@@ -291,7 +291,7 @@ struct MathSubjectElementView: View {
     
    
     
-    func getStyledTokenizedString(inputTxt : String) -> AttributedString {
+    func getStyledTokenizedString(inputTxt : String, randomScaleFrom: Double, randomScaleTo: Double) -> AttributedString {
         
         let newInputTxt = checkLinkNumber(inputTxt: inputTxt)
         
@@ -300,22 +300,25 @@ struct MathSubjectElementView: View {
         
         txtProc.inputText = newInputTxt
         
-        let arrayText : [String] = txtProc.tokenize(text: txtProc.inputText)
+        var arrayText : [String] = txtProc.tokenize(text: txtProc.inputText)
         
         var resultString : AttributedString = AttributedString("")
         
         
-        let searchList = ["の","と","は","で","が","に","を"]
+        //let searchList = ["の","と","は","で","が","に","を"]
+        let searchList = ["の","は","で","が","に","を"]
         
         
         for index in 0...arrayText.count-1 {
+            
+            let maxCount = arrayText.count-1
             
             var attributedString = AttributedString(arrayText[index])
             
             // ① まず、基本的な文字の変化を与える
             
             // サイズのランダム化
-            attributedString.font = Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size * Double.random(in: 0.7...1.0))
+            attributedString.font = Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size * Double.random(in: randomScaleFrom...randomScaleTo))
 
             // カラーのランダム化
             attributedString.foregroundColor = Color(CGColor(red: Double.random(in: 0...0.6),
@@ -333,10 +336,9 @@ struct MathSubjectElementView: View {
                 // https://www.hackingwithswift.com/swift/5.7/regexes
                 // https://bignerdranch.com/blog/swift-regex/
                 
-                
-                if arrayText[index].contains(srcLetter) {
-                    
-                    
+                // 接続語を含んでいるかのチェック
+                if arrayText[index].contains(srcLetter) && arrayText[index].count == 1 {
+
                     //print("\(srcLetter)  IS CONTAINED !!")
                     
                     if let range = attributedString.range(of: srcLetter) {
@@ -344,18 +346,24 @@ struct MathSubjectElementView: View {
                         //print(range.lowerBound)
                         //print("To")
                         //print(range.upperBound)
+                        //
+                        //print(attributedString[range])
                         
-                        // print(attributedString[range])
-                        
+                        // 接続語の後に改行を入れる
+                        let newlineAttrStr = AttributedString(" \n")
+                        attributedString.insert(newlineAttrStr, at: range.upperBound)
                         
                         attributedString[range].foregroundColor = Color(CGColor(red: Double.random(in: 0.6...1.0),
                                                                          green: Double.random(in: 0...0.3),
                                                                          blue: Double.random(in: 0...0.3),
                                                                          alpha: 1.0))
-                        
-                        attributedString[range].font = Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size/1.3)
+                        // 接続語を設定
+                        attributedString[range].font = Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size)
+                        //attributedString[range].font = Font.custom(self.elmCtr.element.font, size: self.elmCtr.element.size/1.3)
                         //attributedString[range].font = Font.custom("AsciiMath-Regular", size: self.elmCtr.element.size/1.3)
                     }
+                    
+                    
                     
                 
                 }

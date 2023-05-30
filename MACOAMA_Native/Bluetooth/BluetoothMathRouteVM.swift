@@ -18,6 +18,9 @@ struct BluetoothMathRouteVM: View {
     
     @State var isBluetoothUsed : Bool? = nil
     
+    @State var pageNoStr : String = "1"
+    
+    @State var musicIsPlaying: Bool = false
     
     var body: some View {
         
@@ -33,7 +36,17 @@ struct BluetoothMathRouteVM: View {
 
                 } else if isBluetoothUsed == false {
                     
-                    MathSubjectCommandView(ctr: self.mathSbjCtr, bluetoothCtr: self.bleControls, synthCtr: self.synthCtr)
+                    //MathSubjectCommandView(ctr: self.mathSbjCtr, bluetoothCtr: self.bleControls, synthCtr: self.synthCtr)
+                    
+                    MathSubjectCommandView(ctr: self.mathSbjCtr,
+                                           pageNumInSubject: self.mathSbjCtr.pageNumInSubject,
+                                           subjectNum: String(self.mathSbjCtr.subjectNo+1),
+                                           pageNum: self.$pageNoStr,
+                                           isSubjectVisible: true,
+                                           isPageVisible: true,
+                                           synthCtr: self.synthCtr,
+                                           musicIsPlaying: self.$musicIsPlaying)
+                    
                         .frame(alignment: .leading)
                 }
                 

@@ -16,7 +16,7 @@ struct MACOAMA_NativeApp: App {
 
     
     
-    @State var isEditMode : Bool = false
+    @State var isEditMode : Bool = true
     
     
     
@@ -38,7 +38,7 @@ struct MACOAMA_NativeApp: App {
                         newWindowHeight: self.$newWindowHeight)
 
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            
+                
 
         }
         // ウィンドウのサイズを固定させる

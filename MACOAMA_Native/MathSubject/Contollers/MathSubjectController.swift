@@ -47,6 +47,33 @@ class MathSubjectController : ObservableObject {
     var isLinkedView : Bool = false
     
 
+
+    func jumpToNextPageSafely() {
+        
+        // 現在のページ番号から遷移していいのかをチェック
+        if self.pageNo >= 0 && self.pageNo < self.pageNumInSubject-1 {
+
+            self.pageNo += 1
+
+            self.reloadPage()
+            
+        }
+
+    }
+    
+    
+
+    
+    
+    func reloadPage() {
+        
+        self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
+        self.pageNumAll = self.countAllPages(jsonObject : self.jsonObj!)
+        self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
+        
+        self.updateJsonAndReload()
+        
+    }
     
     
     func addNewSubject() {
@@ -80,14 +107,11 @@ class MathSubjectController : ObservableObject {
         self.pageNo = 0
 
         self.subjectNumAll = self.jsonObj!.subjects.count
-        self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
-        self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
-        self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
+                
+        self.reloadPage()
         
         
-        self.updateJsonAndReload()
-        
-        print( self.pageNumInSubject )
+        //print( self.pageNumInSubject )
         
     }
     
@@ -117,13 +141,17 @@ class MathSubjectController : ObservableObject {
         
         self.pageNo += 1
 
-        self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
-        self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
-        self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
-
-        self.updateJsonAndReload()
         
-        print( self.pageNumInSubject )
+        self.reloadPage()
+        // self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
+        // self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
+        // self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
+        // self.updateJsonAndReload()
+        
+        
+        
+        
+        //print( self.pageNumInSubject )
         
     }
     
@@ -173,11 +201,14 @@ class MathSubjectController : ObservableObject {
                 
             }
 
-            self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
-            self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
-            self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
-            
-            self.updateJsonAndReload()
+
+            //self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
+            //self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
+            //self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
+            //
+            //self.updateJsonAndReload()
+
+            self.reloadPage()
             
         }
         
@@ -205,11 +236,7 @@ class MathSubjectController : ObservableObject {
                 
             }
             
-            self.pageNumInSubject = self.jsonObj!.subjects[self.subjectNo].pages.count
-            self.pageNumAll = countAllPages(jsonObject : self.jsonObj!)
-            self.elementNumAll = self.jsonObj!.subjects[self.subjectNo].pages[self.pageNo].textElems.count
-            
-            self.updateJsonAndReload()
+            self.reloadPage()
             
         }
         
@@ -348,14 +375,11 @@ class MathSubjectController : ObservableObject {
             countedPagesInSubject += 1
             
         }
-        
-        
-        
+
         print("COUNTING PAGES IN CURRENT SUBJECT ::  \(countedPagesInSubject)   ARE COUNTED !!!!")
         
         return countedPagesInSubject
-        
-        
+
     }
     
     
@@ -381,7 +405,6 @@ class MathSubjectController : ObservableObject {
         //print("COUNTING PAGES ::  \(countedPages)   ARE COUNTED !!!!")
         
         return countedPages
-        
         
     }
     
