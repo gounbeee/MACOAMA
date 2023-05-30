@@ -52,7 +52,7 @@ struct MusicPlayView: View {
     // 音楽ファイルのリスト
     var mp3FilePath : String? = nil
     
-    
+    @State var ypos : Double = 0.0
     
     
     init(synthCtr: SynthController, ctr: MathSubjectController, bleCtr: BluetoothController) {
@@ -67,6 +67,7 @@ struct MusicPlayView: View {
         getMusicFile()
         
         //print(self.audioPlayer)
+        
     }
     
     
@@ -174,6 +175,21 @@ struct MusicPlayView: View {
                                 }
                             }
                         }
+                        .offset(x: 0, y: self.ypos-10)
+                        .animation(.easeOut(duration: 0.2), value: self.ypos) // Animation follows the position modifier
+                        // この二つを両方使用してonAppearが毎度実行されないことを補完できる
+                        // https://developer.apple.com/forums/thread/656655
+                        .onAppear {
+                            
+                            //print("AgendaView.onAppear")
+                            self.ypos = 10
+                        }
+                        .onDisappear {
+                            
+                            //print("AgendaView.onDisappear")
+                            self.ypos -= 10
+                        }
+                    
                 }
                 
                 
