@@ -106,7 +106,9 @@ struct MathSubjectCreatePageView: View {
                                                isPageVisible: self.isPageVisible,
                                                synthCtr: self.synthCtr,
                                                musicIsPlaying: self.$musicIsPlaying)
+                            .padding(EdgeInsets(top: 40, leading: 0, bottom: 0, trailing: 0))
                             .scaleEffect(x: 2.0, y: 2.0)
+                            
                         
                     }
                     
