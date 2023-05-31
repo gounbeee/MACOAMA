@@ -32,6 +32,8 @@ struct MathSubjectView: View {
                                   subjectSpecified: nil,
                                   blueToothCtr: self.blueToothCtr,
                                   isFinalExport: false)
+            .offset(x: 0, y: self.controller.yPosAnim)
+            .animation(.easeInOut(duration: 0.2), value: self.controller.yPosAnim)
    
     }
 

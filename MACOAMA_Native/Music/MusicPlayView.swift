@@ -51,9 +51,7 @@ struct MusicPlayView: View {
     
     // 音楽ファイルのリスト
     var mp3FilePath : String? = nil
-    
-    @State var ypos : Double = 0.0
-    
+
     
     init(synthCtr: SynthController, ctr: MathSubjectController, bleCtr: BluetoothController) {
         
@@ -175,19 +173,19 @@ struct MusicPlayView: View {
                                 }
                             }
                         }
-                        .offset(x: 0, y: self.ypos-10)
-                        .animation(.easeOut(duration: 0.2), value: self.ypos) // Animation follows the position modifier
+                        .offset(x: 0, y: self.ctr.yPosAnim-5)
+                        .animation(.easeInOut(duration: 0.2), value: self.ctr.yPosAnim) // Animation follows the position modifier
                         // この二つを両方使用してonAppearが毎度実行されないことを補完できる
                         // https://developer.apple.com/forums/thread/656655
                         .onAppear {
                             
                             //print("AgendaView.onAppear")
-                            self.ypos = 10
+                            self.ctr.yPosAnim = 5
                         }
                         .onDisappear {
                             
                             //print("AgendaView.onDisappear")
-                            self.ypos -= 10
+                            self.ctr.yPosAnim -= 5
                         }
                     
                 }
@@ -206,7 +204,7 @@ struct MusicPlayView: View {
                         Image(systemName: "play.circle.fill")
                         
                     }
-                    
+
                     
                     Button(action: {
                         
@@ -214,9 +212,7 @@ struct MusicPlayView: View {
                             
                             // 音楽を停止
                             self.stopMusic()
-                            
-                            
-                            
+   
                         }
                         
                         
@@ -226,9 +222,8 @@ struct MusicPlayView: View {
                         
                     }
 
-                    
                 }
-                
+
                 // ボリューム調整用のスライダー
                 VStack {
       
@@ -253,10 +248,12 @@ struct MusicPlayView: View {
 
                     }
                     .frame(height: 20)
+
                 }
-                
+
             }
-            
+            .offset(x: 0, y: self.ctr.yPosAnim)
+            .animation(.easeInOut(duration: 0.2), value: self.ctr.yPosAnim)
         }
         
         

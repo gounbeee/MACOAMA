@@ -25,6 +25,8 @@ struct MathSubjectCommandView: View {
     
     @Binding var musicIsPlaying : Bool
     
+    //@Binding var yPos : Double
+    
     
     // 処理に遅延を与える
     // https://developer.apple.com/forums/thread/681962
@@ -225,6 +227,7 @@ struct MathSubjectCommandView: View {
                 
                 
             }
+
             
             // ページナビゲーション
             if self.isPageVisible == true {
@@ -324,6 +327,7 @@ struct MathSubjectCommandView: View {
                     
                     Button(action: {
 
+                        
                         self.stopMusicPlaying()
                         
                         
@@ -368,6 +372,8 @@ struct MathSubjectCommandView: View {
             }
             
 
+            
+
             // ┌───────────────────────────┐
             // │                           │
             // │          SLIDER           │
@@ -379,7 +385,9 @@ struct MathSubjectCommandView: View {
         }
         .frame(height: 100)
         .padding(EdgeInsets(top: -10, leading: 0, bottom: 0, trailing: 0))
-
+        .offset(y: self.ctr.yPosAnim)
+        .animation(.easeInOut(duration: 0.2), value: self.ctr.yPosAnim)
+        
     }
 
     

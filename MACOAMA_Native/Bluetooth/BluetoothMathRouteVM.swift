@@ -22,6 +22,9 @@ struct BluetoothMathRouteVM: View {
     
     @State var musicIsPlaying: Bool = false
     
+    
+    
+    
     var body: some View {
         
         VStack {

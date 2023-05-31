@@ -90,13 +90,13 @@ struct MathSubjectRootView: View {
                 
         }
         .buttonStyle(.borderless)
-        .padding(EdgeInsets(top: 15.0, leading: 0.0, bottom: -10.0, trailing: 0.0))
+        .padding(EdgeInsets(top: 15.0, leading: 0.0, bottom: -20.0, trailing: 0.0))
 
         
        
         
         MathSubjectView(controller: self.mathSbjCtr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr, blueToothCtr: self.bleControls)
-        
+            .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 20.0, trailing: 0.0))
 
         
     }

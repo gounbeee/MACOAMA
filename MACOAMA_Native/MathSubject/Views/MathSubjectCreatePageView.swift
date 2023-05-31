@@ -40,7 +40,7 @@ struct MathSubjectCreatePageView: View {
     let isFinalExport : Bool
     
     @State var musicIsPlaying : Bool = false
-    
+
     
     init(controller: MathSubjectController, synthCtr: SynthController, linkCtr: MathSubjectLinkController, windowCtr: MathSubjectWindowController, isSubjectVisible: Bool, isPageVisible: Bool, subjectSpecified: Int?, blueToothCtr: BluetoothController, isFinalExport: Bool) {
         //print("MathSubjectCreatePageView　が生成")
@@ -94,7 +94,7 @@ struct MathSubjectCreatePageView: View {
                     if self.ctr.isLinkedView == false {
 
                         MusicPlayView(synthCtr: self.synthCtr, ctr: self.ctr, bleCtr: self.blueToothCtr)
-                        
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
 
                     } else {
                         
@@ -240,6 +240,7 @@ struct MathSubjectCreatePageView: View {
             //.frame(height: 740)
             .frame(height: 800)
             .padding()
+
             
 
             if self.ctr.isEditMode == true {

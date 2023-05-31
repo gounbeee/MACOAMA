@@ -45,7 +45,8 @@ class MathSubjectController : ObservableObject {
     
     
     var isLinkedView : Bool = false
-    
+
+    @Published var yPosAnim : Double = 0.0
 
 
     func jumpToNextPageSafely() {

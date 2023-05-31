@@ -16,7 +16,7 @@ struct MACOAMA_NativeApp: App {
 
     
     
-    @State var isEditMode : Bool = true
+    @State var isEditMode : Bool = false
     
     
     
