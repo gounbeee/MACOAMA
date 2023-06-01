@@ -26,6 +26,23 @@ class MathSubjectWindowController : ObservableObject {
     
     
     
+    func getWindowIsExisted (title: String) -> Bool {
+        
+        for window in self.windowList {
+            
+            if window.title == title {
+                
+                return true
+                
+            }
+            
+        }
+        
+        return false
+    }
+    
+    
+    
     
     func getCurrentMainWindowPosition() -> CGPoint {
    

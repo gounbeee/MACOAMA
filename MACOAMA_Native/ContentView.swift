@@ -79,7 +79,7 @@ struct ContentView: View {
                                 newWindowWidth: $newWindowWidth,
                                 newWindowHeight: $newWindowHeight,
                                 windowCtr: self.mathWindowCtr,
-                                isEditMode: self.isEditMode)
+                                isEditMode: false)
                 .openNewWindow( title: "COARAMAUSE教材",
                                 xPos: 0,
                                 yPos: 0,

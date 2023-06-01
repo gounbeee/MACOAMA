@@ -13,8 +13,12 @@ struct MathSubjectEditCreateView: View {
     
     
     var body: some View {
+        
         Text("要素の編集").font(.system(size: 18))
+        
+        
         HStack {
+            
             Button("新規サブジェクト") {
                 
                 self.ctr.addNewSubject()

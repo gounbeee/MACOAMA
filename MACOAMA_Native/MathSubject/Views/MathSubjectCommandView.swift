@@ -25,7 +25,8 @@ struct MathSubjectCommandView: View {
     
     @Binding var musicIsPlaying : Bool
     
-    //@Binding var yPos : Double
+    @State var isHoveringPGBack : Bool = false
+    @State var isHoveringPGForward : Bool = false
     
     
     // 処理に遅延を与える
@@ -219,12 +220,9 @@ struct MathSubjectCommandView: View {
  
                     })
                     .buttonStyle(.borderless)
-                    
-
-                    
+       
                 }
-                //.padding(EdgeInsets(top: 0, leading: 0, bottom: -40, trailing: 0))
-                
+
                 
             }
 
@@ -270,7 +268,12 @@ struct MathSubjectCommandView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 20, height: 20).padding()
-                            .foregroundColor(.mint)
+                            .foregroundColor( self.isHoveringPGBack ? .accentColor : .mint)
+                            .onHover{ self.isHoveringPGBack = $0 }
+
+                            // ホバーした時の変化
+                            // State のBool値を使用
+                            // https://zenn.dev/kyome/articles/f2427e96862c0d
                     })
                     .buttonStyle(.borderless)
                     
@@ -360,7 +363,8 @@ struct MathSubjectCommandView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 20, height: 20).padding()
-                            .foregroundColor(.mint)
+                            .foregroundColor( self.isHoveringPGForward ? .accentColor : .mint)
+                            .onHover{ self.isHoveringPGForward = $0 }
                     })
                     .buttonStyle(.borderless)
                     

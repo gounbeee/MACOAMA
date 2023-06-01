@@ -35,6 +35,8 @@ struct MathSubjectView: View {
             .offset(x: 0, y: self.controller.yPosAnim)
             .animation(.easeInOut(duration: 0.2), value: self.controller.yPosAnim)
    
+
+        
     }
 
 }

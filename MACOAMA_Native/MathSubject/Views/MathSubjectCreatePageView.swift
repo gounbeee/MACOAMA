@@ -244,12 +244,29 @@ struct MathSubjectCreatePageView: View {
             .padding()
 
             
-
+            // そもそもの編集モードがONなら、なおかつー
             if self.ctr.isEditMode == true {
-                MathSubjectEditView(controller: self.ctr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr, blueToothCtr: self.blueToothCtr)
-                    .frame(width: 900)
-                    .padding()
-                    //.padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 50))
+                
+                // エディターウィンドウが存在しない時のみ、エディタウィンドウを生成する
+                if self.windowCtr.getWindowIsExisted(title: "エディター") == false {
+                    
+                    MathSubjectEditView(controller: self.ctr, synthCtr: self.synthCtr, linkCtr: self.linkCtr, windowCtr: self.windowCtr, blueToothCtr: self.blueToothCtr)
+                        .openNewWindow( title: "エディター",
+                                        xPos: 0,
+                                        yPos: 0,
+                                        width: 900,
+                                        height: 700,
+                                        isCenter: true,
+                                        windowCtr: self.windowCtr,
+                                        view: nil)
+                        
+                        //.frame(width: 900)
+                        //1.padding()
+                        //.padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 50))
+                    
+                }
+                
+
             }
             
         }

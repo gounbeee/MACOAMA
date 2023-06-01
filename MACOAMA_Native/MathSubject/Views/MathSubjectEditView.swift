@@ -119,22 +119,20 @@ struct MathSubjectEditView: View {
             VStack {
                 
                 VStack {
+                    Text("モニター画面の大きさ").font(.system(size: 18))
+                    // NSScreen を使用し、現在のスクリーンの大きさを調べる
+                    //https://cocoaapi.hatenablog.com/entry/00000120/recID33859
+                    Text( "モニター画面大きさ　横 \(NSScreen.main!.visibleFrame.size.width)" )
+                    Text( "モニター画面大きさ　縦 \(NSScreen.main!.visibleFrame.size.height)" )
                     
+                    Divider()
                     
                     MathSubjectEditExportView(ctr: self.ctr,
                                               synthCtr: self.synthCtr,
                                               linkCtr: self.linkCtr,
                                               windowCtr: self.windowCtr,
                                               blueToothCtr: self.blueToothCtr)
-                    
-                    Divider()
-                    
-                    Text("スクリーンの大きさ").font(.system(size: 18))
-                    // NSScreen を使用し、現在のスクリーンの大きさを調べる
-                    //https://cocoaapi.hatenablog.com/entry/00000120/recID33859
-                    Text( "スクリーン大きさ　横 \(NSScreen.main!.visibleFrame.size.width)" )
-                    Text( "スクリーン大きさ　縦 \(NSScreen.main!.visibleFrame.size.height)" )
-                    
+   
                 }
                 
                 
